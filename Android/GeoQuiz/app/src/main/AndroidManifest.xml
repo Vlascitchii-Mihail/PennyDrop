@@ -11,6 +11,7 @@
         android:theme="@style/Theme.GeoQuiz">
         <activity
             android:name=".CheatActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
