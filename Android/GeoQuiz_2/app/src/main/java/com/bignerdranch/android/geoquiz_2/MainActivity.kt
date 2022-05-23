@@ -10,9 +10,13 @@ import android.widget.TextView
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import androidx.core.app.ActivityOptionsCompat
+import android.os.Build
 
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
+const val cheat = "CheatActivity2"
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var prevButton: Button
     private lateinit var questionTextView: TextView
     private lateinit var cheatButton: Button
+    private var cheatValue = 0
+
 
     private val quizViewModel : QuizViewModel by lazy {
 //        ViewModelProvider.AndroidViewModelFactory(application).create(QuizViewModel::class.java)
@@ -41,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
+        cheatValue = savedInstanceState?.getInt(cheat, 0) ?: 0
+        quizViewModel.cheatTries += savedInstanceState?.getInt(CHEAT_TRIES, 0) ?: 0
 
 //        val isCheater = savedInstanceState?.getBoolean(KEY_INDEX_CHEAT, false) ?: false
 //        quizViewModel.isCheater = isCheater
@@ -58,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         questionTextView = findViewById(R.id.question_text_view)
         cheatButton = findViewById(R.id.cheat_button)
 
+
         trueButton.setOnClickListener {
             checkAnswer(true)
         }
@@ -68,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            quizViewModel.isCheater = false
         }
 
         prevButton.setOnClickListener {
@@ -85,6 +95,13 @@ class MainActivity : AppCompatActivity() {
             if (it.resultCode == Activity.RESULT_OK) {
                 val data : Intent? = it.data
                 quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false)?: false
+                cheatValue += data?.getIntExtra(cheat, 0) ?: 0
+                quizViewModel.cheatTries = data?.getIntExtra(CHEAT_TRIES, 0) ?: 0
+                Toast.makeText(this, "You cheated $cheatValue times", Toast.LENGTH_SHORT).show()
+
+                Log.d(TAG, "CheatTries = ${quizViewModel.cheatTries}")
+
+
             }
         }
 
@@ -93,15 +110,22 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, CheatActivity2::class.java)
 //            startActivity(intent)
             val answerIsTrue = quizViewModel.currentQuestionAnswer
-            val intent = CheatActivity2.newIntent(this@MainActivity, answerIsTrue)
+            val intent = CheatActivity2.newIntent(this@MainActivity, answerIsTrue, quizViewModel.cheatTries)
 //            startActivity(intent)
 //            startActivityForResult(intent, REQUEST_CODE_CHEAT)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val options =
+                    ActivityOptionsCompat.makeClipRevealAnimation(it, 0, 0, it.width, it.height)
 
-            getContent.launch(intent)
+                getContent.launch(intent, options)
+            } else {
+                getContent.launch(intent)
+            }
+
         }
 
-        updateQuestion()
 
+        updateQuestion()
     }
 
 //    @Deprecated("Deprecated in Java")
@@ -135,7 +159,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val messageResId = when {
-            quizViewModel.isCheater -> R.string.judgment_toast
+            quizViewModel.isCheater ->  R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
             else -> R.string.incorrect_toast
         }
@@ -172,6 +196,8 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(savedInstanceState)
         Log.d(TAG, "onSaveInstanceState")
         savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentIndex)
+        savedInstanceState.putInt(cheat, cheatValue)
+        savedInstanceState.putInt(CHEAT_TRIES, quizViewModel.cheatTries)
 //        savedInstanceState.putBoolean(KEY_INDEX_CHEAT, quizViewModel.isCheater)
     }
 }

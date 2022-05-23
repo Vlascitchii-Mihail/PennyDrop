@@ -28,8 +28,9 @@ class QuizViewModel : ViewModel() {
     var currentIndex = 0
     var count = 0
     var isCheater = false
-    var answerIsTrue = false
+    private var answerIsTrue = false
     var data: Intent? = null
+    var cheatTries = 0
 
     fun showAnswerText() : Int {
         return when {
