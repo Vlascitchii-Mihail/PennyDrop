@@ -30,6 +30,7 @@ class CrimeFragment : Fragment() {
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
     private lateinit var dateButton: Button
+    private lateinit var timeButton: Button
     private lateinit var solvedCheckBox: CheckBox
     private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
         ViewModelProvider(this)[CrimeDetailViewModel::class.java]
@@ -49,6 +50,7 @@ class CrimeFragment : Fragment() {
         titleField = view.findViewById(R.id.crime_title) as EditText
         dateButton = view.findViewById(R.id.crime_date) as Button
         solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
+        timeButton = view.findViewById(R.id.crime_time) as Button
 
 
         return view
@@ -64,6 +66,11 @@ class CrimeFragment : Fragment() {
 
         childFragmentManager.setFragmentResultListener(REQUEST_KEY, viewLifecycleOwner) { _, bundle ->
             crime.date = bundle.getSerializable("returnData") as Date
+            updateUI()
+        }
+
+        childFragmentManager.setFragmentResultListener(REQUEST_KEY + 1, viewLifecycleOwner) { _, bundle ->
+            crime.date = bundle.getSerializable("returnTime") as Date
             updateUI()
         }
     }
@@ -91,6 +98,12 @@ class CrimeFragment : Fragment() {
 
         dateButton.setOnClickListener {
             DatePickerFragment.newInstance(crime.date).apply {
+                show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
+            }
+        }
+
+        timeButton.setOnClickListener {
+            TimePickerFragment.newInstanceTime(crime.date).apply {
                 show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
             }
         }
