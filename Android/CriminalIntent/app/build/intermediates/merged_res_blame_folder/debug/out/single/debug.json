@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "com.bignerdranch.android.criminalintent.app-merged_res-30:/layout_fragment_crime.xml.flat",
+        "source": "com.bignerdranch.android.criminalintent.app-main-32:/layout/fragment_crime.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-pngs-25:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\layout_list_item_requres_police.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\layout\\list_item_requres_police.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\layout_fragment_crime_list.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\layout\\fragment_crime_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-xxhdpi_ic_solved.png.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable-xxhdpi\\ic_solved.png"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\layout_activity_crime.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\layout\\activity_crime.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-hdpi_ic_solved.png.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable-hdpi\\ic_solved.png"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\layout_list_item_crime.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\layout\\list_item_crime.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-mdpi_ic_solved.png.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable-mdpi\\ic_solved.png"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-xhdpi_ic_solved.png.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable-xhdpi\\ic_solved.png"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\layout_fragment_crime.xml.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\layout\\fragment_crime.xml"
+    },
+    {
+        "merged": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-merged_res-30:\\drawable-xxxhdpi_ic_solved.png.flat",
+        "source": "C:\\Users\\LEGION 5 PRO\\.gradle\\daemon\\7.3.3\\com.bignerdranch.android.criminalintent.app-main-32:\\drawable-xxxhdpi\\ic_solved.png"
+    }
+]
