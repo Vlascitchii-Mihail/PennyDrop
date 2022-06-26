@@ -27,7 +27,7 @@ class TimePickerFragment: DialogFragment() {
 
         val timeListener = TimePickerDialog.OnTimeSetListener {
                 _: TimePicker,  hours: Int, minutes: Int ->
-            val resultTime : Date = GregorianCalendar(initialYear, initialMonth, initialDay, hours, minutes,).time
+            val resultTime : Date = GregorianCalendar(initialYear, initialMonth, initialDay, hours, minutes).time
             setFragmentResult(REQUEST_KEY + 1, bundleOf("returnTime" to resultTime))
         }
 
