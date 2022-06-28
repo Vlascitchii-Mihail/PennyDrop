@@ -8,4 +8,6 @@
     <string name="crime_date">Crime Date</string>
     <string name="require_police">Call to Police</string>
     <string name="time_set_button">Set time</string>
+    <string name="new_crime">Add New Crime</string>
+    <string name="empty_list">Crime list is empty</string>
 </resources>

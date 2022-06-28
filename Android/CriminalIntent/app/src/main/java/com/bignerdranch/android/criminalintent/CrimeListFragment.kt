@@ -18,6 +18,10 @@ import java.util.UUID
 import android.content.Context
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Button
 
 private const val TAG = "CrimeListFragment"
 
@@ -29,10 +33,28 @@ class CrimeListFragment: Fragment() {
 
     private var callbacks: Callbacks? = null
     private lateinit var crimeRecyclerView: RecyclerView
+    private lateinit var addButton: Button
     private var adapter : CrimeAdapter? = CrimeAdapter()
 
     private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProvider(this).get(CrimeListViewModel::class.java)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.fragment_crime_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.new_crime -> {
+                val crime = Crime()
+                crimeListViewModel.addCrime(crime)
+                callbacks?.onCrimeSelected(crime.id)
+                true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -40,8 +62,21 @@ class CrimeListFragment: Fragment() {
         callbacks = context as Callbacks?
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_crime_list, container, false)
+        val viewEmptyList = inflater.inflate(R.layout.list_item_empty, container, false)
+
+        addButton = viewEmptyList.findViewById(R.id.add_new_crime) as Button
+        addButton.setOnClickListener {
+            val crime = Crime()
+            crimeListViewModel.addCrime(crime)
+            callbacks?.onCrimeSelected(crime.id)
+        }
 
         crimeRecyclerView = view.findViewById(R.id.crime_recycler_view) as RecyclerView
 
@@ -102,6 +137,12 @@ class CrimeListFragment: Fragment() {
 
     private inner class CrimeAdapter: ListAdapter<Crime, CrimeHolder>(DiffCallback) {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
+//            if (currentList.size == 0) {
+//                val view2 = layoutInflater.inflate(R.layout.list_item_empty, parent, false)
+//                if (currentList.size > 0) view2.visibility = 0x00000008
+//                return CrimeHolder(view2)
+//            } else if (currentList.size > 0) layoutInflater.inflate(R.id.list_is_empty, parent, false).visibility = 0x00000008
+
             val view: View = layoutInflater.inflate(R.layout.list_item_crime, parent, false)
 //            val view: View = when(viewType) {
 //                0 -> layoutInflater.inflate(R.layout.list_item_crime, parent, false)

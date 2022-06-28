@@ -9,7 +9,9 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_menu_name
 drawable ic_solved
+id add_new_crime
 id crime_date
 id crime_recycler_view
 id crime_solved
@@ -18,12 +20,16 @@ id crime_title
 id fragment_container
 id frameLayout
 id linearLayout2
+id list_is_empty
+id new_crime
 id requires_police
 layout activity_crime
 layout fragment_crime
 layout fragment_crime_list
 layout list_item_crime
+layout list_item_empty
 layout list_item_requres_police
+menu fragment_crime_list
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
@@ -33,6 +39,8 @@ string crime_solved_label
 string crime_title_hint
 string crime_title_label
 string crime_title_name
+string empty_list
+string new_crime
 string require_police
 string time_set_button
 style Theme.CriminalIntent

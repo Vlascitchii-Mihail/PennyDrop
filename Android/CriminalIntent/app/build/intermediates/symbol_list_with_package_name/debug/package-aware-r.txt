@@ -2464,6 +2464,7 @@ drawable ic_launcher_foreground
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
+drawable ic_menu_name
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -2585,6 +2586,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id add_new_crime
 id alertTitle
 id aligned
 id all
@@ -2765,6 +2767,7 @@ id line3
 id linear
 id linearLayout2
 id listMode
+id list_is_empty
 id list_item
 id masked
 id match_constraint
@@ -2833,6 +2836,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id new_crime
 id noScroll
 id noState
 id none
@@ -3119,6 +3123,7 @@ layout design_text_input_start_icon
 layout fragment_crime
 layout fragment_crime_list
 layout list_item_crime
+layout list_item_empty
 layout list_item_requres_police
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3194,6 +3199,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu fragment_crime_list
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -3240,6 +3246,7 @@ string crime_solved_label
 string crime_title_hint
 string crime_title_label
 string crime_title_name
+string empty_list
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -3319,6 +3326,7 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string mtrl_timepicker_confirm
+string new_crime
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
