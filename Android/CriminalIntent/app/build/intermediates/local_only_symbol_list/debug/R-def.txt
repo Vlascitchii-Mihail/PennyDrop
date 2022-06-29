@@ -27,7 +27,6 @@ layout activity_crime
 layout fragment_crime
 layout fragment_crime_list
 layout list_item_crime
-layout list_item_empty
 layout list_item_requres_police
 menu fragment_crime_list
 mipmap ic_launcher

@@ -3123,7 +3123,6 @@ layout design_text_input_start_icon
 layout fragment_crime
 layout fragment_crime_list
 layout list_item_crime
-layout list_item_empty
 layout list_item_requres_police
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

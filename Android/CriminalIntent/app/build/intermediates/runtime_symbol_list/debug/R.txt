@@ -3122,7 +3122,6 @@ int layout design_text_input_start_icon 0x7f0b002c
 int layout fragment_crime 0x7f0b002d
 int layout fragment_crime_list 0x7f0b002e
 int layout list_item_crime 0x7f0b002f
-int layout list_item_empty 0x7f0b0030
 int layout list_item_requres_police 0x7f0b0031
 int layout m3_alert_dialog 0x7f0b0032
 int layout m3_alert_dialog_actions 0x7f0b0033

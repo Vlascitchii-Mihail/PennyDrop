@@ -3,6 +3,7 @@ package com.bignerdranch.android.criminalintent
 import androidx.lifecycle.ViewModel
 
 class CrimeListViewModel: ViewModel() {
+    var dataListSize: Int? = 0
 //    val crimes = mutableListOf<Crime>()
 
 //    init {
