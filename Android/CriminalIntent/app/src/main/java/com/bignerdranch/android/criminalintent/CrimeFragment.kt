@@ -1,5 +1,6 @@
 package com.bignerdranch.android.criminalintent
 
+import android.Manifest.permission.READ_CONTACTS
 import android.app.Activity
 import androidx.fragment.app.Fragment
 import android.os.Bundle
@@ -23,6 +24,8 @@ import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
+import androidx.core.content.PermissionChecker
+import androidx.core.content.PermissionChecker.checkSelfPermission
 
 
 private const val TAG = "CrimeFragment"
@@ -39,6 +42,7 @@ class CrimeFragment : Fragment() {
     private lateinit var timeButton: Button
     private lateinit var reportButton: Button
     private lateinit var suspectButton: Button
+    private lateinit var callButton: Button
     private lateinit var solvedCheckBox: CheckBox
 
     private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
@@ -67,6 +71,7 @@ class CrimeFragment : Fragment() {
         timeButton = view.findViewById(R.id.crime_time) as Button
         reportButton = view.findViewById(R.id.crime_report) as Button
         suspectButton = view.findViewById(R.id.crime_suspect) as Button
+        callButton = view.findViewById(R.id.call_button) as Button
 
 
         return view
@@ -150,6 +155,14 @@ class CrimeFragment : Fragment() {
 //            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(pickContactIntent, PackageManager.MATCH_DEFAULT_ONLY)
 //            if (resolvedActivity == null) isEnabled == false
         }
+
+        callButton.setOnClickListener {
+            when(context?.checkSelfPermission(READ_CONTACTS)) {
+                PermissionChecker.PERMISSION_GRANTED -> pickNumberPhone.launch(null)
+                else ->shouldShowRequestPermissionRationale(READ_CONTACTS)
+            }
+            pickNumberPhone.launch(null)
+        }
     }
 
 //    val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
@@ -167,6 +180,10 @@ class CrimeFragment : Fragment() {
                 suspectButton.text = suspect
             }
         }
+    }
+
+    private val pickNumberPhone = registerForActivityResult(ActivityResultContracts.PickContact()) { contactUri ->
+        val queryFields = arrayOf(ContactsContract.CommonDataKinds.Phone._ID)
     }
 
 //    @Deprecated("Deprecated in Java")
