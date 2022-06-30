@@ -21,6 +21,8 @@ import android.content.Intent
 import android.provider.ContactsContract
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 
 
 private const val TAG = "CrimeFragment"
@@ -141,6 +143,12 @@ class CrimeFragment : Fragment() {
 //                startActivityForResult(pickContactIntent, REQUEST_CONTACT)
                 pickContact.launch(null)
             }
+
+//            val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+//            pickContactIntent.addCategory(Intent.CATEGORY_HOME)
+//            val packageManager: PackageManager = requireActivity().packageManager
+//            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(pickContactIntent, PackageManager.MATCH_DEFAULT_ONLY)
+//            if (resolvedActivity == null) isEnabled == false
         }
     }
 
