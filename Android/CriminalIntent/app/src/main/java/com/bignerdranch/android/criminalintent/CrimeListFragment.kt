@@ -181,26 +181,10 @@ class CrimeListFragment: Fragment() {
 
     private fun updateUI(crimes: List<Crime>) {
 
-        if(crimes.isEmpty()) {
-//            addButton = view?.findViewById(R.id.add_new_crime) as Button
-//            addButton.setOnClickListener {
-//                val crime = Crime()
-//                crimeListViewModel.addCrime(crime)
-//                callbacks?.onCrimeSelected(crime.id)
-//            }
-//            textEmpty = view?.findViewById(R.id.list_is_empty) as TextView
-        } else {
+        if(crimes.isNotEmpty()) {
             adapter?.submitList(crimes)
             textEmpty.visibility = View.GONE
             addButton.visibility = View.GONE
         }
-//    if (crimes.isEmpty()){
-//        imageButton = view?.findViewById(R.id.imageButton) as ImageButton
-//        imageButton.setVisibility(View.VISIBLE)
-//        imageButton.setOnClickListener{
-//            val crime = Crime()
-//            crimeListViewModel.addCrime(crime)
-//            callbacks?.onCrimeSelected(crime.id)
     }
-
 }

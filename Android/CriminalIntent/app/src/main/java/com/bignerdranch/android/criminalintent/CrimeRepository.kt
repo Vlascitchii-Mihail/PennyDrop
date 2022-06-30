@@ -5,6 +5,7 @@ import data_base.CrimeDatabase
 import androidx.room.Room
 import java.util.UUID
 import androidx.lifecycle.LiveData
+import data_base.migration_1_2
 import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "crime-database"
@@ -13,7 +14,7 @@ class CrimeRepository private constructor(context: Context) {
 
     private val database: CrimeDatabase = Room.databaseBuilder(
         context.applicationContext, CrimeDatabase::class.java, DATABASE_NAME
-    ).build()
+    ).addMigrations(migration_1_2).build()
 
     private val executor = Executors.newSingleThreadExecutor()
 

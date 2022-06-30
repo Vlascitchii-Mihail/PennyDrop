@@ -2655,7 +2655,9 @@ id cos
 id counterclockwise
 id crime_date
 id crime_recycler_view
+id crime_report
 id crime_solved
+id crime_suspect
 id crime_time
 id crime_title
 id currentState
@@ -3241,7 +3243,15 @@ string chip_text
 string clear_text_end_icon_content_description
 string crime_date
 string crime_details_label
+string crime_report
+string crime_report_no_suspect
+string crime_report_solved
+string crime_report_subject
+string crime_report_suspect
+string crime_report_text
+string crime_report_unsolved
 string crime_solved_label
+string crime_suspect_text
 string crime_title_hint
 string crime_title_label
 string crime_title_name
@@ -3333,6 +3343,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string require_police
 string search_menu_title
+string send_report
 string status_bar_notification_info_overflow
 string time_set_button
 style AlertDialog_AppCompat
