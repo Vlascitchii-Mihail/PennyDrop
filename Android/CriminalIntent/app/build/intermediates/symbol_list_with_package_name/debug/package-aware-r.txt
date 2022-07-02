@@ -2617,6 +2617,7 @@ id bounceStart
 id buttonPanel
 id cache_measures
 id callMeasure
+id call_button
 id cancel_button
 id carryVelocity
 id center
@@ -3236,6 +3237,7 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string call
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

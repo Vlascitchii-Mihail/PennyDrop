@@ -8,6 +8,8 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="32" />
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name="com.bignerdranch.android.criminalintent.CriminalIntentApplication"
         android:allowBackup="true"

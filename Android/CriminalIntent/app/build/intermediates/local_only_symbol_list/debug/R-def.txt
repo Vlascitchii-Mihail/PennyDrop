@@ -12,6 +12,7 @@ drawable ic_launcher_foreground
 drawable ic_menu_name
 drawable ic_solved
 id add_new_crime
+id call_button
 id crime_date
 id crime_recycler_view
 id crime_report
@@ -34,6 +35,7 @@ menu fragment_crime_list
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string call
 string crime_date
 string crime_details_label
 string crime_report

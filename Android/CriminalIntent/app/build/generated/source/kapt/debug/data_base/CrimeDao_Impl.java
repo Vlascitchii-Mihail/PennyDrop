@@ -38,7 +38,7 @@ public final class CrimeDao_Impl implements CrimeDao {
     this.__insertionAdapterOfCrime = new EntityInsertionAdapter<Crime>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `Crime` (`id`,`title`,`date`,`isSolved`,`suspect`) VALUES (?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `Crime` (`id`,`title`,`date`,`isSolved`,`suspect`,`suspectPhoneNumber`) VALUES (?,?,?,?,?,?)";
       }
 
       @Override
@@ -66,13 +66,18 @@ public final class CrimeDao_Impl implements CrimeDao {
           stmt.bindNull(5);
         } else {
           stmt.bindString(5, value.getSuspect());
+        }
+        if (value.getSuspectPhoneNumber() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getSuspectPhoneNumber());
         }
       }
     };
     this.__updateAdapterOfCrime = new EntityDeletionOrUpdateAdapter<Crime>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `Crime` SET `id` = ?,`title` = ?,`date` = ?,`isSolved` = ?,`suspect` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `Crime` SET `id` = ?,`title` = ?,`date` = ?,`isSolved` = ?,`suspect` = ?,`suspectPhoneNumber` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -101,11 +106,16 @@ public final class CrimeDao_Impl implements CrimeDao {
         } else {
           stmt.bindString(5, value.getSuspect());
         }
-        final String _tmp_3 = __crimeTypeConverters.fromUUID(value.getId());
-        if (_tmp_3 == null) {
+        if (value.getSuspectPhoneNumber() == null) {
           stmt.bindNull(6);
         } else {
-          stmt.bindString(6, _tmp_3);
+          stmt.bindString(6, value.getSuspectPhoneNumber());
+        }
+        final String _tmp_3 = __crimeTypeConverters.fromUUID(value.getId());
+        if (_tmp_3 == null) {
+          stmt.bindNull(7);
+        } else {
+          stmt.bindString(7, _tmp_3);
         }
       }
     };
@@ -149,6 +159,7 @@ public final class CrimeDao_Impl implements CrimeDao {
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsSolved = CursorUtil.getColumnIndexOrThrow(_cursor, "isSolved");
           final int _cursorIndexOfSuspect = CursorUtil.getColumnIndexOrThrow(_cursor, "suspect");
+          final int _cursorIndexOfSuspectPhoneNumber = CursorUtil.getColumnIndexOrThrow(_cursor, "suspectPhoneNumber");
           final List<Crime> _result = new ArrayList<Crime>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final Crime _item;
@@ -184,7 +195,13 @@ public final class CrimeDao_Impl implements CrimeDao {
             } else {
               _tmpSuspect = _cursor.getString(_cursorIndexOfSuspect);
             }
-            _item = new Crime(_tmpId,_tmpTitle,_tmpDate,_tmpIsSolved,_tmpSuspect);
+            final String _tmpSuspectPhoneNumber;
+            if (_cursor.isNull(_cursorIndexOfSuspectPhoneNumber)) {
+              _tmpSuspectPhoneNumber = null;
+            } else {
+              _tmpSuspectPhoneNumber = _cursor.getString(_cursorIndexOfSuspectPhoneNumber);
+            }
+            _item = new Crime(_tmpId,_tmpTitle,_tmpDate,_tmpIsSolved,_tmpSuspect,_tmpSuspectPhoneNumber);
             _result.add(_item);
           }
           return _result;
@@ -221,6 +238,7 @@ public final class CrimeDao_Impl implements CrimeDao {
           final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfIsSolved = CursorUtil.getColumnIndexOrThrow(_cursor, "isSolved");
           final int _cursorIndexOfSuspect = CursorUtil.getColumnIndexOrThrow(_cursor, "suspect");
+          final int _cursorIndexOfSuspectPhoneNumber = CursorUtil.getColumnIndexOrThrow(_cursor, "suspectPhoneNumber");
           final Crime _result;
           if(_cursor.moveToFirst()) {
             final UUID _tmpId;
@@ -255,7 +273,13 @@ public final class CrimeDao_Impl implements CrimeDao {
             } else {
               _tmpSuspect = _cursor.getString(_cursorIndexOfSuspect);
             }
-            _result = new Crime(_tmpId,_tmpTitle,_tmpDate,_tmpIsSolved,_tmpSuspect);
+            final String _tmpSuspectPhoneNumber;
+            if (_cursor.isNull(_cursorIndexOfSuspectPhoneNumber)) {
+              _tmpSuspectPhoneNumber = null;
+            } else {
+              _tmpSuspectPhoneNumber = _cursor.getString(_cursorIndexOfSuspectPhoneNumber);
+            }
+            _result = new Crime(_tmpId,_tmpTitle,_tmpDate,_tmpIsSolved,_tmpSuspect,_tmpSuspectPhoneNumber);
           } else {
             _result = null;
           }

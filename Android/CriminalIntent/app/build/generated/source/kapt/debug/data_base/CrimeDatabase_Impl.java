@@ -34,12 +34,12 @@ public final class CrimeDatabase_Impl extends CrimeDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `Crime` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `date` INTEGER NOT NULL, `isSolved` INTEGER NOT NULL, `suspect` TEXT NOT NULL, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `Crime` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `date` INTEGER NOT NULL, `isSolved` INTEGER NOT NULL, `suspect` TEXT NOT NULL, `suspectPhoneNumber` TEXT NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '68194fcc406c5f122b5c23d35cab850f')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '56d6f4064fd74fd8d44aec994d127a6c')");
       }
 
       @Override
@@ -83,12 +83,13 @@ public final class CrimeDatabase_Impl extends CrimeDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsCrime = new HashMap<String, TableInfo.Column>(5);
+        final HashMap<String, TableInfo.Column> _columnsCrime = new HashMap<String, TableInfo.Column>(6);
         _columnsCrime.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCrime.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCrime.put("date", new TableInfo.Column("date", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCrime.put("isSolved", new TableInfo.Column("isSolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCrime.put("suspect", new TableInfo.Column("suspect", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCrime.put("suspectPhoneNumber", new TableInfo.Column("suspectPhoneNumber", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysCrime = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesCrime = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoCrime = new TableInfo("Crime", _columnsCrime, _foreignKeysCrime, _indicesCrime);
@@ -100,7 +101,7 @@ public final class CrimeDatabase_Impl extends CrimeDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "68194fcc406c5f122b5c23d35cab850f", "85774e7f260d8237766b9a2caa451e2a");
+    }, "56d6f4064fd74fd8d44aec994d127a6c", "74160d9978915f03092da3bf36da05ec");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

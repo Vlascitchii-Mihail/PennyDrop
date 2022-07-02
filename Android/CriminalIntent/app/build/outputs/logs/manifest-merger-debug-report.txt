@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+MERGED from [androidx.databinding:viewbinding:7.2.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\beea12321c57ba204862a5a9833818f8\transformed\viewbinding-7.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment-ktx:1.4.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\0d8f676cf84731930bc9c0bf1e0c3e51\transformed\fragment-ktx-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a47ad2bab3953f9c265a18fc43feff42\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -15,10 +16,6 @@ MERGED from [androidx.activity:activity-ktx:1.2.3] C:\Users\LEGION 5 PRO\.gradle
 MERGED from [androidx.core:core-ktx:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\220d02874894d13ab5b647d125d9b637\transformed\core-ktx-1.8.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\39d86b82263c90035e236b664d79d8bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2a833ecee5bdff0d175328fe36b18081\transformed\activity-1.2.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\363932f9cbdb06aca036cb7edd538569\transformed\appcompat-resources-1.4.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1b1da13f75c48edf782b375b35f326a8\transformed\emoji2-views-helper-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -35,13 +32,17 @@ MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\LEGION 5 
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\3892563e2bf3fd233c561d144f233557\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\76bd75c496e6cc3546ef3724934d8a47\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ea35f2c882e8a8122bbbfbaea5d4002b\transformed\lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\341253fe26752e50bef3dffcdf679a66\transformed\savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\27d684eda8af5a7a0a6fb0e69272e16f\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\732520c3167e0c949103ab15a6507d74\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\065d600f6ca8f91e64ce659c2ba52e5b\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2005d006315abd626c8877796eac310d\transformed\lifecycle-service-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\6143069db51775c88201d714a5db379c\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\dbeaf8c138f94a9d582bd4c087b2f594\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a11a3dcc2417feeaca19adac49ff6a88\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -55,27 +56,31 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\LEGION 5 PRO\.gr
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ec54faf1561ff8e16e63442f6dfbe5f2\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ec980e7efefdaffa74c0eb5a1910ad8c\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\790e79799443309ec30d99da3f5657b0\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:4:5-54
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.READ_CONTACTS
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:6:22-69
 application
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:6:5-26:19
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:5-27:19
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a47ad2bab3953f9c265a18fc43feff42\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -97,45 +102,47 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\LEGION 5 PRO\.grad
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:14:9-41
 	android:fullBackupContent
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:9-54
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:12:9-54
 	android:roundIcon
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:15:9-54
 	tools:targetApi
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:9-29
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:9-29
 	android:icon
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:15:9-52
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:17:9-52
 	android:dataExtractionRules
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:9:9-65
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-65
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:7:9-50
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:9:9-50
 activity#com.bignerdranch.android.criminalintent.MainActivity
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:17:9-25:20
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:19:9-26:20
 	android:exported
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:19:13-36
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:13-36
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:13-41
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:22:13-25:29
 action#android.intent.action.MAIN
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:17-77
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:27-74
 uses-sdk
 INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.2.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\beea12321c57ba204862a5a9833818f8\transformed\viewbinding-7.2.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:viewbinding:7.2.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\beea12321c57ba204862a5a9833818f8\transformed\viewbinding-7.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment-ktx:1.4.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\0d8f676cf84731930bc9c0bf1e0c3e51\transformed\fragment-ktx-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment-ktx:1.4.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\0d8f676cf84731930bc9c0bf1e0c3e51\transformed\fragment-ktx-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\AndroidManifest.xml:20:5-22:41
@@ -158,14 +165,6 @@ MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\LEGION 5 PRO\.gr
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\39d86b82263c90035e236b664d79d8bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2a833ecee5bdff0d175328fe36b18081\transformed\activity-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2a833ecee5bdff0d175328fe36b18081\transformed\activity-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\363932f9cbdb06aca036cb7edd538569\transformed\appcompat-resources-1.4.2\AndroidManifest.xml:20:5-22:41
@@ -198,20 +197,28 @@ MERGED from [androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\tran
 MERGED from [androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\76bd75c496e6cc3546ef3724934d8a47\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\76bd75c496e6cc3546ef3724934d8a47\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ffaca4c6eb2f57264cbee1f9c69de495\transformed\savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ea35f2c882e8a8122bbbfbaea5d4002b\transformed\lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ea35f2c882e8a8122bbbfbaea5d4002b\transformed\lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\341253fe26752e50bef3dffcdf679a66\transformed\savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\341253fe26752e50bef3dffcdf679a66\transformed\savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\777a723e756de3c842674024e00f58aa\transformed\lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\27d684eda8af5a7a0a6fb0e69272e16f\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\27d684eda8af5a7a0a6fb0e69272e16f\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\732520c3167e0c949103ab15a6507d74\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\732520c3167e0c949103ab15a6507d74\transformed\lifecycle-livedata-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\baa9dbe08637b3761e6169ce4393a288\transformed\lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\065d600f6ca8f91e64ce659c2ba52e5b\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\065d600f6ca8f91e64ce659c2ba52e5b\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2005d006315abd626c8877796eac310d\transformed\lifecycle-service-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2005d006315abd626c8877796eac310d\transformed\lifecycle-service-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7eb506574d120b0aaa656407eb2557f\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\6143069db51775c88201d714a5db379c\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\6143069db51775c88201d714a5db379c\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\dbeaf8c138f94a9d582bd4c087b2f594\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
