@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import data_base.migration_1_2
 import data_base.migration_2_3
 import java.util.concurrent.Executors
+import java.io.File
 
 private const val DATABASE_NAME = "crime-database"
 
@@ -18,6 +19,8 @@ class CrimeRepository private constructor(context: Context) {
     ).addMigrations(migration_2_3).build()
 
     private val executor = Executors.newSingleThreadExecutor()
+
+    private val filesDir = context.applicationContext.filesDir
 
     private val crimeDao = database.crimeDao()
 
@@ -36,6 +39,8 @@ class CrimeRepository private constructor(context: Context) {
             crimeDao.addCrime(crime)
         }
     }
+
+//    fun getPhotoFile(crime: Crime): File = File(filesDir, crime.photoFileName)
 
     companion object {
         private var INSTANCE: CrimeRepository? = null
