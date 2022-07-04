@@ -135,6 +135,12 @@ class CrimeFragment : Fragment() {
             }
         }
 
+        photoView.setOnClickListener {
+            PhotoZoomFragment.newInstance(photoFile).apply {
+                show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
+            }
+        }
+
         reportButton.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/playn"
@@ -161,6 +167,25 @@ class CrimeFragment : Fragment() {
             callPermissionRequestLauncher.launch(Manifest.permission.CALL_PHONE)
         }
 
+//        photoButton.apply {
+//            val packageManager: PackageManager = requireActivity().packageManager
+//            val captureImage = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
+//
+//            if (resolvedActivity == null) isEnabled = false
+//
+//            setOnClickListener {
+//                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+//                val cameraActivities: List<ResolveInfo> = packageManager.queryIntentActivities(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
+//
+//                for (cameraActivity in cameraActivities) {
+//                    requireActivity().grantUriPermission(cameraActivity.activityInfo.packageName, photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+//                }
+//
+//                startActivityForResult(captureImage, REQUEST_PHOTO)
+//            }
+//        }
+
         photoButton.apply {
             val packageManager: PackageManager = requireActivity().packageManager
             val captureImage = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -169,17 +194,12 @@ class CrimeFragment : Fragment() {
             if (resolvedActivity == null) isEnabled = false
 
             setOnClickListener {
-                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                val cameraActivities: List<ResolveInfo> = packageManager.queryIntentActivities(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
-
-                for (cameraActivity in cameraActivities) {
-                    requireActivity().grantUriPermission(cameraActivity.activityInfo.packageName, photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-                }
-
-                startActivityForResult(captureImage, REQUEST_PHOTO)
+                cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
             }
+
         }
     }
+
 
     //            val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
 //            pickContactIntent.addCategory(Intent.CATEGORY_HOME)
@@ -341,38 +361,86 @@ class CrimeFragment : Fragment() {
     }
 
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when {
-            resultCode != Activity.RESULT_OK -> return
-            requestCode == REQUEST_CONTACT && data != null -> {
-                val contactUri: Uri? = data.data
-                val queryFields = arrayOf(ContactsContract.Contacts.DISPLAY_NAME)
-                val cursor = contactUri?.let {
-                    requireActivity().contentResolver.query(
-                        it,
-                        queryFields,
-                        null,
-                        null,
-                        null
-                    )
-                }
-                cursor?.use {
-                    if (it.count == 0) return
-                    it.moveToFirst()
-                    val suspect = it.getString(0)
-                    crime.suspect = suspect
-                    crimeDetailViewModel.saveCrime(crime)
-                    suspectButton.text = suspect
-                }
-            }
 
-            requestCode == REQUEST_PHOTO -> {
-                requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-                updatePhotoView()
-            }
+
+
+
+    private val cameraPermissionRequestLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(), ::onGotPermissionCamera)
+
+    private fun onGotPermissionCamera(granted: Boolean) {
+        if (granted) permissionCameraGranted()
+        else {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
+                Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+            } else askUserForOpeningCameraSettings()
         }
     }
+
+    private fun permissionCameraGranted() {
+        pickCamera.launch(photoUri)
+    }
+
+    private fun askUserForOpeningCameraSettings() {
+        val appSettingsIntent = Intent(
+            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+            Uri.fromParts("com.bignerdranch.android.criminalintent", "MainActivity", "CrimeFragment")
+        )
+        if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
+            Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
+        } else {
+            AlertDialog.Builder(context).setTitle("Permission denied").setMessage("You have denied permissions forever. " +
+                    "You can change your decision in app settings\n\n\"" +
+                    "Would you like to open app settings?").setPositiveButton("Open") {_, _ ->
+                startActivity(appSettingsIntent)
+            }.create().show()
+        }
+    }
+
+    private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { contactUri ->
+        if (contactUri != null) {
+            photoView.setImageURI(photoUri)
+        }
+    }
+
+
+
+
+
+
+
+//    @Deprecated("Deprecated in Java")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        when {
+//            resultCode != Activity.RESULT_OK -> return
+//            requestCode == REQUEST_CONTACT && data != null -> {
+//                val contactUri: Uri? = data.data
+//                val queryFields = arrayOf(ContactsContract.Contacts.DISPLAY_NAME)
+//                val cursor = contactUri?.let {
+//                    requireActivity().contentResolver.query(
+//                        it,
+//                        queryFields,
+//                        null,
+//                        null,
+//                        null
+//                    )
+//                }
+//                cursor?.use {
+//                    if (it.count == 0) return
+//                    it.moveToFirst()
+//                    val suspect = it.getString(0)
+//                    crime.suspect = suspect
+//                    crimeDetailViewModel.saveCrime(crime)
+//                    suspectButton.text = suspect
+//                }
+//            }
+//
+//            requestCode == REQUEST_PHOTO -> {
+//                requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+//                updatePhotoView()
+//            }
+//        }
+//    }
 
 
     override fun onStop() {

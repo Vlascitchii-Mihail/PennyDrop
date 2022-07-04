@@ -16,97 +16,107 @@
 12    <uses-permission android:name="android.permission.CALL_PHONE" />
 12-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:7:5-68
 12-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:7:22-66
-13
-14    <application
-14-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:9:5-38:19
-15        android:name="com.bignerdranch.android.criminalintent.CriminalIntentApplication"
-15-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:9-50
-16        android:allowBackup="true"
-16-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-35
-17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
-18        android:dataExtractionRules="@xml/data_extraction_rules"
-18-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:12:9-65
-19        android:debuggable="true"
-20        android:fullBackupContent="@xml/backup_rules"
-20-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:13:9-54
-21        android:icon="@mipmap/ic_launcher"
-21-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:14:9-43
-22        android:label="@string/app_name"
-22-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:15:9-41
-23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:9-54
-24        android:supportsRtl="true"
-24-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:17:9-35
-25        android:testOnly="true"
-26        android:theme="@style/Theme.CriminalIntent" >
-26-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:9-52
-27        <activity
-27-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:20:9-27:20
-28            android:name="com.bignerdranch.android.criminalintent.MainActivity"
-28-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:13-41
-29            android:exported="true" >
-29-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:22:13-36
-30            <intent-filter>
-30-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:13-26:29
-31                <action android:name="android.intent.action.MAIN" />
-31-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:17-69
-31-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:25-66
-32
-33                <category android:name="android.intent.category.LAUNCHER" />
-33-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:25:17-77
-33-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:25:27-74
-34            </intent-filter>
-35        </activity>
-36
-37        <provider
-37-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:28:9-37:20
-38            android:name="androidx.core.content.FileProvider"
-38-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:29:13-62
-39            android:authorities="com.bignerdranch.android.criminalintent.fileprovider"
-39-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:30:13-87
-40            android:exported="false"
-40-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:31:13-37
-41            android:grantUriPermissions="true" >
-41-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:32:13-47
-42            <meta-data
-42-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:34:13-36:48
-43                android:name="android.support.FILE_PROVIDER_PATHS"
-43-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:35:17-67
-44                android:resource="@xml/files" />
-44-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:36:17-46
-45        </provider>
-46
-47        <service
-47-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:25:9-28:40
-48            android:name="androidx.room.MultiInstanceInvalidationService"
-48-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:26:13-74
-49            android:directBootAware="true"
-49-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:27:13-43
-50            android:exported="false" />
-50-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:28:13-37
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:5-64
+13-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:22-62
+14
+15    <uses-feature
+15-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:5-11:35
+16        android:name="android.hardware.camera"
+16-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:19-57
+17        android:required="false" />
+17-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-33
+18
+19    <application
+19-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:13:5-42:19
+20        android:name="com.bignerdranch.android.criminalintent.CriminalIntentApplication"
+20-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:14:9-50
+21        android:allowBackup="true"
+21-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:15:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:9-65
+24        android:debuggable="true"
+25        android:fullBackupContent="@xml/backup_rules"
+25-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:17:9-54
+26        android:icon="@mipmap/ic_launcher"
+26-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:9-43
+27        android:label="@string/app_name"
+27-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:19:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:20:9-54
+29        android:supportsRtl="true"
+29-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:9-35
+30        android:testOnly="true"
+31        android:theme="@style/Theme.CriminalIntent" >
+31-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:22:9-52
+32        <activity
+32-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:9-31:20
+33            android:name="com.bignerdranch.android.criminalintent.MainActivity"
+33-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:25:13-41
+34            android:exported="true" >
+34-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:26:13-36
+35            <intent-filter>
+35-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:27:13-30:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:28:17-69
+36-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:28:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:29:17-77
+38-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:29:27-74
+39            </intent-filter>
+40        </activity>
+41
+42        <provider
+42-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:32:9-41:20
+43            android:name="androidx.core.content.FileProvider"
+43-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:33:13-62
+44            android:authorities="com.bignerdranch.android.criminalintent.fileprovider"
+44-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:34:13-87
+45            android:exported="false"
+45-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:35:13-37
+46            android:grantUriPermissions="true" >
+46-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:36:13-47
+47            <meta-data
+47-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:38:13-40:48
+48                android:name="android.support.FILE_PROVIDER_PATHS"
+48-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:39:17-67
+49                android:resource="@xml/files" />
+49-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:40:17-46
+50        </provider>
 51
-52        <provider
-52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
-53            android:name="androidx.startup.InitializationProvider"
-53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
-54            android:authorities="com.bignerdranch.android.criminalintent.androidx-startup"
-54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
-55            android:exported="false" >
-55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
-56            <meta-data
-56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
-57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
-58                android:value="androidx.startup" />
-58-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
-59            <meta-data
-59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
-60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-60-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
-61                android:value="androidx.startup" />
-61-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
-62        </provider>
-63    </application>
-64
-65</manifest>
+52        <service
+52-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:25:9-28:40
+53            android:name="androidx.room.MultiInstanceInvalidationService"
+53-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:26:13-74
+54            android:directBootAware="true"
+54-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:27:13-43
+55            android:exported="false" />
+55-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:28:13-37
+56
+57        <provider
+57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+58            android:name="androidx.startup.InitializationProvider"
+58-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+59            android:authorities="com.bignerdranch.android.criminalintent.androidx-startup"
+59-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+60            android:exported="false" >
+60-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+61            <meta-data
+61-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+62                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+62-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+63                android:value="androidx.startup" />
+63-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+64            <meta-data
+64-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+65                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+65-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+66                android:value="androidx.startup" />
+66-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+67        </provider>
+68    </application>
+69
+70</manifest>
