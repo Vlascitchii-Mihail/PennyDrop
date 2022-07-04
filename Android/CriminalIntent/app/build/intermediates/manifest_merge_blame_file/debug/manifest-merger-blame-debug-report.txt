@@ -22,8 +22,8 @@
 14
 15    <uses-feature
 15-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:5-11:35
-16        android:name="android.hardware.camera"
-16-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:19-57
+16        android:name="android.hardware.camera2"
+16-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:19-58
 17        android:required="false" />
 17-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-33
 18

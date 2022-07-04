@@ -3016,6 +3016,7 @@ int id wrap_content_constrained 0x7f0801f2
 int id x_left 0x7f0801f3
 int id x_right 0x7f0801f4
 int id zero_corner_chip 0x7f0801f5
+int id zoom_photo 0x7f0801f6
 int integer abc_config_activityDefaultDur 0x7f090000
 int integer abc_config_activityShortDur 0x7f090001
 int integer app_bar_elevation_anim_duration 0x7f090002
@@ -3203,6 +3204,7 @@ int layout text_view_with_line_height_from_layout 0x7f0b0077
 int layout text_view_with_line_height_from_style 0x7f0b0078
 int layout text_view_with_theme_line_height 0x7f0b0079
 int layout text_view_without_line_height 0x7f0b007a
+int layout zoom_photo_crime 0x7f0b007b
 int menu fragment_crime_list 0x7f0c0000
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001

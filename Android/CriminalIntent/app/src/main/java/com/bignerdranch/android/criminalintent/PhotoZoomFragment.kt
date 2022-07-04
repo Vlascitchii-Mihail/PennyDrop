@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
@@ -17,30 +18,6 @@ import java.io.Serializable
 import java.io.StringReader
 
 class PhotoZoomFragment: DialogFragment() {
-
-//    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-//        super.onCreateDialog(savedInstanceState)
-//        val view = inflater.inflate(R.layout.zoom_photo_crime, container, false)
-//        val zoom = view.findViewById(R.id.zoom_photo) as ImageView
-//
-//
-//        val photoFileName = arguments?.getSerializable("PHOTO") as String
-//
-//        zoom.setImageBitmap(BitmapFactory.decodeFile(requireContext().filesDir.path + "/" + photoFileName))
-////        zoom.setImageURI(arguments?.getSerializable("PHOTO") as Uri)
-//
-//
-//        return view
-//    }
-//
-//    companion object {
-//        fun newInstance(photoFileName: String): PhotoZoomFragment {
-//            val args = Bundle().apply {
-//                putSerializable("PHOTO", photoFileName)
-//            }
-//            return PhotoZoomFragment().apply { arguments = args }
-//        }
-//    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)

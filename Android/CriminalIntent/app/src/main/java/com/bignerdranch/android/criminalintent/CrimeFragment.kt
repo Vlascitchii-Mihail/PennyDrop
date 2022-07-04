@@ -29,6 +29,7 @@ import android.widget.*
 import java.io.File
 import androidx.core.content.FileProvider
 import android.content.pm.ResolveInfo
+import android.view.ViewTreeObserver
 
 
 private const val TAG = "CrimeFragment"
@@ -53,6 +54,9 @@ class CrimeFragment : Fragment() {
     private lateinit var photoView: ImageView
     private lateinit var photoFile: File
     private lateinit var photoUri: Uri
+    private lateinit var treeObserver: ViewTreeObserver
+    var viewWidth = 0
+    var viewHeight = 0
 
     private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
         ViewModelProvider(this)[CrimeDetailViewModel::class.java]
@@ -78,6 +82,7 @@ class CrimeFragment : Fragment() {
         callButton = view.findViewById(R.id.call_button) as Button
         photoButton = view.findViewById(R.id.crime_camera) as ImageButton
         photoView = view.findViewById(R.id.crime_photo) as ImageView
+        photoView.isEnabled = false
         return view
     }
 
@@ -147,6 +152,7 @@ class CrimeFragment : Fragment() {
                 putExtra(Intent.EXTRA_TEXT, getCrimeReport())
                 putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject))
             }.also { intent ->
+
                 ////////////////old method
 //                startActivity(intent)
                 val chooserIntent = Intent.createChooser(intent, getString(R.string.send_report))
@@ -200,13 +206,6 @@ class CrimeFragment : Fragment() {
         }
     }
 
-
-    //            val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-//            pickContactIntent.addCategory(Intent.CATEGORY_HOME)
-//            val packageManager: PackageManager = requireActivity().packageManager
-//            val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(pickContactIntent, PackageManager.MATCH_DEFAULT_ONLY)
-//            if (resolvedActivity == null) isEnabled == false
-
     ////////////////old method
 //    @Deprecated("Deprecated in Java", ReplaceWith(
 //        "super.onRequestPermissionsResult(requestCode, permissions, grantResults)",
@@ -231,20 +230,6 @@ class CrimeFragment : Fragment() {
 //        }
 //    }
 //
-
-//    private val pickNumberPhone = registerForActivityResult(ActivityResultContracts.PickContact()) { contactUri ->
-//            val contactsID = arrayOf(ContactsContract.Contacts._ID)
-//            val cursor = contactUri?.let {
-//                requireActivity().contentResolver.query(it, contactsID, null, null, null)
-//            }
-//            cursor?.use {
-//                if(it.count > 0) {
-//                    it.moveToFirst()
-//                    callButton.text = it.getString(0)
-//
-//                }
-//            }
-//        }
 
     private val callPermissionRequestLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission(), ::onGotPermissionCall)
@@ -399,7 +384,8 @@ class CrimeFragment : Fragment() {
 
     private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { contactUri ->
         if (contactUri != null) {
-            photoView.setImageURI(photoUri)
+//            photoView.setImageURI(photoUri)
+            updatePhotoView()
         }
     }
 
@@ -450,10 +436,10 @@ class CrimeFragment : Fragment() {
         Log.d(TAG, crime.title)
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-    }
+//    override fun onDetach() {
+//        super.onDetach()
+//        requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+//    }
 
     private fun updateUI() {
         titleField.setText(crime.title)
@@ -464,14 +450,22 @@ class CrimeFragment : Fragment() {
         }
 
         if (crime.suspect.isNotEmpty()) suspectButton.text = crime.suspect
-//        callButton.text = crime.suspectPhoneNumber
+        callButton.text = crime.suspectPhoneNumber
 
         updatePhotoView()
     }
 
     private fun updatePhotoView() {
         if(photoFile.exists()) {
+            photoView.isEnabled = true
             val bitmap = getScaleBitmap(photoFile.path, requireActivity())
+            photoView.setImageBitmap(bitmap)
+        } else photoView.setImageDrawable(null)
+    }
+
+    private fun updatePhotoView(width: Int, height: Int) {
+        if (photoFile.exists()) {
+            val bitmap = getScaleBitmap(photoFile.path, width, height)
             photoView.setImageBitmap(bitmap)
         } else photoView.setImageDrawable(null)
     }

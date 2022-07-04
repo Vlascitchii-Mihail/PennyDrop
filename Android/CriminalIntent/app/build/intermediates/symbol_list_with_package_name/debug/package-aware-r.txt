@@ -3017,6 +3017,7 @@ id wrap_content_constrained
 id x_left
 id x_right
 id zero_corner_chip
+id zoom_photo
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3204,6 +3205,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout zoom_photo_crime
 menu fragment_crime_list
 mipmap ic_launcher
 mipmap ic_launcher_round

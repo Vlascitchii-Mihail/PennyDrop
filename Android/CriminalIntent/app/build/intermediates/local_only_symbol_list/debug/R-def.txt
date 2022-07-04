@@ -28,11 +28,13 @@ id linearLayout2
 id list_is_empty
 id new_crime
 id requires_police
+id zoom_photo
 layout activity_crime
 layout fragment_crime
 layout fragment_crime_list
 layout list_item_crime
 layout list_item_requres_police
+layout zoom_photo_crime
 menu fragment_crime_list
 mipmap ic_launcher
 mipmap ic_launcher_round

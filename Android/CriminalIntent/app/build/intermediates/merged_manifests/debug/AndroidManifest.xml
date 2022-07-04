@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
-        android:name="android.hardware.camera"
+        android:name="android.hardware.camera2"
         android:required="false" />
 
     <application

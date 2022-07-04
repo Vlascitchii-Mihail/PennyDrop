@@ -87,12 +87,12 @@ uses-permission#android.permission.CAMERA
 ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:5-64
 	android:name
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:8:22-62
-uses-feature#android.hardware.camera
+uses-feature#android.hardware.camera2
 ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:5-11:35
 	android:required
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:11:9-33
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:19-57
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:10:19-58
 application
 ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:13:5-42:19
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
