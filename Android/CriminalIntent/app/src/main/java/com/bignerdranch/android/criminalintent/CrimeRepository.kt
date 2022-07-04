@@ -40,7 +40,7 @@ class CrimeRepository private constructor(context: Context) {
         }
     }
 
-//    fun getPhotoFile(crime: Crime): File = File(filesDir, crime.photoFileName)
+    fun getPhotoFile(crime: Crime): File = File(filesDir, crime.photoFileName)
 
     companion object {
         private var INSTANCE: CrimeRepository? = null
