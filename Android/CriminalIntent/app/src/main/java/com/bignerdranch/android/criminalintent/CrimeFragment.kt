@@ -382,11 +382,11 @@ class CrimeFragment : Fragment() {
         }
     }
 
-    private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { contactUri ->
-        if (contactUri != null) {
+    private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { _ ->
+//        if (contactUri != null) {
 //            photoView.setImageURI(photoUri)
-            updatePhotoView()
-        }
+//            updatePhotoView()
+//        }
     }
 
 
@@ -463,16 +463,11 @@ class CrimeFragment : Fragment() {
         } else photoView.setImageDrawable(null)
     }
 
-    private fun updatePhotoView(width: Int, height: Int) {
-        if (photoFile.exists()) {
-            val bitmap = getScaleBitmap(photoFile.path, width, height)
-            photoView.setImageBitmap(bitmap)
-        } else photoView.setImageDrawable(null)
-    }
-
     private fun getCrimeReport() :String {
         val solvedString = if (crime.isSolved) getString(R.string.crime_report_solved) else getString(R.string.crime_report_unsolved)
-        val dataString = DateFormat.format(DATA_FORMAT, crime.date).toString()
+//        val dataString = DateFormat.format(DATA_FORMAT, crime.date).toString()
+        val dataToString = DateFormat.getLongDateFormat(context).toString()
+        val dataString = dataToString.format(crime.date)
         val suspect = if (crime.suspect.isBlank()) getString(R.string.crime_report_no_suspect) else getString(R.string.crime_report_suspect, crime.suspect)
         return getString(R.string.crime_report, crime.title, dataString, solvedString, suspect)
     }
