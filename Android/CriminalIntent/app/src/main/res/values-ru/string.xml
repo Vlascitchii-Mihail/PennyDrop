@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Преступный умысел</string>
+    <string name="crime_title_hint">Введите название преступления</string>
+    <string name="crime_title_label">Заголовок</string>
+    <string name="crime_details_label">Детали</string>
+    <string name="crime_solved_label">Раскрыто</string>
+    <string name="crime_title_name">Название преступления</string>
+    <string name="crime_date">Дата преступления</string>
+    <string name="require_police">Позвонить в полицию</string>
+    <string name="time_set_button">Установить время</string>
+    <string name="new_crime">Добавить новое преступление</string>
+    <string name="empty_list">Список преступлений пуст</string>
+    <string name="crime_suspect_text">Выбрать подозреваемого</string>
+    <string name="crime_report_text">Отправить отчет о преступлении</string>
+    <string name="crime_report">%1$s! Преступление было раскрыто в %2$s. %3$s, и %4$s</string>
+    <string name="crime_report_solved">Дело раскрыто</string>
+    <string name="crime_report_unsolved">Дело не раскрыто</string>
+    <string name="crime_report_no_suspect">подозреваемых нет</string>
+    <string name="crime_report_suspect">подозреваемый  %s</string>
+    <string name="crime_report_subject">Преступный умысел отчет</string>
+    <string name="send_report">Отправить отчет о преступлении</string>
+    <string name="call">Позвонить подозреваемому</string>
+    <string name="crime_photo_button_description">Сфотографировать место преступления</string>
+    <string name="crime_photo_no_image_description">Фото с места преступления (Не установлено)</string>
+    <string name="crime_photo_image_description">Фото с места преступления (Установлено)</string>
+    <string name="is_solved">Преступление раскрыто</string>
+    <string name="is_not_solved">Преступление не раскрыто</string>
+    <string name="image_changed">Фотография была изменена </string>
+</resources>

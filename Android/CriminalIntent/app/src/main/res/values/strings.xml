@@ -21,4 +21,10 @@
     <string name="crime_report_subject">CriminalIntent Crime Report</string>
     <string name="send_report">Send crime report via</string>
     <string name="call">Call to suspect</string>
+    <string name="crime_photo_button_description">Take photo of crime scene</string>
+    <string name="crime_photo_no_image_description">Crime scene photo (not set)</string>
+    <string name="crime_photo_image_description">Crime scene photo (set)</string>
+    <string name="is_solved">Crime is solved</string>
+    <string name="is_not_solved">Crime is not solved</string>
+    <string name="image_changed">Image changed</string>
 </resources>

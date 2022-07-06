@@ -9,7 +9,7 @@ public final class CrimeFragmentKt {
     private static final java.lang.String DIALOG_DATE = "DialogDate";
     @org.jetbrains.annotations.NotNull()
     public static final java.lang.String REQUEST_KEY = "request";
-    private static final java.lang.String DATA_FORMAT = "EEE, MMM, dd";
+    private static final java.lang.String DATA_FORMAT = "EEE, d MMM yyyy HH:mm:ss";
     private static final int REQUEST_CONTACT = 1;
     private static final int CALL_REQUEST_CODE = 0;
     private static final int REQUEST_PHOTO = 2;

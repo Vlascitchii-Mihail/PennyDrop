@@ -11,11 +11,9 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
-import java.util.UUID
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
-import java.util.Date
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.ContactsContract
@@ -30,13 +28,14 @@ import java.io.File
 import androidx.core.content.FileProvider
 import android.content.pm.ResolveInfo
 import android.view.ViewTreeObserver
+import java.util.*
 
 
 private const val TAG = "CrimeFragment"
 private const val ARG_CRIME_ID = "crime_id"
 private const val DIALOG_DATE = "DialogDate"
 const val REQUEST_KEY = "request"
-private const val DATA_FORMAT = "EEE, MMM, dd"
+private const val DATA_FORMAT = "EEE, d MMM yyyy HH:mm:ss"
 private const val REQUEST_CONTACT = 1
 private const val CALL_REQUEST_CODE = 0
 private const val REQUEST_PHOTO = 2
@@ -443,14 +442,15 @@ class CrimeFragment : Fragment() {
 
     private fun updateUI() {
         titleField.setText(crime.title)
-        dateButton.text = crime.date.toString()
+        dateButton.text = DateFormat.getDateFormat(context).format(crime.date)
+        timeButton.text = DateFormat.format("kk:mm:ss", crime.date)
         solvedCheckBox.apply {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()
         }
 
         if (crime.suspect.isNotEmpty()) suspectButton.text = crime.suspect
-        callButton.text = crime.suspectPhoneNumber
+        callButton.text = if (crime.suspectPhoneNumber == "") "Call to suspect" else crime.suspectPhoneNumber
 
         updatePhotoView()
     }
@@ -460,14 +460,17 @@ class CrimeFragment : Fragment() {
             photoView.isEnabled = true
             val bitmap = getScaleBitmap(photoFile.path, requireActivity())
             photoView.setImageBitmap(bitmap)
-        } else photoView.setImageDrawable(null)
+            photoView.announceForAccessibility(R.string.image_changed.toString())
+            photoView.contentDescription = getString(R.string.crime_photo_image_description)
+        } else {
+            photoView.setImageDrawable(null)
+            photoView.contentDescription = getString(R.string.crime_photo_no_image_description)
+        }
     }
 
     private fun getCrimeReport() :String {
         val solvedString = if (crime.isSolved) getString(R.string.crime_report_solved) else getString(R.string.crime_report_unsolved)
-//        val dataString = DateFormat.format(DATA_FORMAT, crime.date).toString()
-        val dataToString = DateFormat.getLongDateFormat(context).toString()
-        val dataString = dataToString.format(crime.date)
+        val dataString = DateFormat.format(DATA_FORMAT, crime.date)
         val suspect = if (crime.suspect.isBlank()) getString(R.string.crime_report_no_suspect) else getString(R.string.crime_report_suspect, crime.suspect)
         return getString(R.string.crime_report, crime.title, dataString, solvedString, suspect)
     }

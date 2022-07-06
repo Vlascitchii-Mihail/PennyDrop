@@ -131,7 +131,13 @@ class CrimeListFragment: Fragment() {
             titleTextView.text = this.crime.title
 //            dateTextView.text = this.crime.date.toString()
             dateTextView.text = DateFormat.format("HH:mm EEEE, dd MMM, yyyy.", this.crime.date)
-            solvedImageView.visibility = if (crime.isSolved) View.VISIBLE else View.GONE
+            solvedImageView.visibility = if (crime.isSolved) {
+                solvedImageView.contentDescription = getString(R.string.is_solved)
+                View.VISIBLE
+            } else {
+                solvedImageView.contentDescription = getString(R.string.is_not_solved)
+                View.GONE
+            }
         }
 
         override fun onClick(v: View) {
