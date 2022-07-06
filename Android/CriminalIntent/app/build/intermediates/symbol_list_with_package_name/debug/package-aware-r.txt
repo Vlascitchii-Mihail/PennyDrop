@@ -3250,6 +3250,9 @@ string chip_text
 string clear_text_end_icon_content_description
 string crime_date
 string crime_details_label
+string crime_photo_button_description
+string crime_photo_image_description
+string crime_photo_no_image_description
 string crime_report
 string crime_report_no_suspect
 string crime_report_solved
@@ -3269,6 +3272,9 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string image_changed
+string is_not_solved
+string is_solved
 string item_view_role_description
 string label
 string m3_ref_typeface_brand_medium

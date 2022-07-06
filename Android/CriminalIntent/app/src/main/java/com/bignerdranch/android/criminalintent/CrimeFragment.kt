@@ -460,7 +460,7 @@ class CrimeFragment : Fragment() {
             photoView.isEnabled = true
             val bitmap = getScaleBitmap(photoFile.path, requireActivity())
             photoView.setImageBitmap(bitmap)
-            photoView.announceForAccessibility(R.string.image_changed.toString())
+            photoView.announceForAccessibility(getText(R.string.image_changed))
             photoView.contentDescription = getString(R.string.crime_photo_image_description)
         } else {
             photoView.setImageDrawable(null)

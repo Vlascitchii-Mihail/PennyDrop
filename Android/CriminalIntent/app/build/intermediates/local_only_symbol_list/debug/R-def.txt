@@ -42,6 +42,9 @@ string app_name
 string call
 string crime_date
 string crime_details_label
+string crime_photo_button_description
+string crime_photo_image_description
+string crime_photo_no_image_description
 string crime_report
 string crime_report_no_suspect
 string crime_report_solved
@@ -55,6 +58,9 @@ string crime_title_hint
 string crime_title_label
 string crime_title_name
 string empty_list
+string image_changed
+string is_not_solved
+string is_solved
 string new_crime
 string require_police
 string send_report
