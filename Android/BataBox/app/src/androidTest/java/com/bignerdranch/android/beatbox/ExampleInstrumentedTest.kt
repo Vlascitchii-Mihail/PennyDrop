@@ -1,4 +1,4 @@
-package com.bignerdranch.android.batabox
+package com.bignerdranch.android.beatbox
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

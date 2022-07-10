@@ -1,4 +1,4 @@
-package com.bignerdranch.android.batabox
+package com.bignerdranch.android.beatbox
 
 import org.junit.Test
 
