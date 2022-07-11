@@ -54,18 +54,19 @@ class BeatBox(private val assets: AssetManager) {
 
     fun play(sound: Sound) {
         sound.soundId?.let {
-            streamId = soundPool.play(it, 1.0f, 1.0f, 1, 4, 1.0f)
+            streamId = soundPool.play(it, 1.0f, 1.0f, 1, 6, Beet.speed)
         }
     }
 
     fun playSpeed(progress: Int) {
-//        soundPool.setRate(streamId, progress * 0.1f)
         streamId?.let { soundPool.setRate(it, progress * 0.1f) }
-
-
     }
 
     fun release() {
         soundPool.release()
     }
+}
+
+object Beet {
+    var speed = 1.0f
 }

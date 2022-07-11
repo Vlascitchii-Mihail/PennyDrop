@@ -1,4 +1,6 @@
 package com.bignerdranch.android.beatbox
+import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,18 +11,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     private lateinit var beatBox: BeatBox
+    lateinit var binding: ActivityMainBinding
+    private val viewModelSound: ViewModelSound by lazy {
+        ViewModelProvider(this).get(ViewModelSound::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
 
+//        beatBox = viewModelSound.beatBox
         beatBox = BeatBox(assets)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = SoundAdapter(beatBox.sounds)
@@ -29,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 beatBox.playSpeed(progress)
+                Beet.speed = progress * 0.1f
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -70,3 +79,4 @@ class MainActivity : AppCompatActivity() {
         beatBox.release()
     }
 }
+
