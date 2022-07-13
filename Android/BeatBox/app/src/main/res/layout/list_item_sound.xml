@@ -10,6 +10,7 @@
     </data>
 
     <Button
+        style="@style/BeatBoxButton.Strong"
         android:id="@+id/sound_button"
         android:layout_width="match_parent"
         android:layout_height="120dp"
