@@ -9,13 +9,19 @@
             type = "com.bignerdranch.android.beatbox.SoundViewModel"/>
     </data>
 
-    <Button
-        style="@style/BeatBoxButton.Strong"
-        android:id="@+id/sound_button"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+    <Button
+        android:id="@+id/sound_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:onClick="@{ () -> viewModel.onButtonClicked() }"
         android:text="@{viewModel.title ?? `No fole`}"
         tools:text="Hello world"/>
+
+    </FrameLayout>
 
 </layout>

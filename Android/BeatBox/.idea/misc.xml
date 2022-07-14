@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/MyPrograms/Android/BataBox/app/src/main/res/layout/activity_main.xml" value="0.328125" />
         <entry key="..\:/MyPrograms/Android/BataBox/app/src/main/res/layout/list_item_sound.xml" value="0.22" />
+        <entry key="..\:/MyPrograms/Android/BeatBox/app/src/main/res/drawable/button_beat_box.xml" value="0.1605" />
+        <entry key="..\:/MyPrograms/Android/BeatBox/app/src/main/res/drawable/button_beat_box_normal.xml" value="0.1605" />
+        <entry key="..\:/MyPrograms/Android/BeatBox/app/src/main/res/drawable/button_beat_box_pressed.xml" value="0.1605" />
         <entry key="..\:/MyPrograms/Android/BeatBox/app/src/main/res/layout/activity_main.xml" value="0.2857789855072464" />
         <entry key="..\:/MyPrograms/Android/BeatBox/app/src/main/res/layout/list_item_sound.xml" value="0.2857789855072464" />
       </map>

@@ -2,12 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.BeatBox" parent="Theme.AppCompat">
         <!-- Primary brand color. -->
-        экран действий
-        <item name="colorPrimary">@color/purple_500</item>
+        панель названия приложения
+        <item name="colorPrimary">@color/red</item>
         панель состояния
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        текст
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/dark_red</item>
+        текст, EditText
+        <item name="colorOnPrimary">@color/gray</item>
+
+        <item name="android:windowBackground">@color/shooting_blue</item>
+        <item name="buttonStyle">@style/BeatBoxButton</item>
         <!-- Secondary brand color. -->
         ползунок SeekBar
         <item name="colorSecondary">@color/teal_200</item>
@@ -19,11 +22,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="BeatBoxButton">
-        <item name="android:background">@color/dark_blue</item>
+    <style name="BeatBoxButton" parent = "Widget.AppCompat.Button">
+<!--        <item name="android:background">@color/dark_blue</item>-->
+        <item name="android:background">@drawable/button_beat_box</item>
     </style>
 
-    <style name="BeatBoxButton.Strong">
-        <item name="android:textStyle">bold</item>
-    </style>
+<!--    <style name="BeatBoxButton.Strong">-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--    </style>-->
 </resources>
