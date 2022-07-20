@@ -14,7 +14,7 @@ import retrofit2.Response
 
 private const val TAG = "FlickrFetchr"
 
-class FlickrFetch {
+class FlickrFetchr {
     private val flickrApi: FlickrApi
 
     init {
@@ -26,6 +26,7 @@ class FlickrFetch {
     fun fetchPhotos(): MutableLiveData<List<GalleryItem>> {
         val responseLiveData: MutableLiveData<List<GalleryItem>> = MutableLiveData()
         val flickrRequest: Call<FlickrResponse> = flickrApi.fetchPhotos()
+        PhotoGalleryViewModel.fll(flickrRequest)
 
         flickrRequest.enqueue(object: Callback<FlickrResponse> {
             override fun onFailure(call: Call<FlickrResponse>, t: Throwable) {
@@ -46,4 +47,5 @@ class FlickrFetch {
 
         return responseLiveData
     }
+
 }

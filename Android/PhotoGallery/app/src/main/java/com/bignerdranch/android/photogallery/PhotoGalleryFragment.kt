@@ -16,10 +16,18 @@ import retrofit2.Response
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import android.widget.TextView
+
 private const val TAG = "PhotoGalleryFragment"
 
 class PhotoGalleryFragment: Fragment() {
     private lateinit var photoRecyclerView: RecyclerView
+    private val photoGalleryViewModel: PhotoGalleryViewModel by lazy {
+        ViewModelProvider(this)[PhotoGalleryViewModel::class.java]
+    }
+
+//    private lateinit var photoGalleryViewModel: PhotoGalleryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +42,15 @@ class PhotoGalleryFragment: Fragment() {
 //            }
 //        })
 
-        val flickrLiveData: LiveData<List<GalleryItem>> = FlickrFetch().fetchPhotos()
-        flickrLiveData.observe(this, Observer { galleryItems ->
-            Log.d(TAG, "Response received: $galleryItems")
-        })
+//        val flickrLiveData: LiveData<List<GalleryItem>> = FlickrFetch().fetchPhotos()
+//        flickrLiveData.observe(this, Observer { galleryItems ->
+//            Log.d(TAG, "Response received: $galleryItems")
+//        })
+
+//        photoGalleryViewModel = ViewModelProvider(this)[PhotoGalleryViewModel::class.java]
+//        photoGalleryViewModel = ViewModelProvider(this).get(PhotoGalleryViewModel::class.java)
+//        photoGalleryViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(PhotoGalleryViewModel::class.java)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -49,7 +62,43 @@ class PhotoGalleryFragment: Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        Log.d(TAG, "Not Canceled")
+        photoGalleryViewModel.galleryItemLiveData.observe(
+            viewLifecycleOwner, Observer { galleryItems ->
+//                Log.d(TAG, "Have gallery items from ViewModel $galleryItems")
+                photoRecyclerView.adapter = PhotoAdapter(galleryItems)
+            }
+        )
+//        Log.d(TAG, "Have gallery items from ViewModel ${photoGalleryViewModel.galleryItemLiveData.value.toString()}")
+    }
+
+    private class PhotoHolder(itemTextView: TextView): RecyclerView.ViewHolder(itemTextView) {
+        val bindTitle: (CharSequence) -> Unit = itemTextView::setText
+    }
+
+    private class PhotoAdapter(private val galleryItems: List<GalleryItem>): RecyclerView.Adapter<PhotoHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
+            val textView = TextView(parent.context)
+            return  PhotoHolder (textView)
+        }
+
+        override fun getItemCount(): Int = galleryItems.size
+
+        override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
+            val galleryItem = galleryItems[position]
+            holder.bindTitle(galleryItem.title)
+        }
+    }
+
     companion object {
         fun newInstance() = PhotoGalleryFragment()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        PhotoGalleryViewModel.cancelCall()
+        Log.d(TAG, "Canceled")
     }
 }

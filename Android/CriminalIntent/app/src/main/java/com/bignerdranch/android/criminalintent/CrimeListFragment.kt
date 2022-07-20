@@ -38,7 +38,7 @@ class CrimeListFragment: Fragment() {
 //    private lateinit var  viewEmptyList: View
 
     private val crimeListViewModel: CrimeListViewModel by lazy {
-        ViewModelProvider(this).get(CrimeListViewModel::class.java)
+        ViewModelProvider(this)[CrimeListViewModel::class.java]
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
