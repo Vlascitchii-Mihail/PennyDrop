@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import com.bignerdranch.android.photogallery.api.FlickrResponse
+import com.bignerdranch.android.photogallery.api.PhotoResponse
 import retrofit2.Call
 
 class PhotoGalleryViewModel: ViewModel() {
@@ -15,8 +16,8 @@ class PhotoGalleryViewModel: ViewModel() {
     }
 
     companion object {
-        lateinit var webCall: Call<FlickrResponse>
-        fun fll(call:  Call<FlickrResponse>) {
+        lateinit var webCall: Call<PhotoResponse>
+        fun fll(call:  Call<PhotoResponse>) {
             webCall = call
         }
 
