@@ -8,11 +8,15 @@ import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.bignerdranch.android.photogallery.api.FlickrResponse
 import com.bignerdranch.android.photogallery.api.PhotoDeserializer
 import com.bignerdranch.android.photogallery.api.PhotoResponse
 import retrofit2.Response
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.flow.Flow
 
 private const val TAG = "FlickrFetchr"
 
@@ -26,6 +30,14 @@ class FlickrFetchr {
         val retrofit: Retrofit = Retrofit.Builder().baseUrl("https://api.flickr.com/").
         addConverterFactory(GsonConverterFactory.create(gsonPhotoDeserializer)).build()
         flickrApi = retrofit.create(FlickrApi::class.java)
+    }
+
+    fun getPageGallery(photoResponse: PhotoResponse): Flow<PagingData<GalleryItem>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10, enablePlaceholders = false,
+                 initialLoadSize = 10),
+            pagingSourceFactory = {PagingPhotoSource(photoResponse)}
+        ).flow
     }
 
     fun fetchPhotos(): MutableLiveData<List<GalleryItem>> {
@@ -42,9 +54,12 @@ class FlickrFetchr {
                 Log.d(TAG, "Response received")
 //                responseLiveData.value = response.body()
 
-                val photoResponse: PhotoResponse? = response.body()
-//                val photoResponse: PhotoResponse? = flickrResponse?.photos
-                var galleryItems: List<GalleryItem> = photoResponse?.galleryItems ?: mutableListOf()
+                val photoResponse: PhotoResponse = response.body() ?: PhotoResponse()
+                Log.d(TAG, "page = ${photoResponse.getPage()} and ${photoResponse.getPages()} at all")
+
+                PhotoGalleryViewModel.flow = getPageGallery(photoResponse)
+
+                var galleryItems: List<GalleryItem> = photoResponse.galleryItems ?: mutableListOf()
                 galleryItems = galleryItems.filterNot { it.url.isBlank() }
                 responseLiveData.value = galleryItems
             }

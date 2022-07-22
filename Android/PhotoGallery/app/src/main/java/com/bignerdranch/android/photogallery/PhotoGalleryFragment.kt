@@ -14,10 +14,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
+import android.widget.Adapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 private const val TAG = "PhotoGalleryFragment"
 
@@ -68,17 +74,21 @@ class PhotoGalleryFragment: Fragment() {
         photoGalleryViewModel.galleryItemLiveData.observe(
             viewLifecycleOwner, Observer { galleryItems ->
 //                Log.d(TAG, "Have gallery items from ViewModel $galleryItems")
-                photoRecyclerView.adapter = PhotoAdapter(galleryItems)
+                val adapter = PhotoAdapter(galleryItems)
+                photoRecyclerView.adapter = adapter
+                observeGallery(adapter)
             }
         )
 //        Log.d(TAG, "Have gallery items from ViewModel ${photoGalleryViewModel.galleryItemLiveData.value.toString()}")
+
+
     }
 
     private class PhotoHolder(itemTextView: TextView): RecyclerView.ViewHolder(itemTextView) {
         val bindTitle: (CharSequence) -> Unit = itemTextView::setText
     }
 
-    private class PhotoAdapter(private val galleryItems: List<GalleryItem>): RecyclerView.Adapter<PhotoHolder>() {
+    private class PhotoAdapter(private val galleryItems: List<GalleryItem>): PagingDataAdapter<GalleryItem, PhotoHolder>(GalleryDiffCallback()) {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
             val textView = TextView(parent.context)
             return  PhotoHolder (textView)
@@ -100,5 +110,24 @@ class PhotoGalleryFragment: Fragment() {
         super.onDestroy()
         PhotoGalleryViewModel.cancelCall()
         Log.d(TAG, "Canceled")
+    }
+
+    private fun observeGallery(adapter: PhotoAdapter) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            PhotoGalleryViewModel.flow.collectLatest { pagingData ->
+                adapter.submitData(pagingData)
+            }
+        }
+    }
+
+}
+
+class GalleryDiffCallback: DiffUtil.ItemCallback<GalleryItem>() {
+    override fun areItemsTheSame(oldItem: GalleryItem, newItem: GalleryItem): Boolean {
+        return oldItem.title == newItem.title
+    }
+
+    override fun areContentsTheSame(oldItem: GalleryItem, newItem: GalleryItem): Boolean {
+        return oldItem == newItem
     }
 }

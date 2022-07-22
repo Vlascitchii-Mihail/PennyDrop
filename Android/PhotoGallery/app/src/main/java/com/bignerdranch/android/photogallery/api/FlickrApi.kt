@@ -9,6 +9,7 @@ interface FlickrApi {
             "&api_key=0de99c04241cebbb57e0571d117e351b" +
             "&format=json" +
             "&nojsoncallback=1" +
-            "&extras=url_s")
+            "&extras=url_s" +
+            "&per_page=500")
     fun fetchPhotos(): Call<PhotoResponse>
 }
