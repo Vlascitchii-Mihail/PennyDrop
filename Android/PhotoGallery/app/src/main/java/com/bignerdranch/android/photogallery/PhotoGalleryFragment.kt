@@ -20,7 +20,12 @@ import kotlinx.coroutines.launch
 import android.widget.ImageView
 import android.graphics.drawable.Drawable
 import android.os.Handler
+import android.os.Looper
 import androidx.core.content.ContextCompat
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 
 private const val TAG = "PhotoGalleryFragment"
 
@@ -37,12 +42,13 @@ class PhotoGalleryFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
+        setHasOptionsMenu(true)
 
 //        photoGalleryViewModel = ViewModelProvider(this)[PhotoGalleryViewModel::class.java]
 //        photoGalleryViewModel = ViewModelProvider(this).get(PhotoGalleryViewModel::class.java)
 //        photoGalleryViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(PhotoGalleryViewModel::class.java)
 
-        val responseHandler = Handler()
+        val responseHandler = Handler(Looper.getMainLooper())
         thumbnailDownloader = ThumbnailDownloader(responseHandler) {photoHolder, bitmap ->
             val drawable = BitmapDrawable(resources, bitmap)
             photoHolder.bindDrawable(drawable)
@@ -90,8 +96,8 @@ class PhotoGalleryFragment: Fragment() {
 
         override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
             val galleryItem = galleryItems[position]
-            val placeholder: Drawable = ContextCompat.getDrawable(requireContext(), R.drawable.bill_up_close) ?: ColorDrawable()
-            holder.bindDrawable(placeholder)
+//            val placeholder: Drawable = ContextCompat.getDrawable(requireContext(), R.drawable.bill_up_close) ?: ColorDrawable()
+//            holder.bindDrawable(placeholder)
             thumbnailDownloader.queueThumbnail(holder, galleryItem.url)
         }
     }
@@ -113,6 +119,37 @@ class PhotoGalleryFragment: Fragment() {
         Log.d(TAG, "Canceled")
 
         lifecycle.removeObserver(thumbnailDownloader.fragmentLifecycleObserver)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.fragment_photo_gallery, menu)
+
+        val searchItem: MenuItem = menu.findItem(R.id.menu_item_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.apply {
+            setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(queryText: String): Boolean {
+                    Log.d(TAG, "QueryTextSubmit: $queryText")
+                    photoGalleryViewModel.fetchPhotos(queryText)
+                    return true
+                }
+
+                override fun onQueryTextChange(queryText: String): Boolean {
+                    Log.d(TAG, "QueryTextChange: $queryText")
+                    return false
+                }
+            })
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.menu_item_clear -> { photoGalleryViewModel.fetchPhotos("")
+            true }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun observeGallery(adapter: PhotoAdapter) {

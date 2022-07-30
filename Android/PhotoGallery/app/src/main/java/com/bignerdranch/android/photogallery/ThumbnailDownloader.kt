@@ -22,21 +22,21 @@ class ThumbnailDownloader<in T>(
     private val requestMap = ConcurrentHashMap<T, String>()
     private val flickerFetchr = FlickrFetchr()
 
-    val fragmentLifecycleObserver: LifecycleObserver = object: LifecycleObserver {
-        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) fun setup() {
+    val fragmentLifecycleObserver: LifecycleObserver = object: DefaultLifecycleObserver {
+        override fun onCreate(owner: LifecycleOwner) {
             Log.i(TAG, "Starting background thread")
             start()
             looper
         }
 
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun tearDown() {
+        override fun onDestroy(owner: LifecycleOwner) {
             Log.i(TAG, "Destroying background thread")
             quit()
         }
     }
 
-    val viewLifecycleObserver: LifecycleObserver = object: LifecycleObserver {
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun clearQueue() {
+    val viewLifecycleObserver: LifecycleObserver = object: DefaultLifecycleObserver {
+        override fun onDestroy(owner: LifecycleOwner) {
             Log.i(TAG, "Clearing all requests from queue")
             requestHandler.removeMessages(MESSAGE_DOWNLOAD)
             requestMap.clear()

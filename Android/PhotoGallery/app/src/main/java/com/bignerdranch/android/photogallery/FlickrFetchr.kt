@@ -1,6 +1,5 @@
 package com.bignerdranch.android.photogallery
 
-import com.bignerdranch.android.photogallery.api.FlickrApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import androidx.lifecycle.LiveData
@@ -11,16 +10,15 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.bignerdranch.android.photogallery.api.FlickrResponse
-import com.bignerdranch.android.photogallery.api.PhotoDeserializer
-import com.bignerdranch.android.photogallery.api.PhotoResponse
 import retrofit2.Response
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.flow.Flow
 import androidx.annotation.WorkerThread
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.bignerdranch.android.photogallery.api.*
 import okhttp3.ResponseBody
+import okhttp3.OkHttpClient
 
 
 private const val TAG = "FlickrFetchr"
@@ -31,6 +29,8 @@ class FlickrFetchr {
     init {
         val gsonPhotoDeserializer = GsonBuilder()
             .registerTypeAdapter(PhotoResponse::class.java, PhotoDeserializer()).create()
+
+        val client = OkHttpClient.Builder().addInterceptor(PhotoInterceptor()).build()
 
         val retrofit: Retrofit = Retrofit.Builder().baseUrl("https://api.flickr.com/").
         addConverterFactory(GsonConverterFactory.create(gsonPhotoDeserializer)).build()
@@ -45,9 +45,19 @@ class FlickrFetchr {
         ).flow
     }
 
-    fun fetchPhotos(): MutableLiveData<List<GalleryItem>> {
+
+
+    fun searchPhotos(query: String): LiveData<List<GalleryItem>> {
+        return fetchPhotoMetadata(flickrApi.searchPhotos(query))
+    }
+
+    fun fetchPhotos(): LiveData<List<GalleryItem>> {
+        return fetchPhotoMetadata(flickrApi.fetchPhotos())
+    }
+
+    private fun fetchPhotoMetadata(flickrRequest: Call<PhotoResponse>): LiveData<List<GalleryItem>> {
         val responseLiveData: MutableLiveData<List<GalleryItem>> = MutableLiveData()
-        val flickrRequest: Call<PhotoResponse> = flickrApi.fetchPhotos()
+//        val flickrRequest: Call<PhotoResponse> = flickrApi.fetchPhotos()
 //        PhotoGalleryViewModel.fll(flickrRequest)
 
         flickrRequest.enqueue(object: Callback<PhotoResponse> {
