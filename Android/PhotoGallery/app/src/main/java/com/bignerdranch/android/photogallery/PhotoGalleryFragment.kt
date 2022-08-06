@@ -1,5 +1,6 @@
 package com.bignerdranch.android.photogallery
 
+import android.app.ProgressDialog
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import androidx.fragment.app.Fragment
@@ -25,11 +26,18 @@ import androidx.core.content.ContextCompat
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ProgressBar
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
+import androidx.work.*
+import com.bignerdranch.android.photogallery.api.PollWorker
+import java.util.concurrent.TimeUnit
+import android.content.Intent
 
 private const val TAG = "PhotoGalleryFragment"
+private const val POLL_WORK = "POLL_WORK"
 
-class PhotoGalleryFragment: Fragment() {
+class PhotoGalleryFragment: VisibleFragment() {
     private lateinit var photoRecyclerView: RecyclerView
     private val photoGalleryViewModel: PhotoGalleryViewModel by lazy {
         ViewModelProvider(this)[PhotoGalleryViewModel::class.java]
@@ -39,10 +47,19 @@ class PhotoGalleryFragment: Fragment() {
 
 //    private lateinit var photoGalleryViewModel: PhotoGalleryViewModel
 
+//    private lateinit var progressDialog: ProgressDialog
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
         setHasOptionsMenu(true)
+
+//        progressDialog = ProgressDialog(requireContext())
+//        progressDialog.setTitle("Downloading photos")
+//        progressDialog.setMessage("It might take a few seconds...")
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+
 
 //        photoGalleryViewModel = ViewModelProvider(this)[PhotoGalleryViewModel::class.java]
 //        photoGalleryViewModel = ViewModelProvider(this).get(PhotoGalleryViewModel::class.java)
@@ -54,6 +71,11 @@ class PhotoGalleryFragment: Fragment() {
             photoHolder.bindDrawable(drawable)
         }
         lifecycle.addObserver(thumbnailDownloader.fragmentLifecycleObserver)
+
+//        val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build()
+
+//        val workRequest = OneTimeWorkRequest.Builder(PollWorker::class.java).setConstraints(constraints).build()
+//        WorkManager.getInstance(requireContext()).enqueue(workRequest)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -62,6 +84,8 @@ class PhotoGalleryFragment: Fragment() {
 
         photoRecyclerView = view.findViewById(R.id.photo_recycler_view)
         photoRecyclerView.layoutManager = GridLayoutManager(context, 3)
+
+        progressBar = view.findViewById(R.id.my_progress_bar)
 
         return view
     }
@@ -72,6 +96,7 @@ class PhotoGalleryFragment: Fragment() {
         photoGalleryViewModel.galleryItemLiveData.observe(
             viewLifecycleOwner, Observer { galleryItems ->
 //                Log.d(TAG, "Have gallery items from ViewModel $galleryItems")
+                progressBar.isVisible = false
                 val adapter = PhotoAdapter(galleryItems)
                 photoRecyclerView.adapter = adapter
                 observeGallery(adapter)
@@ -82,8 +107,27 @@ class PhotoGalleryFragment: Fragment() {
 
     }
 
-    private class PhotoHolder(private val itemImageView: ImageView): RecyclerView.ViewHolder(itemImageView) {
+    private inner class PhotoHolder(private val itemImageView: ImageView): RecyclerView.ViewHolder(itemImageView), View.OnClickListener {
+        private lateinit var galleryItem: GalleryItem
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
         val bindDrawable: (Drawable) -> Unit = itemImageView::setImageDrawable
+
+        fun bindGalleryItem(item: GalleryItem) {
+            galleryItem = item
+        }
+
+        override fun onClick(view: View) {
+            //starting browser
+//            val intent = Intent(Intent.ACTION_VIEW, galleryItem.photoPageUri)
+//            startActivity(intent)
+
+            val intent = PhotoPageActivity.newInstance(requireContext(), galleryItem.photoPageUri)
+            startActivity(intent)
+        }
     }
 
     private inner class PhotoAdapter(private val galleryItems: List<GalleryItem>): PagingDataAdapter<GalleryItem, PhotoHolder>(GalleryDiffCallback()) {
@@ -96,6 +140,7 @@ class PhotoGalleryFragment: Fragment() {
 
         override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
             val galleryItem = galleryItems[position]
+            holder.bindGalleryItem(galleryItem)
 //            val placeholder: Drawable = ContextCompat.getDrawable(requireContext(), R.drawable.bill_up_close) ?: ColorDrawable()
 //            holder.bindDrawable(placeholder)
             thumbnailDownloader.queueThumbnail(holder, galleryItem.url)
@@ -132,7 +177,10 @@ class PhotoGalleryFragment: Fragment() {
             setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(queryText: String): Boolean {
                     Log.d(TAG, "QueryTextSubmit: $queryText")
+                    progressBar.isVisible = true
+                    progressBar
                     photoGalleryViewModel.fetchPhotos(queryText)
+                    clearFocus()
                     return true
                 }
 
@@ -141,13 +189,49 @@ class PhotoGalleryFragment: Fragment() {
                     return false
                 }
             })
+
+            setOnSearchClickListener {
+                searchView.setQuery(photoGalleryViewModel.searchTerm, false)
+            }
+
+            setOnFocusChangeListener { view, hasFocus ->
+                if (!hasFocus) searchItem.collapseActionView()
+            }
         }
+
+        val toggleItem = menu.findItem(R.id.menu_item_toggle_polling)
+        val isPolling = QueryPreferences.isPolling(requireContext())
+        val toggleItemTitle = if (isPolling) {
+            R.string.stop_polling
+        } else R.string.start_polling
+        toggleItem.setTitle(toggleItemTitle)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.menu_item_clear -> { photoGalleryViewModel.fetchPhotos("")
             true }
+            R.id.menu_item_toggle_polling -> {
+                val isPolling = QueryPreferences.isPolling(requireContext())
+                if (isPolling) {
+                    WorkManager.getInstance(requireContext()).cancelUniqueWork(POLL_WORK)
+                    QueryPreferences.setPolling(requireContext(), false)
+                } else {
+                    val constraints = Constraints.Builder()
+                        .setRequiredNetworkType(NetworkType.UNMETERED).build()
+
+                    val periodicRequest = PeriodicWorkRequest.
+                    Builder(PollWorker::class.java, 15, TimeUnit.MINUTES)
+                        .setConstraints(constraints).build()
+
+                    WorkManager.getInstance(requireContext())
+                        .enqueueUniquePeriodicWork(POLL_WORK, ExistingPeriodicWorkPolicy.KEEP, periodicRequest)
+
+                    QueryPreferences.setPolling(requireContext(), true)
+                }
+                activity?.invalidateOptionsMenu()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -1,41 +1,41 @@
-com.bignerdranch.android.criminalintent.app-fragment-1.5.0-0 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\089b49928953caff807ef169c57a9621\transformed\fragment-1.5.0\res
-com.bignerdranch.android.criminalintent.app-startup-runtime-1.0.0-1 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\10f6f5166473208d7d530cc89428a002\transformed\startup-runtime-1.0.0\res
-com.bignerdranch.android.criminalintent.app-sqlite-2.2.0-2 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\12e5b570ee0487a92407bc634db69f48\transformed\sqlite-2.2.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-process-2.4.0-3 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\res
-com.bignerdranch.android.criminalintent.app-viewpager2-1.0.0-4 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a9b6f402dc5b2cffe44e93f64040878\transformed\viewpager2-1.0.0\res
-com.bignerdranch.android.criminalintent.app-emoji2-views-helper-1.0.0-5 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1b1da13f75c48edf782b375b35f326a8\transformed\emoji2-views-helper-1.0.0\res
-com.bignerdranch.android.criminalintent.app-room-runtime-2.4.2-6 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\res
-com.bignerdranch.android.criminalintent.app-core-ktx-1.8.0-7 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\220d02874894d13ab5b647d125d9b637\transformed\core-ktx-1.8.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-runtime-ktx-2.5.0-8 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\238391c6d16dcf889ea7b9ac07792c17\transformed\lifecycle-runtime-ktx-2.5.0\res
-com.bignerdranch.android.criminalintent.app-material-1.6.1-9 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\res
-com.bignerdranch.android.criminalintent.app-appcompat-resources-1.4.2-10 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\363932f9cbdb06aca036cb7edd538569\transformed\appcompat-resources-1.4.2\res
-com.bignerdranch.android.criminalintent.app-recyclerview-1.2.1-11 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\39d86b82263c90035e236b664d79d8bd\transformed\recyclerview-1.2.1\res
-com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-savedstate-2.5.0-12 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\4e7ad33adfdb67330aad1e60b626df99\transformed\lifecycle-viewmodel-savedstate-2.5.0\res
-com.bignerdranch.android.criminalintent.app-fragment-ktx-1.5.0-13 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\701b8ec0a080051a4e1563018853a60e\transformed\fragment-ktx-1.5.0\res
-com.bignerdranch.android.criminalintent.app-annotation-experimental-1.1.0-14 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\790e79799443309ec30d99da3f5657b0\transformed\annotation-experimental-1.1.0\res
-com.bignerdranch.android.criminalintent.app-emoji2-1.0.0-15 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\res
-com.bignerdranch.android.criminalintent.app-savedstate-ktx-1.2.0-16 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\981748ff54b1fab90e62526f47acfd32\transformed\savedstate-ktx-1.2.0\res
-com.bignerdranch.android.criminalintent.app-sqlite-framework-2.2.0-17 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a0d826812c1615bb0135cb7cf7b18c02\transformed\sqlite-framework-2.2.0\res
-com.bignerdranch.android.criminalintent.app-cardview-1.0.0-18 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a11a3dcc2417feeaca19adac49ff6a88\transformed\cardview-1.0.0\res
-com.bignerdranch.android.criminalintent.app-constraintlayout-2.1.4-19 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\a47ad2bab3953f9c265a18fc43feff42\transformed\constraintlayout-2.1.4\res
-com.bignerdranch.android.criminalintent.app-drawerlayout-1.1.1-20 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ad36408a5e9da3a95064c80c78ee83e0\transformed\drawerlayout-1.1.1\res
-com.bignerdranch.android.criminalintent.app-activity-ktx-1.5.0-21 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\aea8a02c0567ddf86669ca085c6262b1\transformed\activity-ktx-1.5.0\res
-com.bignerdranch.android.criminalintent.app-transition-1.2.0-22 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\b40e82e0f94972d139cc4d3024411182\transformed\transition-1.2.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-2.5.0-23 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\b60e129d776f0ae4e30c0276d5bcd959\transformed\lifecycle-viewmodel-2.5.0\res
-com.bignerdranch.android.criminalintent.app-appcompat-1.4.2-24 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c306ff6207b8a35a6a6ee0c09da254f2\transformed\appcompat-1.4.2\res
-com.bignerdranch.android.criminalintent.app-core-1.8.0-25 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-runtime-2.5.0-26 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\ce13d0777d33e5cef3a5cfe7e41c26fd\transformed\lifecycle-runtime-2.5.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-livedata-core-2.5.0-27 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d2f9c13ec701c3038ce18ed4d7ab1d46\transformed\lifecycle-livedata-core-2.5.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-livedata-core-ktx-2.5.0-28 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d627044cf377a4326db66838b85e30af\transformed\lifecycle-livedata-core-ktx-2.5.0\res
-com.bignerdranch.android.criminalintent.app-coordinatorlayout-1.1.0-29 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\d7481b9efd2b54e39a11e4e79ab13f64\transformed\coordinatorlayout-1.1.0\res
-com.bignerdranch.android.criminalintent.app-savedstate-1.2.0-30 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\e4671337e68bf04f29c5de5265de81f4\transformed\savedstate-1.2.0\res
-com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-ktx-2.5.0-31 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\e6064c92936bf68354c92fc224fe6cbe\transformed\lifecycle-viewmodel-ktx-2.5.0\res
-com.bignerdranch.android.criminalintent.app-activity-1.5.0-32 C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\f24dba3ea2ef2c501c3945e67b20a38b\transformed\activity-1.5.0\res
-com.bignerdranch.android.criminalintent.app-pngs-33 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\pngs\debug
-com.bignerdranch.android.criminalintent.app-resValues-34 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\resValues\debug
-com.bignerdranch.android.criminalintent.app-rs-35 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\rs\debug
-com.bignerdranch.android.criminalintent.app-packageDebugResources-36 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.bignerdranch.android.criminalintent.app-packageDebugResources-37 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.bignerdranch.android.criminalintent.app-merged_res-38 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\merged_res\debug
-com.bignerdranch.android.criminalintent.app-debug-39 D:\MyPrograms\Android\CriminalIntent\app\src\debug\res
-com.bignerdranch.android.criminalintent.app-main-40 D:\MyPrograms\Android\CriminalIntent\app\src\main\res
+com.bignerdranch.android.criminalintent.app-pngs-0 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\pngs\debug
+com.bignerdranch.android.criminalintent.app-resValues-1 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\resValues\debug
+com.bignerdranch.android.criminalintent.app-rs-2 D:\MyPrograms\Android\CriminalIntent\app\build\generated\res\rs\debug
+com.bignerdranch.android.criminalintent.app-packageDebugResources-3 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.bignerdranch.android.criminalintent.app-packageDebugResources-4 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.bignerdranch.android.criminalintent.app-merged_res-5 D:\MyPrograms\Android\CriminalIntent\app\build\intermediates\merged_res\debug
+com.bignerdranch.android.criminalintent.app-debug-6 D:\MyPrograms\Android\CriminalIntent\app\src\debug\res
+com.bignerdranch.android.criminalintent.app-main-7 D:\MyPrograms\Android\CriminalIntent\app\src\main\res
+com.bignerdranch.android.criminalintent.app-fragment-1.5.0-8 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\089b49928953caff807ef169c57a9621\transformed\fragment-1.5.0\res
+com.bignerdranch.android.criminalintent.app-startup-runtime-1.0.0-9 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\10f6f5166473208d7d530cc89428a002\transformed\startup-runtime-1.0.0\res
+com.bignerdranch.android.criminalintent.app-sqlite-2.2.0-10 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\12e5b570ee0487a92407bc634db69f48\transformed\sqlite-2.2.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-process-2.4.0-11 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\res
+com.bignerdranch.android.criminalintent.app-viewpager2-1.0.0-12 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1a9b6f402dc5b2cffe44e93f64040878\transformed\viewpager2-1.0.0\res
+com.bignerdranch.android.criminalintent.app-emoji2-views-helper-1.0.0-13 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1b1da13f75c48edf782b375b35f326a8\transformed\emoji2-views-helper-1.0.0\res
+com.bignerdranch.android.criminalintent.app-room-runtime-2.4.2-14 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\res
+com.bignerdranch.android.criminalintent.app-core-ktx-1.8.0-15 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\220d02874894d13ab5b647d125d9b637\transformed\core-ktx-1.8.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-runtime-ktx-2.5.0-16 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\238391c6d16dcf889ea7b9ac07792c17\transformed\lifecycle-runtime-ktx-2.5.0\res
+com.bignerdranch.android.criminalintent.app-material-1.6.1-17 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\2f74e86d6b7c7cba48896578307b903b\transformed\material-1.6.1\res
+com.bignerdranch.android.criminalintent.app-appcompat-resources-1.4.2-18 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\363932f9cbdb06aca036cb7edd538569\transformed\appcompat-resources-1.4.2\res
+com.bignerdranch.android.criminalintent.app-recyclerview-1.2.1-19 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\39d86b82263c90035e236b664d79d8bd\transformed\recyclerview-1.2.1\res
+com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-savedstate-2.5.0-20 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\4e7ad33adfdb67330aad1e60b626df99\transformed\lifecycle-viewmodel-savedstate-2.5.0\res
+com.bignerdranch.android.criminalintent.app-fragment-ktx-1.5.0-21 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\701b8ec0a080051a4e1563018853a60e\transformed\fragment-ktx-1.5.0\res
+com.bignerdranch.android.criminalintent.app-annotation-experimental-1.1.0-22 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\790e79799443309ec30d99da3f5657b0\transformed\annotation-experimental-1.1.0\res
+com.bignerdranch.android.criminalintent.app-emoji2-1.0.0-23 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\res
+com.bignerdranch.android.criminalintent.app-savedstate-ktx-1.2.0-24 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\981748ff54b1fab90e62526f47acfd32\transformed\savedstate-ktx-1.2.0\res
+com.bignerdranch.android.criminalintent.app-sqlite-framework-2.2.0-25 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a0d826812c1615bb0135cb7cf7b18c02\transformed\sqlite-framework-2.2.0\res
+com.bignerdranch.android.criminalintent.app-cardview-1.0.0-26 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a11a3dcc2417feeaca19adac49ff6a88\transformed\cardview-1.0.0\res
+com.bignerdranch.android.criminalintent.app-constraintlayout-2.1.4-27 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\a47ad2bab3953f9c265a18fc43feff42\transformed\constraintlayout-2.1.4\res
+com.bignerdranch.android.criminalintent.app-drawerlayout-1.1.1-28 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\ad36408a5e9da3a95064c80c78ee83e0\transformed\drawerlayout-1.1.1\res
+com.bignerdranch.android.criminalintent.app-activity-ktx-1.5.0-29 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\aea8a02c0567ddf86669ca085c6262b1\transformed\activity-ktx-1.5.0\res
+com.bignerdranch.android.criminalintent.app-transition-1.2.0-30 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\b40e82e0f94972d139cc4d3024411182\transformed\transition-1.2.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-2.5.0-31 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\b60e129d776f0ae4e30c0276d5bcd959\transformed\lifecycle-viewmodel-2.5.0\res
+com.bignerdranch.android.criminalintent.app-appcompat-1.4.2-32 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\c306ff6207b8a35a6a6ee0c09da254f2\transformed\appcompat-1.4.2\res
+com.bignerdranch.android.criminalintent.app-core-1.8.0-33 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-runtime-2.5.0-34 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\ce13d0777d33e5cef3a5cfe7e41c26fd\transformed\lifecycle-runtime-2.5.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-livedata-core-2.5.0-35 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\d2f9c13ec701c3038ce18ed4d7ab1d46\transformed\lifecycle-livedata-core-2.5.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-livedata-core-ktx-2.5.0-36 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\d627044cf377a4326db66838b85e30af\transformed\lifecycle-livedata-core-ktx-2.5.0\res
+com.bignerdranch.android.criminalintent.app-coordinatorlayout-1.1.0-37 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\d7481b9efd2b54e39a11e4e79ab13f64\transformed\coordinatorlayout-1.1.0\res
+com.bignerdranch.android.criminalintent.app-savedstate-1.2.0-38 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\e4671337e68bf04f29c5de5265de81f4\transformed\savedstate-1.2.0\res
+com.bignerdranch.android.criminalintent.app-lifecycle-viewmodel-ktx-2.5.0-39 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\e6064c92936bf68354c92fc224fe6cbe\transformed\lifecycle-viewmodel-ktx-2.5.0\res
+com.bignerdranch.android.criminalintent.app-activity-1.5.0-40 D:\Programs\AndroidStudio\.gradle\caches\transforms-3\f24dba3ea2ef2c501c3945e67b20a38b\transformed\activity-1.5.0\res

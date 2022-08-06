@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1245" />
         <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/activity_photo_gallery.xml" value="0.2857789855072464" />
+        <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/activity_photo_page.xml" value="0.37916666666666665" />
         <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/fragment_photo_gallery.xml" value="0.19635416666666666" />
+        <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/fragment_photo_page.xml" value="0.3802083333333333" />
+        <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/fragment_poto_page.xml" value="0.18439716312056736" />
         <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/layout/list_item_gallery.xml" value="0.35054347826086957" />
         <entry key="..\:/MyPrograms/Android/PhotoGallery/app/src/main/res/menu/fragment_photo_gallery.xml" value="0.3802083333333333" />
       </map>

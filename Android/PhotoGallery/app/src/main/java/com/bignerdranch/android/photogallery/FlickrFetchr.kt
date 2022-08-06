@@ -37,6 +37,14 @@ class FlickrFetchr {
         flickrApi = retrofit.create(FlickrApi::class.java)
     }
 
+    fun fetchPhotosRequest(): Call<PhotoResponse> {
+        return flickrApi.fetchPhotos()
+    }
+
+    fun searchPhotoRequest(query: String): Call<PhotoResponse> {
+        return flickrApi.searchPhotos(query)
+    }
+
     fun getPageGallery(photoResponse: PhotoResponse): Flow<PagingData<GalleryItem>> {
         return Pager(
             config = PagingConfig(pageSize = 10, enablePlaceholders = false,
@@ -48,11 +56,13 @@ class FlickrFetchr {
 
 
     fun searchPhotos(query: String): LiveData<List<GalleryItem>> {
-        return fetchPhotoMetadata(flickrApi.searchPhotos(query))
+//        return fetchPhotoMetadata(flickrApi.searchPhotos(query))
+        return fetchPhotoMetadata(searchPhotoRequest(query))
     }
 
     fun fetchPhotos(): LiveData<List<GalleryItem>> {
-        return fetchPhotoMetadata(flickrApi.fetchPhotos())
+//        return fetchPhotoMetadata(flickrApi.fetchPhotos())
+        return fetchPhotoMetadata(fetchPhotosRequest())
     }
 
     private fun fetchPhotoMetadata(flickrRequest: Call<PhotoResponse>): LiveData<List<GalleryItem>> {

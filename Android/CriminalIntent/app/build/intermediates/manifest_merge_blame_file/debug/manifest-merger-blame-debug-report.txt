@@ -34,7 +34,7 @@
 21        android:allowBackup="true"
 21-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:15:9-35
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.8.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+22-->[androidx.core:core:1.8.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\c8836a118223bd30dd3e8ba0a2d8ea72\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 23        android:dataExtractionRules="@xml/data_extraction_rules"
 23-->D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:9-65
 24        android:debuggable="true"
@@ -88,34 +88,34 @@
 50        </provider>
 51
 52        <service
-52-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:25:9-28:40
+52-->[androidx.room:room-runtime:2.4.2] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:25:9-28:40
 53            android:name="androidx.room.MultiInstanceInvalidationService"
-53-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:26:13-74
+53-->[androidx.room:room-runtime:2.4.2] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:26:13-74
 54            android:directBootAware="true"
-54-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:27:13-43
+54-->[androidx.room:room-runtime:2.4.2] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:27:13-43
 55            android:exported="false" />
-55-->[androidx.room:room-runtime:2.4.2] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:28:13-37
+55-->[androidx.room:room-runtime:2.4.2] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\206c248512b06ac97853cd203cfac695\transformed\room-runtime-2.4.2\AndroidManifest.xml:28:13-37
 56
 57        <provider
-57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+57-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 58            android:name="androidx.startup.InitializationProvider"
-58-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+58-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
 59            android:authorities="com.bignerdranch.android.criminalintent.androidx-startup"
-59-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+59-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
 60            android:exported="false" >
-60-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+60-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
 61            <meta-data
-61-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+61-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
 62                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-62-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+62-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
 63                android:value="androidx.startup" />
-63-->[androidx.emoji2:emoji2:1.0.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+63-->[androidx.emoji2:emoji2:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8aef4e70ce677e20fe8052e70e59f9e7\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
 64            <meta-data
-64-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+64-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
 65                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-65-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+65-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
 66                android:value="androidx.startup" />
-66-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\LEGION 5 PRO\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+66-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\1a66539b8fdc40eb9d840cfdf85902fb\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
 67        </provider>
 68    </application>
 69
