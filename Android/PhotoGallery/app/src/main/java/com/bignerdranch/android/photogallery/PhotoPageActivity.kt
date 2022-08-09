@@ -23,7 +23,7 @@ class PhotoPageActivity: AppCompatActivity() {
     }
 
     companion object {
-        fun newInstance(context: Context, photoPageUri: Uri): Intent {
+        fun newIntent(context: Context, photoPageUri: Uri): Intent {
             return Intent(context, PhotoPageActivity::class.java).apply {
                 data = photoPageUri
             }

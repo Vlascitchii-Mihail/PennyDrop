@@ -33,6 +33,10 @@ import androidx.work.*
 import com.bignerdranch.android.photogallery.api.PollWorker
 import java.util.concurrent.TimeUnit
 import android.content.Intent
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
+import androidx.browser.customtabs.CustomTabsIntent
 
 private const val TAG = "PhotoGalleryFragment"
 private const val POLL_WORK = "POLL_WORK"
@@ -76,6 +80,14 @@ class PhotoGalleryFragment: VisibleFragment() {
 
 //        val workRequest = OneTimeWorkRequest.Builder(PollWorker::class.java).setConstraints(constraints).build()
 //        WorkManager.getInstance(requireContext()).enqueue(workRequest)
+
+
+//        activity?.onBackPressedDispatcher?.addCallback(this, object: OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                Toast.makeText(context, "Button BACK clicked", Toast.LENGTH_SHORT).show()
+//                Log.d(TAG, "Button BACK clicked")
+//            }
+//        })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -125,8 +137,11 @@ class PhotoGalleryFragment: VisibleFragment() {
 //            val intent = Intent(Intent.ACTION_VIEW, galleryItem.photoPageUri)
 //            startActivity(intent)
 
-            val intent = PhotoPageActivity.newInstance(requireContext(), galleryItem.photoPageUri)
+            val intent = PhotoPageActivity.newIntent(requireContext(), galleryItem.photoPageUri)
             startActivity(intent)
+
+            CustomTabsIntent.Builder().setToolbarColor(ContextCompat.getColor(requireContext(), R.color.black))
+                .setShowTitle(true).build().launchUrl(requireContext(), galleryItem.photoPageUri)
         }
     }
 
