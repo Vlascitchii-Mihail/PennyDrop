@@ -64,7 +64,6 @@ class BoxDrawingView(context: Context, attr: AttributeSet? = null): View(context
         //background filling
         canvas.drawPaint(backgroundPaint)
 
-
         boxen.forEach { box ->
             canvas.drawRect(box.left, box.top, box.right, box.bottom, boxPaint)
         }
