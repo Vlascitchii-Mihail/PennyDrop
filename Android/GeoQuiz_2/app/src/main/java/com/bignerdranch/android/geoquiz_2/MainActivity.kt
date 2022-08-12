@@ -17,7 +17,8 @@ private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
 const val cheat = "CheatActivity2"
 
-
+//AppCompatActivity - это подкласс, наследующий от класса Android Activity и
+//обеспечивающий поддержку старых версий Android
 class MainActivity : AppCompatActivity() {
 
     private lateinit var trueButton : Button
@@ -37,12 +38,14 @@ class MainActivity : AppCompatActivity() {
     }
 //    private val quizViewModel : QuizViewModel = QuizViewModel()
 
-
+//вызывается при создании экземпляра подкласса activity.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
+        //заполняет макет и выводит его на экран
+    //R.layout.activity_main - идентификатор ресурса
         setContentView(R.layout.activity_main)
 
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
@@ -59,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 ////        val quizViewModel = provider.create(QuizViewModel::class.java)
 //        Log.d(TAG, "Got a QuizViewModel:$quizViewModel")
 
+    //getting reference on widgets
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
@@ -66,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         questionTextView = findViewById(R.id.question_text_view)
         cheatButton = findViewById(R.id.cheat_button)
 
-
+    //filling interface  View.OnClickListener and creating listeners
         trueButton.setOnClickListener {
             checkAnswer(true)
         }
@@ -138,16 +142,18 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-
-
+//обновляет вопрос
     private fun updateQuestion() {
 //        Log.d(TAG, "Updating question text", Exception())
         trueButton.isEnabled = true
         falseButton.isEnabled = true
             val questionTextResId = quizViewModel.currentQuestionText
+
+        //setting the text in questionTextView
             questionTextView.setText(questionTextResId)
     }
 
+    //проверка ответа пользователя
     private fun checkAnswer(userAnswer: Boolean) {
         trueButton.isEnabled = false
         falseButton.isEnabled = false
@@ -164,6 +170,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.string.incorrect_toast
         }
 
+        //this: Context - экземпляр MainActivity
             Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }
 

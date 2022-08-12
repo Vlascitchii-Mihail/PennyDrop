@@ -33,7 +33,9 @@ import java.util.Observer
 //    }
 //    Thread.sleep(1000)
 
-
+//Job— это управляющий корутиной элемент . Для каждой создаваемой корутины
+ //(с помощью launch или async) он возвращает экземпляр Job, который
+ //однозначно идентифицирует корутину и управляет ее жизненным циклом.
 //    val job = GlobalScope.launch(start = CoroutineStart.LAZY) {
 //        delay(200)
 //        println("Pong")
@@ -157,7 +159,7 @@ import java.util.Observer
 //}
 
 //data class User(val ID: Int, val name: String, val lastName: String)
-//
+
 //private fun getUserByIdFromNetwork(userId: Int, parentScope: CoroutineScope) =
 //    parentScope.async {
 //        if (!isActive) return@async User(0, "", "")
@@ -215,6 +217,7 @@ import java.util.Observer
 //class CustomScope: CoroutineScope {
 //    private var parentJob = Job()
 //
+//CoroutineContext— это набор элементов, определяющих поведение корутины.
 //    override val coroutineContext: CoroutineContext
 //        get() = Dispatchers.Main + parentJob
 //
@@ -883,30 +886,30 @@ import java.util.Observer
 //}
 
 
-fun main() {
-    val coroutineScope = CoroutineScope(Dispatchers.Default)
-    //Creates a cold flow
-    val sharedFlow = flow {
-        //sends values
-        emit(5)
-        emit(3)
-        emit(1)
-
-        Thread.sleep(50)
-        coroutineScope.cancel()
-        //converting the Flow to a SharedFlow
-        //SharingStarted.Lazily - waits his first subscriber and after this sends value
-        //Eagerly - starts immediately
-    }.shareIn(coroutineScope, started = SharingStarted.Lazily)
-
-    sharedFlow.onEach {
-        println("Emitting: $it")
-    }.launchIn(coroutineScope)
-
-    while (coroutineScope.isActive) {
-
-    }
-}
+//fun main() {
+//    val coroutineScope = CoroutineScope(Dispatchers.Default)
+//    //Creates a cold flow
+//    val sharedFlow = flow {
+//        //sends values
+//        emit(5)
+//        emit(3)
+//        emit(1)
+//
+//        Thread.sleep(50)
+//        coroutineScope.cancel()
+//        //converting the Flow to a SharedFlow
+//        //SharingStarted.Lazily - waits his first subscriber and after this sends value
+//        //Eagerly - starts immediately
+//    }.shareIn(coroutineScope, started = SharingStarted.Lazily)
+//
+//    sharedFlow.onEach {
+//        println("Emitting: $it")
+//    }.launchIn(coroutineScope)
+//
+//    while (coroutineScope.isActive) {
+//
+//    }
+//}
 
 
 //fun main() {
@@ -926,11 +929,12 @@ fun main() {
 //    //changing stateFlow.value 3 ways
 //    stateFlow.value = "Author: Luca"
 //
+//    stateFlow.tryEmit("FRE: MAX")
+//
 //    //top priority
 //    coroutineScope.launch {
 //        stateFlow.emit("TE: Godfrey")
 //    }
-//    stateFlow.tryEmit("FRE: MAX")
 //
 //
 //    Thread.sleep(50)
@@ -940,3 +944,41 @@ fun main() {
 //
 //    }
 //}
+
+
+//Chapter 13: Testing Coroutines
+
+interface CoroutineContextProvider {
+    fun context(): CoroutineContext
+}
+
+class CoroutineContextProviderImpl(private val context: CoroutineContext)
+    : CoroutineContextProvider {
+    //creating context
+    override fun context(): CoroutineContext = context
+    }
+
+data class User(val id: String, val name: String)
+
+class MainPresenter {
+    suspend fun getUser(userId: String): User {
+        delay(1000)
+        return User(userId, "Filip")
+    }
+}
+
+class MainView(private val presenter: MainPresenter,
+    private val contextProvider: CoroutineContextProvider,
+    private val coroutineScope: CoroutineScope) {
+    var userData: User? = null
+
+    fun fetchUserData() {
+        coroutineScope.launch(contextProvider.context()) {
+            userData = presenter.getUser("101")
+        }
+    }
+
+    fun printUserData() {
+        println(userData)
+    }
+}
