@@ -42,6 +42,7 @@ import java.util.Observer
 //        delay(200)
 //    }
 //
+////coroutineScope - lifecycle of coroutine
 //    GlobalScope.launch {
 //        delay(200)
 //        println("Ping")
@@ -133,6 +134,7 @@ import java.util.Observer
 //}
 //
 //suspend fun getUserSuspend2(userId: String): User =
+//creates new user in background thread
 //    withContext(Dispatchers.Default) {
 //        delay(1000)
 //        User(userId, "Filip")
@@ -159,8 +161,9 @@ import java.util.Observer
 //}
 
 //data class User(val ID: Int, val name: String, val lastName: String)
-
+//
 //private fun getUserByIdFromNetwork(userId: Int, parentScope: CoroutineScope) =
+//    //creates coroutine and returns its future result
 //    parentScope.async {
 //        if (!isActive) return@async User(0, "", "")
 //        println("scope is active")
@@ -177,6 +180,7 @@ import java.util.Observer
 //        delay(1000)
 //        println("Reading after delay")
 //
+//        //File(filePath).readLines().asSequence() - reads a txt file
 //        File(filePath).readLines().asSequence()
 //            .filter { it.isNotEmpty() }.map {
 //                val data = it.split(" ")
@@ -214,13 +218,15 @@ import java.util.Observer
 //    return user in users
 //}
 //
+////creates custom coroutine scope
 //class CustomScope: CoroutineScope {
 //    private var parentJob = Job()
 //
-//CoroutineContext— это набор элементов, определяющих поведение корутины.
+////CoroutineContext— это набор элементов, определяющих поведение корутины.
 //    override val coroutineContext: CoroutineContext
 //        get() = Dispatchers.Main + parentJob
 //
+//    //functions of lifecycle of CoroutineScope
 //    fun onStart() {
 //        parentJob = Job()
 //    }
@@ -271,14 +277,20 @@ import java.util.Observer
 //        println("Launching in custom scope for finding user")
 //
 ////    scope.onStop()
+//        //userDeferred keeps reference to the async coroutine in function
 //        val userDeferred = getUserByIdFromNetwork(userId, scope)
+//        //userFromFileDeferred keeps reference to the async coroutine in function
 //        val userFromFileDeferred = readUsersFromFile("Users.txt", scope)
+//        //await() waits finishing of the function
 //        val userStoredInFile = checkUserExists(userDeferred.await(), userFromFileDeferred.await())
 //
 //        if (userStoredInFile) println("Found user in file")
 //        scope.onStop()
 //    }
-//    scope.onStop()
+//    //stops all the coroutines and doesn't wait for it finishing
+////    scope.onStop()
+
+
 
 
 //    val scope = CustomScope()
@@ -296,29 +308,42 @@ import java.util.Observer
 //    Thread.sleep(50)
 
 
-//    val parentJob = Job()
-//    val provider: CoroutineContextProvider =
-//        CoroutineContextProviderImpl(context = parentJob + Dispatchers.IO)
-//
-//    GlobalScope.launch(context = provider.context()) {
-//        println(Thread.currentThread().name)
-//    }
-//    Thread.sleep(50)
-//
-//
-//    GlobalScope.launch(context = Dispatchers.Default) {
-//        println(Thread.currentThread().name)
-//    }
-//    Thread.sleep(50)
-//
-//    val executorDispatcher = Executors.newWorkStealingPool().asCoroutineDispatcher()
-//
-//    GlobalScope.launch(context = executorDispatcher) {
-//        println(Thread.currentThread().name)
-//    }
-//    Thread.sleep(50)
+    val parentJob = Job()
+    val provider: CoroutineContextProvider =
+        CoroutineContextProviderImpl(context = parentJob + Dispatchers.IO)
+
+    GlobalScope.launch(context = provider.context()) {
+        println(Thread.currentThread().name)
+    }
+    Thread.sleep(50)
+
+
+    GlobalScope.launch(context = Dispatchers.Default) {
+        println(Thread.currentThread().name)
+    }
+    Thread.sleep(50)
+
+    val executorDispatcher = Executors.newWorkStealingPool().asCoroutineDispatcher()
+
+    GlobalScope.launch(context = executorDispatcher) {
+        println(Thread.currentThread().name)
+    }
+    Thread.sleep(50)
 
 }*/
+
+//fun main() {
+//    val handler = CoroutineExceptionHandler {
+//            context, exception -> println("Caught $exception")
+//    }
+//
+//    val scope = CoroutineScope(Job())
+//    scope.launch(handler) {
+//        launch {
+//            throw Exception("Failed coroutine")
+//        }
+//    }
+//}
 
 //fun main() = runBlocking {
 //    val launchJob = GlobalScope.launch {
@@ -343,9 +368,9 @@ import java.util.Observer
 //}
 
 
-//fun main() {
-//    runBlocking {
-//
+/*fun main() {
+    runBlocking {
+
 //        val exceptionHandler = CoroutineExceptionHandler {
 //            _, exception -> println("Caught $exception")
 //    }
@@ -383,7 +408,7 @@ import java.util.Observer
 //            println("Caught $exception with suppressed " +
 //                    "${exception.suppressed?.contentToString()}")
 //        }
-//
+////
 //        val parentJob = GlobalScope.launch(handler) {
 //            //child 1
 //            launch {
@@ -406,6 +431,21 @@ import java.util.Observer
 //        }
 //        parentJob.join()
 
+//        val scope = CoroutineScope(Job())
+//        scope.launch {
+//            launch(handler) {
+//                    throw ArithmeticException()
+//            }
+//        }
+
+//        val scope = CoroutineScope(Job())
+//        scope.launch(handler) {
+//            launch {
+//                throw Exception("Failed coroutine")
+//            }
+//        }
+//        Thread.sleep(200)
+
 
 //        try {
 //            val data = getDataAsync()
@@ -414,8 +454,8 @@ import java.util.Observer
 //            println("Caught ${e.javaClass.simpleName}")
 //        }
 //
-//    }
-//}
+    }
+}*/
 
 // Method to simulate a long running task
 //fun getData(asyncCallback: AsyncCallback) {
@@ -458,7 +498,7 @@ import java.util.Observer
 //}
 
 
-//fun main() = runBlocking {
+fun main() = runBlocking {
 //    val supervisor = SupervisorJob()
 //    with(CoroutineScope(coroutineContext + supervisor)) {
 //        val firstChild = launch {
@@ -470,7 +510,7 @@ import java.util.Observer
 //            println("FirstChild is canceled: ${firstChild.isCancelled}")
 //            try {
 //                delay(5000)
-//            } catch(e: CancellationException) {
+//            } catch (e: CancellationException) {
 //                println("Second child cancelled because supervisor got cancelled.")
 //            }
 //        }
@@ -480,22 +520,21 @@ import java.util.Observer
 //        supervisor.cancel()
 //        secondChild.join()
 //    }
+//}
 
 
+    supervisorScope {
+        val result = async {
+            println("Throwing exception in async")
+            throw IllegalStateException()
+        }
 
-
-//    supervisorScope {
-//        val result = async {
-//            println("Throwing exception in async")
-//            throw IllegalStateException()
-//        }
-//
-//        try {
-//            result.await()
-//        } catch (e: Exception) {
-//            println("Caught $e")
-//        }
-//    }
+        try {
+            result.await()
+        } catch (e: Exception) {
+            println("Caught $e")
+        }
+    }
 
 
 
@@ -588,7 +627,7 @@ import java.util.Observer
 //    println("main: I'm tired of waiting!")
 //    job.cancelAndJoin()
 //    println("main: Now I can quit")
-//}
+}
 
 
 //fun main() = runBlocking {
@@ -948,37 +987,39 @@ import java.util.Observer
 
 //Chapter 13: Testing Coroutines
 
-interface CoroutineContextProvider {
-    fun context(): CoroutineContext
-}
-
-class CoroutineContextProviderImpl(private val context: CoroutineContext)
-    : CoroutineContextProvider {
-    //creating context
-    override fun context(): CoroutineContext = context
-    }
-
-data class User(val id: String, val name: String)
-
-class MainPresenter {
-    suspend fun getUser(userId: String): User {
-        delay(1000)
-        return User(userId, "Filip")
-    }
-}
-
-class MainView(private val presenter: MainPresenter,
-    private val contextProvider: CoroutineContextProvider,
-    private val coroutineScope: CoroutineScope) {
-    var userData: User? = null
-
-    fun fetchUserData() {
-        coroutineScope.launch(contextProvider.context()) {
-            userData = presenter.getUser("101")
-        }
-    }
-
-    fun printUserData() {
-        println(userData)
-    }
-}
+//interface CoroutineContextProvider {
+//    fun context(): CoroutineContext
+//}
+////creating coroutine context
+//class CoroutineContextProviderImpl(private val context: CoroutineContext)
+//    : CoroutineContextProvider {
+//
+//    override fun context(): CoroutineContext = context
+//    }
+//
+//data class User(val id: String, val name: String)
+//
+////creating new user
+//class MainPresenter {
+//    suspend fun getUser(userId: String): User {
+//        delay(1000)
+//        return User(userId, "Filip")
+//    }
+//}
+//
+//class MainView(private val presenter: MainPresenter,
+//    private val contextProvider: CoroutineContextProvider,
+//    private val coroutineScope: CoroutineScope) {
+//    var userData: User? = null
+//
+//    //launching suspend function
+//    fun fetchUserData() {
+//        coroutineScope.launch(contextProvider.context()) {
+//            userData = presenter.getUser("101")
+//        }
+//    }
+//
+//    fun printUserData() {
+//        println(userData)
+//    }
+//}

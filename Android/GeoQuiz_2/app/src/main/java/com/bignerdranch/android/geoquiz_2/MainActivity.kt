@@ -16,6 +16,7 @@ import android.os.Build
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
 const val cheat = "CheatActivity2"
+private const val CHEAT_STATUS = "IS_CHEATER"
 
 //AppCompatActivity - это подкласс, наследующий от класса Android Activity и
 //обеспечивающий поддержку старых версий Android
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 //    private val quizViewModel : QuizViewModel = QuizViewModel()
 
 //вызывается при создании экземпляра подкласса activity.
+    //savedInstanceState contains all the data from onSaveInstanceState()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         quizViewModel.currentIndex = currentIndex
         cheatValue = savedInstanceState?.getInt(cheat, 0) ?: 0
         quizViewModel.cheatTries += savedInstanceState?.getInt(CHEAT_TRIES, 0) ?: 0
+        quizViewModel.isCheater = savedInstanceState?.getBoolean(CHEAT_STATUS, false) ?: false
 
 //        val isCheater = savedInstanceState?.getBoolean(KEY_INDEX_CHEAT, false) ?: false
 //        quizViewModel.isCheater = isCheater
@@ -84,21 +87,28 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.isCheater = false
         }
 
+    //moves to previous question
         prevButton.setOnClickListener {
             quizViewModel.moveToPrev()
             updateQuestion()
         }
 
         questionTextView.setOnClickListener {
-            quizViewModel.moveToPrev()
+            //moves to next question after clicking on the textView
+            quizViewModel.moveToNext()
             updateQuestion()
         }
 
-
+    //receiving data from CheatActivity
         val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
+                //it.data - intent from CheatActivity
                 val data : Intent? = it.data
-                quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false)?: false
+
+                //takes data from intent
+                //is cheater or not?
+                quizViewModel.isCheater = data?.let { it1 -> CheatActivity2.getBooleanIsCheater(it1) } == true
+                Log.i(TAG, "${quizViewModel.isCheater}")
                 cheatValue += data?.getIntExtra(cheat, 0) ?: 0
                 quizViewModel.cheatTries = data?.getIntExtra(CHEAT_TRIES, 0) ?: 0
                 Toast.makeText(this, "You cheated $cheatValue times", Toast.LENGTH_SHORT).show()
@@ -111,19 +121,33 @@ class MainActivity : AppCompatActivity() {
 
 
         cheatButton.setOnClickListener {
+            if (quizViewModel.cheatTries == 3) {
+                Toast.makeText(this, "You had 3 attempts", Toast.LENGTH_LONG).show()
+            } else {
+                Log.d(TAG, "UpdateQuestionText", Exception())
+                quizViewModel.isCheater = true
+                //calls the CheatActivity from MainActivity
+                //@param this - package name
 //            val intent = Intent(this, CheatActivity2::class.java)
 //            startActivity(intent)
-            val answerIsTrue = quizViewModel.currentQuestionAnswer
-            val intent = CheatActivity2.newIntent(this@MainActivity, answerIsTrue, quizViewModel.cheatTries)
+
+                val answerIsTrue = quizViewModel.currentQuestionAnswer
+                //creating intent from function newIntent() from CheatActivity
+                val intent = CheatActivity2.newIntent(
+                    this@MainActivity,
+                    answerIsTrue,
+                    quizViewModel.cheatTries
+                )
 //            startActivity(intent)
 //            startActivityForResult(intent, REQUEST_CODE_CHEAT)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                val options =
-                    ActivityOptionsCompat.makeClipRevealAnimation(it, 0, 0, it.width, it.height)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    val options =
+                        ActivityOptionsCompat.makeClipRevealAnimation(it, 0, 0, it.width, it.height)
 
-                getContent.launch(intent, options)
-            } else {
-                getContent.launch(intent)
+                    getContent.launch(intent, options)
+                } else {
+                    getContent.launch(intent)
+                }
             }
 
         }
@@ -147,6 +171,8 @@ class MainActivity : AppCompatActivity() {
 //        Log.d(TAG, "Updating question text", Exception())
         trueButton.isEnabled = true
         falseButton.isEnabled = true
+
+    //receiving a text from ViewModel
             val questionTextResId = quizViewModel.currentQuestionText
 
         //setting the text in questionTextView
@@ -155,6 +181,7 @@ class MainActivity : AppCompatActivity() {
 
     //проверка ответа пользователя
     private fun checkAnswer(userAnswer: Boolean) {
+        //blocking buttons after checking a answer
         trueButton.isEnabled = false
         falseButton.isEnabled = false
             val correctAnswer = quizViewModel.currentQuestionAnswer
@@ -163,7 +190,7 @@ class MainActivity : AppCompatActivity() {
 //            }
 //                else R.string.incorrect_toast
 
-
+        //if user is cheater, shows Toast - "Cheating is wrong"
         val messageResId = when {
             quizViewModel.isCheater ->  R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
@@ -199,12 +226,16 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onDestroy() called")
     }
 
+    //called when onStop() runs
+    //saves all states and views outside the activity in OS
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         Log.d(TAG, "onSaveInstanceState")
+        //saves currentIndex outside of the app
         savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentIndex)
         savedInstanceState.putInt(cheat, cheatValue)
         savedInstanceState.putInt(CHEAT_TRIES, quizViewModel.cheatTries)
+        savedInstanceState.putBoolean(CHEAT_STATUS, quizViewModel.isCheater)
 //        savedInstanceState.putBoolean(KEY_INDEX_CHEAT, quizViewModel.isCheater)
     }
 }

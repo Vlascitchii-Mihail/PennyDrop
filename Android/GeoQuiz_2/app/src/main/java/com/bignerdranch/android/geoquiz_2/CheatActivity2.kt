@@ -13,7 +13,7 @@ import android.widget.Toast
 import android.util.Log
 
 private const val EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.geoquiz.answer_is_true"
-const val EXTRA_ANSWER_SHOWN = "com.bignerdranch.android.geoquiz.answer_is_true"
+private const val EXTRA_ANSWER_SHOWN = "com.bignerdranch.android.geoquiz.answer_is_true"
 private const val SAVE_STATE = "com.bignerdranch.android.geoquiz.cheater_saved"
 const val CHEAT_TRIES = "com.bignerdranch.android.geoquiz.cheat_tries"
 
@@ -34,15 +34,14 @@ class CheatActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat2)
 
-
         cheatViewModel.isCheater = savedInstanceState?.getBoolean(SAVE_STATE, false) ?: false
         Log.d("CheatActivity2", "isCheater - ${cheatViewModel.isCheater}")
-
         cheatViewModel.cheatTries = savedInstanceState?.getInt(CHEAT_TRIES, 0) ?: 0
         Log.d("CheatActivity2", "saved ${cheatViewModel.cheatTries}")
 
+//        answerIsTrue = savedInstanceState?.getBoolean(EXTRA_ANSWER_IS_TRUE) ?: false
 
-
+        //reading data from intent from MainActivity, second argument - default value
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
         cheatViewModel.cheatTries = intent.getIntExtra(CHEAT_TRIES, 0)
 
@@ -76,13 +75,21 @@ class CheatActivity2 : AppCompatActivity() {
         Log.d("CheatActivity2", "${cheatViewModel.cheatTries}")
     }
 
+    //creating a new intent, arguments from MainActivity
     companion object {
+        //creating new intent for MainActivity
         fun newIntent(packageContext: Context, answerIsTrue: Boolean, cheat: Int): Intent {
+            //new intent
             return Intent(packageContext, CheatActivity2::class.java).apply {
+                //puts data in intent
                 putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue)
                 putExtra(CHEAT_TRIES, cheat)
             }
         }
+
+        fun getBooleanIsCheater(intent: Intent) = intent.getBooleanExtra(EXTRA_ANSWER_SHOWN, false)?: false
+
+
     }
 
     private fun setAnswerShown() {
@@ -92,6 +99,7 @@ class CheatActivity2 : AppCompatActivity() {
             putExtra(cheat, cheatValue)
             putExtra(CHEAT_TRIES, cheatViewModel.cheatTries)
         }
+        //setResult() - sends the intent to the MainActivity
         setResult(Activity.RESULT_OK, data)
         showAnswerButton.isEnabled = false
     }

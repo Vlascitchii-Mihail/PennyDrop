@@ -9,8 +9,9 @@ import android.content.Intent
 private const val TAG = "QuizViewModel"
 
 class QuizViewModel : ViewModel() {
-    init { Log.d(TAG, "ViewModel instance created")}
+//    init { Log.d(TAG, "ViewModel instance created")}
 
+    //it cals before destroying the app
     override fun onCleared() {
         super.onCleared()
         Log.d(TAG, "ViewModel instance about to be destroyed")
@@ -42,10 +43,12 @@ class QuizViewModel : ViewModel() {
     val currentQuestionAnswer: Boolean get() = questionBank[currentIndex].answer
     val currentQuestionText : Int get() = questionBank[currentIndex].textResId
 
+    //move to next question
     fun moveToNext() {
         currentIndex = (currentIndex + 1) % questionBank.size
     }
 
+    //move to previous question
     fun moveToPrev() {
         currentIndex = if (currentIndex < 0) 0
         else (currentIndex -1) % questionBank.size

@@ -8,6 +8,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoQuiz_2">
+
+<!--        second activity-->
         <activity
             android:name=".CheatActivity2"
             android:exported="false" />

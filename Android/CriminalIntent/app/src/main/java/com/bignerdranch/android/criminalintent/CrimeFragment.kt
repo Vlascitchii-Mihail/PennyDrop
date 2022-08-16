@@ -40,6 +40,7 @@ private const val REQUEST_CONTACT = 1
 private const val CALL_REQUEST_CODE = 0
 private const val REQUEST_PHOTO = 2
 
+//:Fragment() transform class to fragment
 class CrimeFragment : Fragment() {
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
@@ -69,9 +70,18 @@ class CrimeFragment : Fragment() {
         crimeDetailViewModel.loadCrime(crimeId)
     }
 
+    //creation and setting the view of fragment
+    //returns view to host activity
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        //filling view of the fragment
+        /**
+         * @param R.layout.fragment_crime id of the layout
+         * @param container - parent of the view
+         * @param false нужно ли включать заполненное предсав. родитедя?
+         */
         val view = inflater.inflate(R.layout.fragment_crime, container, false)
 
+        //connected buttons and textViews using view
         titleField = view.findViewById(R.id.crime_title) as EditText
         dateButton = view.findViewById(R.id.crime_date) as Button
         solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
@@ -108,9 +118,16 @@ class CrimeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        //editTextListener
+        //object : TextWatcher anonymous class which implements interface TextWatcher
         val titleWatcher = object : TextWatcher {
             override fun beforeTextChanged(sequence: CharSequence?, start: Int, count: Int, after: Int) {}
 
+            /**
+             * @param sequence - user's input
+             */
+            //creates title of each crime
             override fun onTextChanged(sequence: CharSequence?, start: Int, before: Int, count: Int) {
                 crime.title = sequence.toString()
             }
@@ -121,6 +138,8 @@ class CrimeFragment : Fragment() {
         titleField.addTextChangedListener(titleWatcher)
 
         solvedCheckBox.apply {
+
+            ////check box listener
             setOnCheckedChangeListener {
                     _, isChecked ->
                 crime.isSolved = isChecked

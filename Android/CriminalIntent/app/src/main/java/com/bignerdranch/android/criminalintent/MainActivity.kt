@@ -17,11 +17,23 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crime)
 
+        /**
+         * @param supportFragmentManager - access to FragmentManager
+         */
+        //receiving an exemplar of fragment from FragmentManager after recreating of the layout
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
 
         if (currentFragment == null) {
 //            val fragment = CrimeFragment()
             val fragment = CrimeListFragment.newInstance()
+
+            //beginTransaction() - creates and return an exemplar of FragmentTransaction
+            //add() - filling the exemplar of FragmentTransaction
+            /**
+             *@param R.id.fragment_container - container ID
+             * @param fragment - fragment exemplar
+             */
+            //starts fragment functions onCreate(), onCreateView(), onViewCreate(), 0nAttach()
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, fragment)
                 .commit()
         }
