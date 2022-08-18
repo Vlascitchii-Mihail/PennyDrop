@@ -10,6 +10,8 @@
     <uses-feature android:name="android.hardware.camera2"
         android:required="false"/>
 
+<!--    android:name=".CriminalIntentApplication" accepting using the
+CriminalIntentApplication class for creation a new CrimeRepository's object-->
     <application
         android:name=".CriminalIntentApplication"
         android:allowBackup="true"

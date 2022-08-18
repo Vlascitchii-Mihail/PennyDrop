@@ -6,6 +6,9 @@ import java.util.UUID
 import java.util.Date
 
 //the class contains al the information about crime
+//Room creates database for any class with annotation @Entity
+//@Entity класс определяет структкру таблицы
+//@PrimaryKey - primary column
 /**
  * @param UUID - generates unique ID using the function randomUUID()
  */

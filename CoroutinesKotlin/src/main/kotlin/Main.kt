@@ -498,8 +498,9 @@ import java.util.Observer
 //}
 
 
-fun main() = runBlocking {
+/*fun main() = runBlocking {
 //    val supervisor = SupervisorJob()
+    //don't let to exceptions to go upper
 //    with(CoroutineScope(coroutineContext + supervisor)) {
 //        val firstChild = launch {
 //            println("FirstChild throwing an exception")
@@ -522,19 +523,19 @@ fun main() = runBlocking {
 //    }
 //}
 
-
-    supervisorScope {
-        val result = async {
-            println("Throwing exception in async")
-            throw IllegalStateException()
-        }
-
-        try {
-            result.await()
-        } catch (e: Exception) {
-            println("Caught $e")
-        }
-    }
+//don't let to exceptions to go upper
+//    supervisorScope {
+//        val result = async {
+//            println("Throwing exception in async")
+//            throw IllegalStateException()
+//        }
+//
+//        try {
+//            result.await()
+//        } catch (e: Exception) {
+//            println("Caught $e")
+//        }
+//    }
 
 
 
@@ -542,6 +543,7 @@ fun main() = runBlocking {
 //    val job = launch(Dispatchers.Default) {
 //        var nextPrintTime = startTime
 //        var i = 0
+    //checking if the coroutine was cancelled
 //        while (i < 10 && isActive) {
 //            if (System.currentTimeMillis() >= nextPrintTime) {
 //                println("Doing heavy work: $i")
@@ -563,6 +565,8 @@ fun main() = runBlocking {
 //        var i = 0
 //        while (i < 1000) {
 //            println("Doing heavy work: ${i++}")
+
+    //checking if the coroutine was cancelled
 //            delay(500)
 //        }
 //    }
@@ -572,7 +576,7 @@ fun main() = runBlocking {
 //    println("Main: now i can quit!")
 
 
-
+////catching Exception e
 //    val handler = CoroutineExceptionHandler { _, exception ->
 //        println("Caught original $exception")
 //    }
@@ -583,6 +587,8 @@ fun main() = runBlocking {
 //        }
 //
 //        try {
+//            //waiting for completion of the child job
+//            //can't catch IOException
 //            childJob.join()
 //        } catch (e: CancellationException) {
 //            println("Rethrowing CancellationException with original" +
@@ -610,7 +616,7 @@ fun main() = runBlocking {
 //            println("Job 2: Crunching numbers [Beep.Boop.Beep]…")
 //            delay(500L)
 //        }
-//        // waits for both the jobs to complete
+//        // waits for both of the jobs to complete
 //        joinAll(jobOne, jobTwo)
 //        println("main: Now I can quit.")
 
@@ -625,9 +631,11 @@ fun main() = runBlocking {
 //
 //    delay(1300)
 //    println("main: I'm tired of waiting!")
+//
+//    //cancelling the job and waits for completing a current task
 //    job.cancelAndJoin()
 //    println("main: Now I can quit")
-}
+}*/
 
 
 //fun main() = runBlocking {
@@ -638,6 +646,8 @@ fun main() = runBlocking {
 //                delay(500L)
 //            }
 //        }
+//
+//        //invoked once on completion of this job
 //        childOne.invokeOnCompletion { exception ->
 //            println("ChildJob: ${exception?.message}")
 //        }
@@ -648,12 +658,16 @@ fun main() = runBlocking {
 //                delay(500L)
 //            }
 //        }
+//
+//        //invoked once on completion of this job
 //        childTwo.invokeOnCompletion { exception ->
 //            println("ChildTwo: ${exception?.message}")
 //        }
 //    }
 //    delay(1200L)
 //    println("Calling cancelChildren() on the parentJob")
+//
+//    //cancel all child coroutines
 //    parentJob.cancelChildren()
 //    println("parentJob isActive: ${parentJob.isActive}")
 //}
@@ -661,6 +675,9 @@ fun main() = runBlocking {
 
 //fun main() = runBlocking {
 //    try {
+//
+//        //runs suspending block inside a coroutine with timeout
+//        //throws a TimeoutCancellationException
 //        withTimeout(1500L) {
 //            repeat(1000) { i ->
 //                println("$i  attempts")
@@ -674,6 +691,9 @@ fun main() = runBlocking {
 
 
 //fun main() = runBlocking {
+//
+//    //runs suspending block inside a coroutine with timeout
+//    //returns NULL if timeout was exceeded(превышено)
 //    val result = withTimeoutOrNull(1300L) {
 //        repeat(2) { i->
 //            println("$i attempts")
@@ -684,10 +704,11 @@ fun main() = runBlocking {
 //    println("Result is $result")
 //}
 
-
+////returns: filter, map, forEach, filter, map, forEach, filter, map, forEach,
 //fun main() {
 //    val list = listOf(1, 2, 3)
 //
+//    //отправляет по одному элементу через все функции
 //    list.asSequence().filter {
 //        println("filter, ")
 //        it > 0
@@ -704,6 +725,8 @@ fun main() = runBlocking {
 //var NUM = 0
 //
 //fun main() {
+//
+//    //take(n) - Возвращает последовательность, содержащую первые n элементов.
 //    var sequence = generatorFib().take(8)
 //    sequence.forEach {
 //        println("$it $NUM")
@@ -712,12 +735,18 @@ fun main() = runBlocking {
 //
 //fun generatorFib() = sequence {
 //    print("Suspending out...")
+//
+//    //Выдает значение создаваемому итератору и приостанавливает
+//    // работу до тех пор, пока не будет запрошено следующее значение.
 //    yield(0L)
 //    var cur = 0L
 //    var next = 1L
 //    while (true) {
 //        print("Suspending in while...")
 //        NUM++
+//
+//        //Выдает значение создаваемому итератору и приостанавливает
+//        // работу до тех пор, пока не будет запрошено следующее значение.
 //        yield(next)
 //        var temp = cur + next
 //        cur = next
@@ -728,6 +757,8 @@ fun main() = runBlocking {
 
 //fun main() {
 //    val sequence = singleValueExample()
+//
+//    //printing yielded element
 //    sequence.forEach {
 //        println(it)
 //    }
@@ -735,6 +766,9 @@ fun main() = runBlocking {
 //
 //fun singleValueExample() = sequence {
 //    println("Printing first value")
+//
+//    //Выдает значение создаваемому итератору и приостанавливает
+//    // работу до тех пор, пока не будет запрошено следующее значение.
 //    yield("Apple")
 //
 //    println("Printing second value")
@@ -747,12 +781,18 @@ fun main() = runBlocking {
 
 //fun main() {
 //    val sequence = iterableExample()
+//
+//    //printing yielded collection
 //    sequence.forEach {
 //        println("$it")
 //    }
 //}
 //
 //fun iterableExample() = sequence {
+//
+//    //Выдает коллекции значений для создаваемого Iterator и
+//    // приостанавливает работу до тех пор, пока все эти
+//    // значения не будут итерированы и не будет запрошено следующее.
 //    yieldAll(1..5)
 //}
 
@@ -765,14 +805,27 @@ fun main() = runBlocking {
 //}
 //
 //fun sequenceExample() = sequence {
+//
+//    //Выдает потенциально бесконечную последовательность
+//    // значений для создаваемого Iterator и приостанавливает
+//    // работу до тех пор, пока все эти значения не будут
+//    // итерированы и не будет запрошено следующее.
+//
+//    //yields all generated sequence
+//    //seed - start value of sequence
 //    yieldAll(generateSequence(2) {it * 2})
 //}
 
 
 //var NUM = 0
 //fun main() {
+//
+//    //produces data for listeners
+//    //creating cold thread
 //    val flowOfStrings = flow {
 //        for (number in 1 .. 100) {
+//
+//            //выдает данные слушателю
 //            emit("Emitting: $number")
 //            NUM++
 //        }
@@ -783,10 +836,23 @@ fun main() = runBlocking {
 ////            println("$value  $NUM")
 ////        }
 //
-//        flowOfStrings.map {it.split(" ") }
+//        flowOfStrings
+//            .map {it.split(" ") }
 //            .map { it.last() }
+//
+//                //Возвращает поток, который вызывает данное действие
+//            // до того, как каждое значение восходящего потока будет
+//            // передано нисходящему потоку.
 //            .onEach { delay(100) }
+//
+//                //Изменяет контекст, в котором выполняется этот поток,
+//            // на заданный контекст. Этот оператор составной и влияет только
+//            // на предшествующие операторы, не имеющие собственного контекста.
+//            // Этот оператор сохраняет контекст: контекст не просачивается
+//            // в нижестоящий поток.
 //            .flowOn(Dispatchers.Default)
+//
+//                //listener of flowOfStrings
 //            .collect { value ->
 //                println(value)
 //            }
@@ -797,15 +863,36 @@ fun main() = runBlocking {
 
 
 //fun main() {
+//
+//    //Создает экземпляр холодного потока с элементами, которые отправляются
+//    // в SendChannel, предоставляемый блоку кода построителя через
+//    // ProducerScope. Это позволяет создавать элементы с помощью кода,
+//    // который выполняется в другом контексте или одновременно.
+//    // Результирующий поток является холодным, что означает, что блок
+//    // вызывается каждый раз, когда оператор терминала применяется
+//    // к результирующему потоку.
 //    val flowOfStrings = channelFlow {
 //        for (number in 1 .. 100) {
+//
+//            //Вызывает указанный блок приостановки с заданным контекстом
+//            //сопрограммы, приостанавливает до завершения и возвращает результат.
 //            withContext(Dispatchers.Default) {
+//
+//                //Немедленно добавляет указанный элемент в этот канал,
+//                // если это не нарушает его ограничения емкости, и
+//                // возвращает успешный результат. В противном случае
+//                // возвращает неудачный или закрытый результат. Это
+//                // синхронный вариант отправки, который отключается в
+//                // ситуациях, когда отправка приостанавливается или
+//                // выбрасывается.
 //                trySend("Emitting: $number")
 //            }
 //        }
 //    }
 //
 //    GlobalScope.launch {
+//
+//        //flowOfStrings listener
 //        flowOfStrings.collect {
 //            println(it)
 //        }
@@ -829,11 +916,12 @@ fun main() = runBlocking {
 ////            println("$value  $NUM")
 ////        }
 //
-//        flowOfStrings.map {it.split(" ") }
+//        flowOfStrings
+//            .map {it.split(" ") }
 //            .map { it[1] }
 ////            .onEach { delay(100) }
 //            .catch {
-//                it.printStackTrace()
+////                it.printStackTrace()
 //                emit("Fallback")
 //            }
 //            .flowOn(Dispatchers.Default)
@@ -987,39 +1075,41 @@ fun main() = runBlocking {
 
 //Chapter 13: Testing Coroutines
 
-//interface CoroutineContextProvider {
-//    fun context(): CoroutineContext
-//}
-////creating coroutine context
-//class CoroutineContextProviderImpl(private val context: CoroutineContext)
-//    : CoroutineContextProvider {
-//
-//    override fun context(): CoroutineContext = context
-//    }
-//
-//data class User(val id: String, val name: String)
-//
-////creating new user
-//class MainPresenter {
-//    suspend fun getUser(userId: String): User {
-//        delay(1000)
-//        return User(userId, "Filip")
-//    }
-//}
-//
-//class MainView(private val presenter: MainPresenter,
-//    private val contextProvider: CoroutineContextProvider,
-//    private val coroutineScope: CoroutineScope) {
-//    var userData: User? = null
-//
-//    //launching suspend function
-//    fun fetchUserData() {
-//        coroutineScope.launch(contextProvider.context()) {
-//            userData = presenter.getUser("101")
-//        }
-//    }
-//
-//    fun printUserData() {
-//        println(userData)
-//    }
-//}
+interface CoroutineContextProvider {
+    fun context(): CoroutineContext
+}
+
+//creating coroutine context
+class CoroutineContextProviderImpl(private val context: CoroutineContext)
+    : CoroutineContextProvider {
+
+    override fun context(): CoroutineContext = context
+    }
+
+//model's class
+data class User(val id: String, val name: String)
+
+//creating new user
+class MainPresenter {
+    suspend fun getUser(userId: String): User {
+        delay(1000)
+        return User(userId, "Filip")
+    }
+}
+
+class MainView(private val presenter: MainPresenter,
+    private val contextProvider: CoroutineContextProvider,
+    private val coroutineScope: CoroutineScope) {
+    var userData: User? = null
+
+    //launching suspend function
+    fun fetchUserData() {
+        coroutineScope.launch(contextProvider.context()) {
+            userData = presenter.getUser("101")
+        }
+    }
+
+    fun printUserData() {
+        println(userData)
+    }
+}

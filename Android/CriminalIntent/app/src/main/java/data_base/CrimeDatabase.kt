@@ -6,10 +6,18 @@ import com.bignerdranch.android.criminalintent.Crime
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-
+//@Database - database in app
+/**
+ * @param - [Crime::class] - table of database
+ */
 @Database(entities = [Crime::class], version = 3)
+
+//Converter of database
 @TypeConverters(CrimeTypeConverters::class)
 abstract class CrimeDatabase: RoomDatabase() {
+
+    //Помогает вызывать функции из CrimeDao
+    //Подключает Dao к database
     abstract fun crimeDao(): CrimeDao
 }
 

@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 
 private const val TAG = "MainActivity"
 
+//CrimeListFragment.Callbacks - implementation of interface click listener from Fragment
 class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
 
         if (currentFragment == null) {
 //            val fragment = CrimeFragment()
+
+            //creates a new object of fragment CrimeListFragment
             val fragment = CrimeListFragment.newInstance()
 
             //beginTransaction() - creates and return an exemplar of FragmentTransaction
@@ -39,9 +42,17 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
         }
     }
 
+
+    //colling from fragment uses a callback
     override fun onCrimeSelected(crimeId: UUID) {
 //            Log.d(TAG, "MainActivity.onCrimeSelected: $crimeId")
+
+        //creating new CrimeFragment's object with ID
         val fragment = CrimeFragment.newInstance(crimeId)
+
+        //calling a new fragment uses the crime.Id
+        //replace(R.id.fragment_container, fragment) - changing the old fragment to the new fragment
+        //addToBackStack(null) - returning to the previous fragment
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
     }
 

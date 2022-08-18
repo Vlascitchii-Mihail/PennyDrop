@@ -13,9 +13,11 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceTimeBy
 
+//Позволяет использовать API, обозначенный заданными маркерами
+//в аннотированном файле, объявлении или выражении.
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainViewTest {
-    //settings for environment
+    //settings for environment настройки для среды
     //helps to coroutines to start immediately
     private val testCoroutinesDispatcher = StandardTestDispatcher()
 
@@ -32,6 +34,7 @@ class MainViewTest {
         MainView(mainPresent, testCoroutineContextProvider, testCoroutineScope)
     }
 
+    //runTest - runs the coroutine without delays
     @Test fun testFetchUserData(): Unit = testCoroutineScope.runTest {
         //asserts (утверждает) that an object is null
         assertNull(mainView.userData)

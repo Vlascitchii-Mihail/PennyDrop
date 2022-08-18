@@ -65,6 +65,8 @@ class CrimeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         crime = Crime()
+
+        //providing access to fragment's arguments and getting crime.Id
         val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
 //        Log.d(TAG, "args bundle crime ID: $crimeId")
         crimeDetailViewModel.loadCrime(crimeId)
@@ -495,10 +497,20 @@ class CrimeFragment : Fragment() {
     }
 
     companion object {
+
+        //creates new CrimeFragment object
         fun newInstance(crimeId: UUID): CrimeFragment {
+
+            /**
+             * @param arg - the argument's package
+             * @param Bundle() - package
+             */
+            //adding the data in fragment arguments
             val args = Bundle().apply {
                 putSerializable(ARG_CRIME_ID, crimeId)
             }
+
+            //joins arguments to fragment and returns the CrimeFragment's object
             return CrimeFragment().apply { arguments = args }
         }
     }
