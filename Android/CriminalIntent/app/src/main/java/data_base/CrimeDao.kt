@@ -15,6 +15,10 @@ import androidx.room.Insert
      //LiveData<List<Crime>> provide an access to the data between 2 threads and starts the functions in the second thread
      @Query("SELECT * FROM Crime") fun getCrimes(): LiveData<List<Crime>>
      @Query("SELECT * FROM Crime WHERE id =(:id)") fun getCrime(id:UUID): LiveData<Crime?>
+
+     //updating crime comparing ID
      @Update fun updateCrime(crime: Crime)
+
+     //adding new Crime
      @Insert fun addCrime(crime: Crime)
 }

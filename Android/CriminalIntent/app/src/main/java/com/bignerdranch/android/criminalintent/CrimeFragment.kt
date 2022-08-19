@@ -67,6 +67,7 @@ class CrimeFragment : Fragment() {
         crime = Crime()
 
         //providing access to fragment's arguments and getting crime.Id
+        //arguments save after changing orientation
         val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
 //        Log.d(TAG, "args bundle crime ID: $crimeId")
         crimeDetailViewModel.loadCrime(crimeId)
@@ -100,6 +101,7 @@ class CrimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //crimeDetailViewModel.crimeLiveData listener
         crimeDetailViewModel.crimeLiveData.observe(viewLifecycleOwner, Observer { crime -> crime?.let {
             this.crime = crime
             photoFile = crimeDetailViewModel.getPhotoFile(crime)
@@ -452,6 +454,7 @@ class CrimeFragment : Fragment() {
     override fun onStop() {
         super.onStop()
 
+        //saving crime
         crimeDetailViewModel.saveCrime(crime)
         Log.d(TAG, crime.title)
     }
@@ -461,12 +464,15 @@ class CrimeFragment : Fragment() {
 //        requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
 //    }
 
+    //UI refreshing
     private fun updateUI() {
         titleField.setText(crime.title)
         dateButton.text = DateFormat.getDateFormat(context).format(crime.date)
         timeButton.text = DateFormat.format("kk:mm:ss", crime.date)
         solvedCheckBox.apply {
             isChecked = crime.isSolved
+
+            //Пропуск анимации установки флажка при загрузке фрагмента на экран или повороте экрана
             jumpDrawablesToCurrentState()
         }
 

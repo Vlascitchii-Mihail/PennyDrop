@@ -27,11 +27,12 @@ class CrimeRepository private constructor(context: Context) {
         context.applicationContext, CrimeDatabase::class.java, DATABASE_NAME
     ).addMigrations(migration_2_3).build()
 
+    //the object which references on the background thread
     private val executor = Executors.newSingleThreadExecutor()
 
     private val filesDir = context.applicationContext.filesDir
 
-    //provides access to CrimeDao interface
+    //provides access to the CrimeDao interface
     private val crimeDao = database.crimeDao()
 
     //provides access to CrimeDao.getCrimes()
@@ -43,13 +44,21 @@ class CrimeRepository private constructor(context: Context) {
     fun getCrime(id: UUID) : LiveData<Crime?> = crimeDao.getCrime(id)
 
     fun updateCrime(crime: Crime) {
+
+        //starting the code in the background thread
         executor.execute {
+
+            //updating crime
             crimeDao.updateCrime(crime)
         }
     }
 
     fun addCrime(crime: Crime) {
+
+        //starting the code in the background thread
         executor.execute{
+
+            //adding a new crime
             crimeDao.addCrime(crime)
         }
     }

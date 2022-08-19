@@ -181,17 +181,26 @@ class CrimeListFragment: Fragment() {
         }
     }
 
+    //Определяет разницу между текущим и новым набором данных в списке
     object DiffCallback : DiffUtil.ItemCallback<Crime>() {
+
+        //Вызывается, чтобы проверить, представляют ли два объекта один и тот же элемент.
         override fun areItemsTheSame(oldItem: Crime, newItem: Crime): Boolean {
             return oldItem.id == newItem.id
         }
 
+        //Вызывается, чтобы проверить, имеют ли два элемента одинаковые данные.
         override fun areContentsTheSame(oldItem: Crime, newItem: Crime): Boolean {
             return oldItem == newItem
         }
     }
 
     //creates ViewHolder
+    //ListAdapter<Crime, CrimeHolder>(DiffCallback) перерисовывает только обновленные строки в списке
+    // В списке обновляется только измененный объект В фоновом потоке
+    /**
+     * @param DiffCallback - Определяет разницу между текущим и новым набором данных в списке
+     */
     private inner class CrimeAdapter: ListAdapter<Crime, CrimeHolder>(DiffCallback) {
 
         //shows View on display
@@ -236,8 +245,7 @@ class CrimeListFragment: Fragment() {
 
             //creates adapter
             //submitList(crimes) - Отправляет новый список для сравнения и отображения.
-            //Если список уже отображается, diff будет вычисляться
-            // в фоновом потоке, который будет отправлять события
+            //DiffUtil будет вычисляться в фоновом потоке, который будет отправлять события в
             // Adapter.notifyItem в основной поток.
             adapter?.submitList(crimes)
             textEmpty.visibility = View.GONE
