@@ -8,14 +8,24 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="32" />
 
+    <!-- user's permissions -->
+    <!-- dangerous permission - run time permission -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- dangerous permission - run time permission -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- dangerous permission - run time permission -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="false" />
 
+    <!--
+android:name=".CriminalIntentApplication" accepting using the
+CriminalIntentApplication class for creation a new CrimeRepository's object
+    -->
     <application
         android:name="com.bignerdranch.android.criminalintent.CriminalIntentApplication"
         android:allowBackup="true"
@@ -33,6 +43,8 @@
             android:name="com.bignerdranch.android.criminalintent.MainActivity"
             android:exported="true" >
             <intent-filter>
+
+                <!-- shows intent action -->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

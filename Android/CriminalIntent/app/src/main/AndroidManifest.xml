@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bignerdranch.android.criminalintent">
 
+<!--    user's permissions -->
+<!--    dangerous permission - run time permission-->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <!--    dangerous permission - run time permission-->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <!--    dangerous permission - run time permission-->
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <uses-feature android:name="android.hardware.camera2"
@@ -27,6 +33,8 @@ CriminalIntentApplication class for creation a new CrimeRepository's object-->
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
+
+<!--                shows intent action-->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

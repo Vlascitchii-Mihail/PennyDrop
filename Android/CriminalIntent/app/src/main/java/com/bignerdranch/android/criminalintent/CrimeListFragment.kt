@@ -46,17 +46,21 @@ class CrimeListFragment: Fragment() {
         ViewModelProvider(this)[CrimeListViewModel::class.java]
     }
 
+    //inflates the menu/fragment_crime_list.xml
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
+//        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.fragment_crime_list, menu)
     }
 
+    //menu items listener(callback)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_crime -> {
                 val crime = Crime()
                 crimeListViewModel.addCrime(crime)
                 callbacks?.onCrimeSelected(crime.id)
+
+                //stops processing
                 true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -69,11 +73,16 @@ class CrimeListFragment: Fragment() {
      */
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        //setting callback
         callbacks = context as Callbacks?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Сообщите, что этот фрагмент хотел бы участвовать в заполнении меню параметров,
+        // получив вызов onCreateOptionsMenu и связанных методов.
         setHasOptionsMenu(true)
     }
 
@@ -88,6 +97,8 @@ class CrimeListFragment: Fragment() {
 //            callbacks?.onCrimeSelected(crime.id)
 //        }
 
+
+        //button for creating first list's element
         addButton = view?.findViewById(R.id.add_new_crime) as Button
         addButton.setOnClickListener {
             val crime = Crime()
@@ -136,6 +147,8 @@ class CrimeListFragment: Fragment() {
     //Вызывается когда фрагмент открепляется от host
     override fun onDetach() {
         super.onDetach()
+
+        //cancellation callback
         callbacks = null
     }
 
@@ -248,6 +261,8 @@ class CrimeListFragment: Fragment() {
             //DiffUtil будет вычисляться в фоновом потоке, который будет отправлять события в
             // Adapter.notifyItem в основной поток.
             adapter?.submitList(crimes)
+
+            //if crimes.isNotEmpty() the textEmpty and addButton are gone
             textEmpty.visibility = View.GONE
             addButton.visibility = View.GONE
         }

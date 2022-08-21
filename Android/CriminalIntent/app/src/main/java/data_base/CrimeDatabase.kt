@@ -9,6 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 //@Database - database in app
 /**
  * @param - [Crime::class] - table of database
+ * @param 3 - database version
  */
 @Database(entities = [Crime::class], version = 3)
 
@@ -21,8 +22,19 @@ abstract class CrimeDatabase: RoomDatabase() {
     abstract fun crimeDao(): CrimeDao
 }
 
+//creating field, uses for executing the migration
+//Migration(1, 2) - constructor
+/**
+ * @param 1 - old database version
+ * @param 2 - new database version
+ */
 val migration_1_2 = object : Migration(1, 2) {
+
+    //executing the migration
     override fun migrate(database: SupportSQLiteDatabase) {
+
+        //Выполните один оператор SQL, который не возвращает никаких данных.
+        //ALTER TABLE - adding new column in database's table
         database.execSQL("ALTER TABLE Crime ADD COLUMN suspect TEXT NOT NULL DEFAULT''")
     }
 }

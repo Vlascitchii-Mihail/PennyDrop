@@ -6,6 +6,10 @@ import java.lang.System;
 public final class CrimeDetailViewModel extends androidx.lifecycle.ViewModel {
     private final com.bignerdranch.android.criminalintent.CrimeRepository crimeRepository = null;
     private final androidx.lifecycle.MutableLiveData<java.util.UUID> crimeIdLiveData = null;
+    
+    /**
+     * @param crimeIdLiveData - trigger
+     */
     @org.jetbrains.annotations.NotNull()
     private androidx.lifecycle.LiveData<com.bignerdranch.android.criminalintent.Crime> crimeLiveData;
     

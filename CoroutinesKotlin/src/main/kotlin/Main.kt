@@ -1,3 +1,4 @@
+import jdk.internal.misc.Signal
 import kotlinx.coroutines.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
@@ -1113,3 +1114,36 @@ class MainView(private val presenter: MainPresenter,
         println(userData)
     }
 }
+
+
+////creation new background Thread
+//class MyThread: Thread() {
+//    override fun run() {
+//        println("Background Thread")
+//    }
+//}
+//
+//fun main() {
+//    val newThread = MyThread()
+//    newThread.start()
+//    println(newThread.name)
+//}
+
+
+////implementation of the interface Runnable
+//class MyRunnable: Runnable {
+//    override fun run() {
+//        println("Background Thread")
+//    }
+//}
+//
+//fun main() {
+//    val runnable = MyRunnable()
+//
+//    //transmitting Runnable in Thread()'s constructor
+//    val thread = Thread(runnable)
+//    thread.start()
+//}
+
+
+

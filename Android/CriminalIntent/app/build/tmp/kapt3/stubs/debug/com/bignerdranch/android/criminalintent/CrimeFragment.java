@@ -20,6 +20,11 @@ public final class CrimeFragment extends androidx.fragment.app.Fragment {
     private int viewWidth = 0;
     private int viewHeight = 0;
     private final kotlin.Lazy crimeDetailViewModel$delegate = null;
+    
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCall - reference on function
+     */
     private final androidx.activity.result.ActivityResultLauncher<java.lang.String> callPermissionRequestLauncher = null;
     private final androidx.activity.result.ActivityResultLauncher<java.lang.String> contactsPermissionRequestLauncher = null;
     private final androidx.activity.result.ActivityResultLauncher<java.lang.Void> pickContact = null;

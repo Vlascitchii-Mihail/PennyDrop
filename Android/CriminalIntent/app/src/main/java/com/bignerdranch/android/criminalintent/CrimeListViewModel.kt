@@ -22,6 +22,7 @@ class CrimeListViewModel: ViewModel() {
     //returns a list of crimes
     val crimeListLiveData = crimeRepository.getCrimes()
 
+    //adding a new crime from the menu
     fun addCrime(crime: Crime) {
         crimeRepository.addCrime(crime)
     }

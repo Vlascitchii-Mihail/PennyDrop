@@ -35,6 +35,8 @@ private const val TAG = "CrimeFragment"
 private const val ARG_CRIME_ID = "crime_id"
 private const val DIALOG_DATE = "DialogDate"
 const val REQUEST_KEY = "request"
+
+//формат даты
 private const val DATA_FORMAT = "EEE, d MMM yyyy HH:mm:ss"
 private const val REQUEST_CONTACT = 1
 private const val CALL_REQUEST_CODE = 0
@@ -150,14 +152,31 @@ class CrimeFragment : Fragment() {
             }
         }
 
+        //data button listener
         dateButton.setOnClickListener {
+
+            //getting DatePickerFragment object and transferring a Date
             DatePickerFragment.newInstance(crime.date).apply {
+
+                //showing DataPickerFragment dialog
+                /**
+                 * @param this@CrimeFragment.childFragmentManager - Вернуть private FragmentManager из CrimeFragment
+                 * для размещения и управления фрагментами внутри этого фрагмента.
+                 */
                 show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
             }
         }
 
         timeButton.setOnClickListener {
+
+            //getting DatePickerFragment object and transferring a Date
             TimePickerFragment.newInstanceTime(crime.date).apply {
+
+                //showing DataPickerFragment dialog
+                /**
+                 * @param this@CrimeFragment.childFragmentManager - Вернуть private FragmentManager из CrimeFragment
+                 * для размещения и управления фрагментами внутри этого фрагмента.
+                 */
                 show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
             }
         }
@@ -169,24 +188,40 @@ class CrimeFragment : Fragment() {
         }
 
         reportButton.setOnClickListener {
+
+            //implicit intent
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/playn"
+
+                //adding report
                 putExtra(Intent.EXTRA_TEXT, getCrimeReport())
+
+                //theme's string
                 putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject))
             }.also { intent ->
 
-                ////////////////old method
-//                startActivity(intent)
+                //creating list of applications for choosing
                 val chooserIntent = Intent.createChooser(intent, getString(R.string.send_report))
+
+                ////////////////old method
+                //starting activity
                 startActivity(chooserIntent)
             }
         }
 
         suspectButton.apply {
-            //    val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+
+            /**
+             * @param ACTION_PICK - Выберите элемент из данных, возвращая то, что было выбрано.
+             * @param ContactsContract.Contacts.CONTENT_URI - data path
+             */
+//                val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
             setOnClickListener {
                 ////////////////old method
+                //getting data from some activity
 //                startActivityForResult(pickContactIntent, REQUEST_CONTACT)
+
+                //launch(Manifest.permission.READ_CONTACTS) input – the input required to execute an ActivityResultContract.
                 contactsPermissionRequestLauncher.launch(Manifest.permission.READ_CONTACTS)
             }
         }
@@ -253,14 +288,25 @@ class CrimeFragment : Fragment() {
 //    }
 //
 
+    //creating new ActivityResultLauncher
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCall - reference on function
+     */
     private val callPermissionRequestLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission(), ::onGotPermissionCall)
 
     private fun onGotPermissionCall(granted: Boolean) {
+
+        //start the activity
         if (granted) permissionCallGranted()
         else {
+
+            //shouldShowRequestPermissionRationale() - returns true if user denied permission not in forever
             if (shouldShowRequestPermissionRationale(Manifest.permission.CALL_PHONE)){
                 Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_LONG).show()
+
+                //show dialog with explanation here
             } else askUserForOpeningCallSettings()
         }
     }
@@ -270,17 +316,29 @@ class CrimeFragment : Fragment() {
         startActivity(Intent(ACTION_DIAL, Uri.parse("tel:" +crime.suspectPhoneNumber)))
     }
 
+    //show dialog with explanation here
     private fun askUserForOpeningCallSettings() {
+
+        //the intent for starting the application's settings
         val appSettingsIntent = Intent(
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+
+            //reference to our app
             Uri.fromParts("com.bignerdranch.android.criminalintent", "MainActivity", "CrimeFragment")
         )
+
+        //checking if the activity exists
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
         } else {
+
+            //showing dialog
             AlertDialog.Builder(context).setTitle("Permission denied").setMessage("You have denied permissions forever. " +
                     "You can change your decision in app settings\n\n\"" +
-                    "Would you like to open app settings?").setPositiveButton("Open") {_, _ ->
+                    "Would you like to open app settings?")
+
+                //changing positive button to "Open" and opening the settings
+                .setPositiveButton("Open") {_, _ ->
                 startActivity(appSettingsIntent)
             }.create().show()
         }
@@ -289,21 +347,31 @@ class CrimeFragment : Fragment() {
 
 
 
-
+    //launching contact app and returning selected element
     private val contactsPermissionRequestLauncher = registerForActivityResult(
+
+        //requesting permission using function onGotPermissionContact
         ActivityResultContracts.RequestPermission(), ::onGotPermissionContact)
 
     private fun onGotPermissionContact(granted: Boolean) {
+
+        //permission accepted before choosing
         if (granted) permissionContactsGranted()
         else {
+
+            //shouldShowRequestPermissionRationale() - returns true if user denied permission not in forever
             if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)){
                 Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_LONG).show()
+
+                //show dialog with explanation here
             } else askUserForOpeningContactSettings()
         }
     }
 
     private fun permissionContactsGranted() {
 //        Toast.makeText(requireContext(), "Contact permission is granted", Toast.LENGTH_SHORT).show()
+
+        //launching contact app
         pickContact.launch(null)
     }
 
@@ -464,6 +532,12 @@ class CrimeFragment : Fragment() {
 //        requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
 //    }
 
+//    getting data from the DatePickerFragment using the Callbacks
+//    override fun onDateSelected(date: Date) {
+//        crime.date = date
+//        updateUI()
+//    }
+
     //UI refreshing
     private fun updateUI() {
         titleField.setText(crime.title)
@@ -476,6 +550,7 @@ class CrimeFragment : Fragment() {
             jumpDrawablesToCurrentState()
         }
 
+        //setting the name of the suspect in button.text
         if (crime.suspect.isNotEmpty()) suspectButton.text = crime.suspect
         callButton.text = if (crime.suspectPhoneNumber == "") "Call to suspect" else crime.suspectPhoneNumber
 
@@ -495,10 +570,16 @@ class CrimeFragment : Fragment() {
         }
     }
 
+    //creating new report
     private fun getCrimeReport() :String {
         val solvedString = if (crime.isSolved) getString(R.string.crime_report_solved) else getString(R.string.crime_report_unsolved)
         val dataString = DateFormat.format(DATA_FORMAT, crime.date)
+
+        //isBlank() - Returns true if this string is empty or consists solely of whitespace characters.
         val suspect = if (crime.suspect.isBlank()) getString(R.string.crime_report_no_suspect) else getString(R.string.crime_report_suspect, crime.suspect)
+
+        //Возвращает локализованную отформатированную строку из таблицы строк
+        // по умолчанию пакета приложения, заменяя аргументы формата
         return getString(R.string.crime_report, crime.title, dataString, solvedString, suspect)
     }
 

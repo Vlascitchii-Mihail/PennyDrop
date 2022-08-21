@@ -25,7 +25,9 @@ class CrimeRepository private constructor(context: Context) {
      */
     private val database: CrimeDatabase = Room.databaseBuilder(
         context.applicationContext, CrimeDatabase::class.java, DATABASE_NAME
-    ).addMigrations(migration_2_3).build()
+
+    //addMigrations() - executing the migration
+    ).addMigrations(migration_1_2, migration_2_3).build()
 
     //the object which references on the background thread
     private val executor = Executors.newSingleThreadExecutor()
