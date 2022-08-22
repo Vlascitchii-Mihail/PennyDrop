@@ -298,7 +298,7 @@ class CrimeFragment : Fragment() {
 
     private fun onGotPermissionCall(granted: Boolean) {
 
-        //start the activity
+        //start the activity if permission granted
         if (granted) permissionCallGranted()
         else {
 
@@ -313,6 +313,10 @@ class CrimeFragment : Fragment() {
 
     private fun permissionCallGranted() {
 //        Toast.makeText(requireContext(), "Contact permission is granted", Toast.LENGTH_SHORT).show()
+
+        /**
+         * @param ACTION_DIAL - inputs the phone number in call app and waiting for user's action
+         */
         startActivity(Intent(ACTION_DIAL, Uri.parse("tel:" +crime.suspectPhoneNumber)))
     }
 
@@ -347,6 +351,11 @@ class CrimeFragment : Fragment() {
 
 
 
+    //creating new ActivityResultLauncher
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCall - reference on function
+     */
     //launching contact app and returning selected element
     private val contactsPermissionRequestLauncher = registerForActivityResult(
 
@@ -355,7 +364,7 @@ class CrimeFragment : Fragment() {
 
     private fun onGotPermissionContact(granted: Boolean) {
 
-        //permission accepted before choosing
+        //permission accepted true
         if (granted) permissionContactsGranted()
         else {
 
@@ -376,58 +385,138 @@ class CrimeFragment : Fragment() {
     }
 
     private fun askUserForOpeningContactSettings() {
+
+        //the intent for starting the application's settings
         val appSettingsIntent = Intent(
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+
+            //reference to our app
             Uri.fromParts("com.bignerdranch.android.criminalintent", "MainActivity", "CrimeFragment")
         )
+
+        //checking if the activity exists
+        /**
+         * @param packageManager - information about all the activities instaled on the phone
+         * @param PackageManager.MATCH_DEFAULT_ONLY - Флаг ограничивает поиск activity с флагом CATEGORY_DEFAULT
+         */
+        //resolveActivity(Intent) - find activity, returns ResolveInfo or null
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
         } else {
+
+            //showing dialog
             AlertDialog.Builder(context).setTitle("Permission denied").setMessage("You have denied permissions forever. " +
                     "You can change your decision in app settings\n\n\"" +
-                    "Would you like to open app settings?").setPositiveButton("Open") {_, _ ->
+                    "Would you like to open app settings?")
+
+                //changing positive button to "Open" and opening the settings
+                .setPositiveButton("Open") {_, _ ->
                 startActivity((appSettingsIntent))
             }.create().show()
         }
     }
 
     //    val pickContactIntent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+
+    //launching contact app using contract ActivityResultContracts.PickContact()
+    //contacts view as a listeners
+    /**
+     * @param contactUri - selected contact
+     */
     private val pickContact = registerForActivityResult(ActivityResultContracts.PickContact()) { contactUri ->
+
+//        selected contact from contact app
+        /**
+         * @param contactUri - location of data
+         */
         if (contactUri != null) {
+
+            //receiving and using contact's data
+            //sending only one contact on which we clicked in contact app
             getContactNameAndID(contactUri)
         }
     }
 
-    private fun getContactNameAndID(uri: Uri) {
+    //receiving contact's data
+    private fun getContactNameAndID(contactUri: Uri) {
+
+        //Указать, для каких полей запрос должен возвращать значения
+        //we have only one contact here
         val queryFields = arrayOf(ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts._ID)
-        val cursorNameAndId = uri.let {
-            requireActivity().contentResolver.query(it, queryFields, null, null, null)
+
+        //Cursor object
+        val cursorNameAndId = contactUri.let { uri ->
+
+            //receiving data from contact app database using queryFields array
+            //query() - аналогичен запросу SELECT в SQL и используется для получения данных.
+            /**
+             * @param uri - uri - location of data
+             * @param queryFields == null - column from which we choose contact's number
+             * @param selectin == null - as WHERE in SQL, selection conditions
+             * @param selectionArgs == null - массив аргументов, которые используются в selection.
+             *          Каждый знак вопроса в строке selection будет заменен на аргумент из массива selectionArgs.
+             * @param sortOrder == null - аналогичен ORDER BY в SQL. Задает порядок, в котором будут возвращены результаты запроса.
+             */
+            //so we have only one contact, we don't need snt selection argument
+            requireActivity().contentResolver.query(uri, queryFields, null, null, null)
         }
+
         cursorNameAndId?.use {
+
+            //count - returns a size of the Cursor
             if(it.count > 0) {
+
+                //moveToFirst() - moving the cursor on the first string
                 it.moveToFirst()
+
+                //transformation the contact's name in the first string in String
+                //receiving suspect name
                 val suspect = it.getString(0)
                 crime.suspect = suspect
                 suspectButton.text = suspect
 
+                //transformation the contact ID in the second string in String
+                //phoneNumber() -receiving the suspect's phone number using contact ID
                 crime.suspectPhoneNumber = phoneNumber(it.getString(1))
                 callButton.text = crime.suspectPhoneNumber
+
+                //saving data in our database
                 crimeDetailViewModel.saveCrime(crime)
             }
         }
     }
 
     //take contact ID and receive the phone number
-    private fun phoneNumber(str: String): String {
+    private fun phoneNumber(contactId: String): String {
         var number = ""
-        val phoneURI = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
-        val phoneNumberQueryFields = listOf(ContactsContract.CommonDataKinds.Phone.NUMBER).toTypedArray()
 
-        // phoneWhereClause: A filter declaring which rows to return, formatted as an SQL WHERE clause (excluding the WHERE itself)
-        val phoneWhereClause = "${ContactsContract.CommonDataKinds.Phone.CONTACT_ID} = ?"
-        val phoneQueryParameters = listOf(str).toTypedArray()
-        val phoneCursor = requireActivity().contentResolver.query(phoneURI, phoneNumberQueryFields, phoneWhereClause, phoneQueryParameters, null)?.use {
+        //location of data
+        val phoneURI = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+
+        //returns array of contacts' numbers as a column
+        val phoneNumberQueryFields = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER)
+
+        //query - return ID where ContactsContract.CommonDataKinds.Phone.CONTACT_ID == contactId
+        val selectCondition = "${ContactsContract.CommonDataKinds.Phone.CONTACT_ID} = ?"
+
+        //list of contactId
+        val phoneQueryParameters = listOf(contactId).toTypedArray()
+
+        //query() - аналогичен запросу SELECT в SQL и используется для получения данных.
+        /**
+         * @param phoneURI - uri - location of data
+         * @param phoneNumberQueryFields - column from which we choose contact's number
+         * @param selectCondition - as WHERE in SQL, selection conditions
+         * @param phoneQueryParameters - массив аргументов, которые используются в selection.
+         *          Каждый знак вопроса в строке selection будет заменен на аргумент из массива selectionArgs.
+         * @param null - аналогичен ORDER BY в SQL. Задает порядок, в котором будут возвращены результаты запроса.
+         */
+        requireActivity().contentResolver.query(phoneURI, phoneNumberQueryFields, selectCondition, phoneQueryParameters, null)?.use {
+
+            //count - returns a size of the Cursor
             if (it.count > 0) {
+
+                //moveToFirst() - moving the cursor on the first string
                 it.moveToFirst()
                 number =  it.getString(0)
             }
