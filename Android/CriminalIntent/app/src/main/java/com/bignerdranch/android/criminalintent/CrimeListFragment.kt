@@ -176,10 +176,13 @@ class CrimeListFragment: Fragment() {
 
             //sets visibility of image in each CrimeHolder
             solvedImageView.visibility = if (crime.isSolved) {
+
                 //description for для людей с ограниченным зрением
                 solvedImageView.contentDescription = getString(R.string.is_solved)
                 View.VISIBLE
             } else {
+
+                //description for для людей с ограниченным зрением
                 solvedImageView.contentDescription = getString(R.string.is_not_solved)
                 View.GONE
             }

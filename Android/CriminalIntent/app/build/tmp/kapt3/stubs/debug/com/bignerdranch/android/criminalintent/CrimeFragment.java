@@ -23,15 +23,25 @@ public final class CrimeFragment extends androidx.fragment.app.Fragment {
     
     /**
      * @param ActivityResultContracts.RequestPermission() - contract
-     * @param ::onGotPermissionCall - reference on function
+     * @param ::onGotPermissionCall - reference to function which uses the users choice
      */
     private final androidx.activity.result.ActivityResultLauncher<java.lang.String> callPermissionRequestLauncher = null;
+    
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCall - reference on function
+     */
     private final androidx.activity.result.ActivityResultLauncher<java.lang.String> contactsPermissionRequestLauncher = null;
     
     /**
      * @param contactUri - selected contact
      */
     private final androidx.activity.result.ActivityResultLauncher<java.lang.Void> pickContact = null;
+    
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCamera - reference to function which uses the users choice
+     */
     private final androidx.activity.result.ActivityResultLauncher<java.lang.String> cameraPermissionRequestLauncher = null;
     private final androidx.activity.result.ActivityResultLauncher<android.net.Uri> pickCamera = null;
     @org.jetbrains.annotations.NotNull()

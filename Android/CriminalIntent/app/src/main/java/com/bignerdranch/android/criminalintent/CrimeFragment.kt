@@ -54,7 +54,11 @@ class CrimeFragment : Fragment() {
     private lateinit var solvedCheckBox: CheckBox
     private lateinit var photoButton: ImageButton
     private lateinit var photoView: ImageView
+
+    //the variable shows a photo's location
     private lateinit var photoFile: File
+
+    //the variable shows where to store a photo in the file system
     private lateinit var photoUri: Uri
     private lateinit var treeObserver: ViewTreeObserver
     var viewWidth = 0
@@ -106,7 +110,15 @@ class CrimeFragment : Fragment() {
         //crimeDetailViewModel.crimeLiveData listener
         crimeDetailViewModel.crimeLiveData.observe(viewLifecycleOwner, Observer { crime -> crime?.let {
             this.crime = crime
+
+            //returns the path of the photo
             photoFile = crimeDetailViewModel.getPhotoFile(crime)
+
+            //File Provider provides a place in the file system using the photo path
+            //getUriForFile() - transforms path to Uri, which is seen by camera
+            /**
+             * @param "com.bignerdranch.android.criminalintent.fileprovider"  - FileProvider.authorities in Manifest
+             */
             photoUri = FileProvider.getUriForFile(requireActivity(), "com.bignerdranch.android.criminalintent.fileprovider", photoFile)
             updateUI()
         }})
@@ -182,7 +194,15 @@ class CrimeFragment : Fragment() {
         }
 
         photoView.setOnClickListener {
+
+            //getting PhotoZoomFragment object and transferring data
             PhotoZoomFragment.newInstance(photoFile).apply {
+
+                //showing PhotoZoomFragment dialog
+                /**
+                 * @param this@CrimeFragment.childFragmentManager - Вернуть private FragmentManager из CrimeFragment
+                 * для размещения и управления фрагментами внутри этого фрагмента.
+                 */
                 show(this@CrimeFragment.childFragmentManager, DIALOG_DATE)
             }
         }
@@ -242,6 +262,10 @@ class CrimeFragment : Fragment() {
 //                val cameraActivities: List<ResolveInfo> = packageManager.queryIntentActivities(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
 //
 //                for (cameraActivity in cameraActivities) {
+//
+//                    /**
+//                     * @param Intent.FLAG_GRANT_WRITE_URI_PERMISSION - permission for all the camera's app
+//                     */
 //                    requireActivity().grantUriPermission(cameraActivity.activityInfo.packageName, photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
 //                }
 //
@@ -252,11 +276,16 @@ class CrimeFragment : Fragment() {
         photoButton.apply {
             val packageManager: PackageManager = requireActivity().packageManager
             val captureImage = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+            //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
             val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(captureImage, PackageManager.MATCH_DEFAULT_ONLY)
 
+            //if tje camera app doesn't exist, then block the button
             if (resolvedActivity == null) isEnabled = false
 
             setOnClickListener {
+
+                //requesting the permission
                 cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
             }
 
@@ -289,9 +318,10 @@ class CrimeFragment : Fragment() {
 //
 
     //creating new ActivityResultLauncher
+    //asking about permission
     /**
      * @param ActivityResultContracts.RequestPermission() - contract
-     * @param ::onGotPermissionCall - reference on function
+     * @param ::onGotPermissionCall - reference to function which uses the users choice
      */
     private val callPermissionRequestLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission(), ::onGotPermissionCall)
@@ -331,7 +361,7 @@ class CrimeFragment : Fragment() {
             Uri.fromParts("com.bignerdranch.android.criminalintent", "MainActivity", "CrimeFragment")
         )
 
-        //checking if the activity exists
+        //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
         } else {
@@ -399,7 +429,7 @@ class CrimeFragment : Fragment() {
          * @param packageManager - information about all the activities instaled on the phone
          * @param PackageManager.MATCH_DEFAULT_ONLY - Флаг ограничивает поиск activity с флагом CATEGORY_DEFAULT
          */
-        //resolveActivity(Intent) - find activity, returns ResolveInfo or null
+        //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
         } else {
@@ -528,39 +558,64 @@ class CrimeFragment : Fragment() {
 
 
 
-
+    //creating new ActivityResultLauncher
+    //asking about permission
+    /**
+     * @param ActivityResultContracts.RequestPermission() - contract
+     * @param ::onGotPermissionCamera - reference to function which uses the users choice
+     */
     private val cameraPermissionRequestLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission(), ::onGotPermissionCamera)
 
     private fun onGotPermissionCamera(granted: Boolean) {
+
+        //start the activity if permission granted
         if (granted) permissionCameraGranted()
         else {
+
+            //shouldShowRequestPermissionRationale() - returns true if user denied permission not in forever
             if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
                 Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+
+            //show dialog with explanation here
             } else askUserForOpeningCameraSettings()
         }
     }
 
     private fun permissionCameraGranted() {
+        //launching the camera
         pickCamera.launch(photoUri)
     }
 
+    //show dialog with explanation here
     private fun askUserForOpeningCameraSettings() {
+
+        //the intent for starting the application's settings
         val appSettingsIntent = Intent(
             Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+
+            //reference to our app
             Uri.fromParts("com.bignerdranch.android.criminalintent", "MainActivity", "CrimeFragment")
         )
+
+        //resolveActivity(Intent) - checking if the activity exists, returns ResolveInfo or null
         if (requireActivity().packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
             Toast.makeText(requireContext(), "Permissions are denied forever", Toast.LENGTH_SHORT).show()
         } else {
+
+            //showing dialog
             AlertDialog.Builder(context).setTitle("Permission denied").setMessage("You have denied permissions forever. " +
                     "You can change your decision in app settings\n\n\"" +
-                    "Would you like to open app settings?").setPositiveButton("Open") {_, _ ->
+                    "Would you like to open app settings?")
+
+                //changing positive button to "Open" and opening the settings
+                .setPositiveButton("Open") {_, _ ->
                 startActivity(appSettingsIntent)
             }.create().show()
         }
     }
 
+    //doing the photo
     private val pickCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) { _ ->
 //        if (contactUri != null) {
 //            photoView.setImageURI(photoUri)
@@ -630,6 +685,9 @@ class CrimeFragment : Fragment() {
     //UI refreshing
     private fun updateUI() {
         titleField.setText(crime.title)
+
+        //data format
+        //getDateFormat() - Returns a DateFormat object that can format the date in short form according to the context's locale.
         dateButton.text = DateFormat.getDateFormat(context).format(crime.date)
         timeButton.text = DateFormat.format("kk:mm:ss", crime.date)
         solvedCheckBox.apply {
@@ -646,15 +704,22 @@ class CrimeFragment : Fragment() {
         updatePhotoView()
     }
 
+    //uploading the Bitmap Object
     private fun updatePhotoView() {
         if(photoFile.exists()) {
             photoView.isEnabled = true
             val bitmap = getScaleBitmap(photoFile.path, requireActivity())
+
+            //setting the photo in ImageView
             photoView.setImageBitmap(bitmap)
             photoView.announceForAccessibility(getText(R.string.image_changed))
+
+            //setting the description to photoView for Talk Back app
             photoView.contentDescription = getString(R.string.crime_photo_image_description)
         } else {
             photoView.setImageDrawable(null)
+
+            //setting the description to photoView for Talk Back app
             photoView.contentDescription = getString(R.string.crime_photo_no_image_description)
         }
     }

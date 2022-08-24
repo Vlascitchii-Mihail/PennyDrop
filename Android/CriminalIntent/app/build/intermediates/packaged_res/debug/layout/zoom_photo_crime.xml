@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+<!--    android:adjustViewBounds="true" - hides white bounds on the photoView-->
     <ImageView
         android:id="@+id/zoom_photo"
         android:layout_width="wrap_content"

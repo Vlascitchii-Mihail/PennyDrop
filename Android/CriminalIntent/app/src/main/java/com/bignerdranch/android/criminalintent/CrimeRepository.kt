@@ -14,6 +14,9 @@ private const val DATABASE_NAME = "crime-database"
 
 //Singleton
 //private constructor forbids (запрещает) creating a new object
+/**
+ * @param context - CriminalIntentApplication : Application type
+ */
 class CrimeRepository private constructor(context: Context) {
 
     //creating a reference to the database CrimeDatabase
@@ -32,6 +35,7 @@ class CrimeRepository private constructor(context: Context) {
     //the object which references on the background thread
     private val executor = Executors.newSingleThreadExecutor()
 
+    //the object file shows the correct place for adding a photo
     private val filesDir = context.applicationContext.filesDir
 
     //provides access to the CrimeDao interface
@@ -65,6 +69,7 @@ class CrimeRepository private constructor(context: Context) {
         }
     }
 
+    //defines the location of a photo
     fun getPhotoFile(crime: Crime): File = File(filesDir, crime.photoFileName)
 
     companion object {

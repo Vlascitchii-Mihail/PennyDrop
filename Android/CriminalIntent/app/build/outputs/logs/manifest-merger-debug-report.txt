@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
 MERGED from [androidx.databinding:viewbinding:7.2.2] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\50c32a1b3f5c30c6b514367b6d716160\transformed\viewbinding-7.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment-ktx:1.5.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\8d1836a2e5479be997545b20dbf0f905\transformed\fragment-ktx-1.5.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity-ktx:1.5.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\75c3f7b6924360c529404486eb9a4375\transformed\activity-ktx-1.5.0\AndroidManifest.xml:17:1-24:12
@@ -56,22 +56,22 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] D:\Programs\AndroidStudio
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\15f52d06e80eb4dc9e54b5a875209cc7\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\2e60b2a2da90e0702d7456ba71948db7\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\0d668bbb7f553fd780cc3ea32432440a\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
-INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
+INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
 	package
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:4:5-54
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-54:12
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:1-61:12
 		INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:2:11-69
@@ -88,13 +88,13 @@ ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml
 	android:name
 		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:14:22-62
 uses-feature#android.hardware.camera2
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:5-17:35
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:5-19:35
 	android:required
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:17:9-33
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:19:9-33
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:16:19-58
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:18:19-58
 application
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:21:5-52:19
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:5-59:19
 MERGED from [com.google.android.material:material:1.6.1] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\f9152b033fde59f5ca45a72a3d559041\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.6.1] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\f9152b033fde59f5ca45a72a3d559041\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\04ad0b4a023e5fc6ca2669406151a6ea\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -116,57 +116,57 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] D:\Programs\AndroidStudio\.
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] D:\Programs\AndroidStudio\.gradle\caches\transforms-3\5b4f0ebc2de8ae8b764bc452a6c78125\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:29:9-35
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:31:9-35
 	android:label
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:27:9-41
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:29:9-41
 	android:fullBackupContent
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:25:9-54
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:27:9-54
 	android:roundIcon
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:28:9-54
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:30:9-54
 	tools:targetApi
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:31:9-29
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:33:9-29
 	android:icon
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:26:9-43
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:28:9-43
 	android:allowBackup
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:23:9-35
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:25:9-35
 	android:theme
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:30:9-52
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:32:9-52
 	android:dataExtractionRules
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:9-65
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:26:9-65
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:22:9-50
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:24:9-50
 activity#com.bignerdranch.android.criminalintent.MainActivity
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:32:9-41:20
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:34:9-43:20
 	android:exported
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:34:13-36
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:33:13-41
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:35:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:35:13-40:29
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:37:13-42:29
 action#android.intent.action.MAIN
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:38:17-69
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:40:17-69
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:38:25-66
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:40:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:39:17-77
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:41:17-77
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:39:27-74
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:41:27-74
 provider#androidx.core.content.FileProvider
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:42:9-51:20
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:48:9-58:20
 	android:grantUriPermissions
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:46:13-47
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:52:13-47
 	android:authorities
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:44:13-87
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:50:13-87
 	android:exported
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:45:13-37
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:51:13-37
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:43:13-62
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:49:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:48:13-50:48
+ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:55:13-57:48
 	android:resource
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:50:17-46
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:57:17-46
 	android:name
-		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:49:17-67
+		ADDED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml:56:17-67
 uses-sdk
 INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\MyPrograms\Android\CriminalIntent\app\src\main\AndroidManifest.xml

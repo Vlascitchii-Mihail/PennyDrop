@@ -11,6 +11,7 @@ class CriminalIntentApplication: Application() {
         super.onCreate()
 
         //creating and initialising new CrimeRepository object
+        //using the context of the app
         CrimeRepository.initialize(this)
     }
 }

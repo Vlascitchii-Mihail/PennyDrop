@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Spanish licalization-->
 <resources>
     <string name="app_name">IntentoCriminal</string>
     <string name="crime_title_hint">Introduzca un título para el crimen.</string>

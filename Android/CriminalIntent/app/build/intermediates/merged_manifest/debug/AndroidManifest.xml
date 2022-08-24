@@ -18,6 +18,10 @@
     <!-- dangerous permission - run time permission -->
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!--
+        announcing that the app uses the camera
+        android:required="false" - announcing that the app can work without the camera
+    -->
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="false" />
@@ -51,11 +55,18 @@ CriminalIntentApplication class for creation a new CrimeRepository's object
             </intent-filter>
         </activity>
 
+        <!--
+            "androidx.core.content.FileProvider" uses to get file from another app
+            exported="false" - forbids using provider to application without access
+            grantUriPermissions="true" - accepting permissions to write data in URI
+        -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.bignerdranch.android.criminalintent.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
+
+            <!-- creation relation between files.xml and FileProvider -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/files" />

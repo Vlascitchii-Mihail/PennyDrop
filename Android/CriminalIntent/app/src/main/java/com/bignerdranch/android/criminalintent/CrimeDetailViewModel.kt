@@ -43,5 +43,6 @@ class CrimeDetailViewModel(): ViewModel() {
         crimeRepository.updateCrime(crime)
     }
 
+    //receiving a data about the file location
     fun getPhotoFile(crime: Crime): File = crimeRepository.getPhotoFile(crime)
 }
