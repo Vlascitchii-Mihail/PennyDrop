@@ -9,6 +9,8 @@ import androidx.paging.PagingConfig
 import com.bignerdranch.android.photogallery.PagingPhotoSource
 
 class PhotoResponse {
+
+    // @SerializedName("url_s") - association url_s from Rest API with GalleryItem.uel
     @SerializedName("photo") lateinit var galleryItems: List<GalleryItem>
     private var page: Int? = null
     private var pages: Int? = null

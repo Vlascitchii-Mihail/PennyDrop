@@ -2,6 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--    app:actionViewClass="androidx.appcompat.widget.SearchView"
+        displays SearchView-->
     <item android:id="@+id/menu_item_search"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"

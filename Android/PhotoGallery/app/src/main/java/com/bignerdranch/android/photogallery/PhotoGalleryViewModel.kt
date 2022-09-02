@@ -1,10 +1,8 @@
 package com.bignerdranch.android.photogallery
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
-import com.bignerdranch.android.photogallery.api.FlickrResponse
 import com.bignerdranch.android.photogallery.api.PhotoResponse
 import retrofit2.Call
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +11,10 @@ import androidx.lifecycle.Transformations
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 
+//AndroidViewModel - provides access to the app's context
 class PhotoGalleryViewModel(private val app: Application): AndroidViewModel(app) {
+
+    //keeps all the photos - List with photos
     val galleryItemLiveData: LiveData<List<GalleryItem>>
 //    val usersFlow: Flow<PagingData<GalleryItem>>
 
@@ -23,12 +24,27 @@ class PhotoGalleryViewModel(private val app: Application): AndroidViewModel(app)
     val searchTerm: String get() = mutableSearchTerm.value ?: ""
 
     init {
+
+        //uploading data from the SharedPreferences
         mutableSearchTerm.value = QueryPreferences.getStoredQuery(app)
 //        galleryItemLiveData = FlickrFetchr().searchPhotos("car")
 
+        //LiveData listener
+        //Методы преобразования LiveData.
+        //Transformations() - Преобразование данных в реальном времени, <<триггер - ответ>> между 2я объектами LiveData.
+        /**
+         * @param mutableSearchTerm - trigger
+         */
+        // Эти методы обеспечивают функциональную композицию и делегирование экземпляров LiveData.
+        //switchMap() - Возвращает LiveData, сопоставленный с входным источником LiveData,
+        // применяя switchMap к каждому значению, установленному в источнике
         galleryItemLiveData = Transformations.switchMap(mutableSearchTerm) {
             searchTerm -> if (searchTerm.isBlank()) {
+
+                //get photos when the app starts
                 flickrFetchr.fetchPhotos()
+
+            //searching photos
               } else flickrFetchr.searchPhotos(searchTerm)
         }
         Log.d("PhotoGalleryViewModel", "New ViewModel")
@@ -36,6 +52,8 @@ class PhotoGalleryViewModel(private val app: Application): AndroidViewModel(app)
     }
 
     fun fetchPhotos(query: String = "") {
+
+        //writing data in the SharedPreferences
         QueryPreferences.setStoredQuery(app, query)
         mutableSearchTerm.value = query
     }

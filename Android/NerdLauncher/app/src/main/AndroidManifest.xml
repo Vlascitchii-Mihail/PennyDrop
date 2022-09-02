@@ -22,6 +22,7 @@
         <activity
             android:name=".NerdLauncherActivity"
             android:exported="true">
+<!--            <category android:name="android.intent.category.LAUNCHER" /> shows that app can be launched outside-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

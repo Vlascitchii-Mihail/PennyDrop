@@ -17,8 +17,11 @@ import android.app.Notification
 
 private const val TAG = "PollWorker"
 
+//PollWorker checks Flickr for new photos
 class PollWorker(private val context: Context, workerParams: WorkerParameters):  Worker(context, workerParams){
     @RequiresApi(Build.VERSION_CODES.S)
+
+    //called from the background thread
     override fun doWork(): Result {
 //        Log.i(TAG, "Work request triggered")
         val query = QueryPreferences.getStoredQuery(context)
@@ -57,6 +60,8 @@ class PollWorker(private val context: Context, workerParams: WorkerParameters): 
 
             showBackgroundNotification(0, notification)
         }
+
+        //returning a information about the success result
         return Result.success()
     }
 

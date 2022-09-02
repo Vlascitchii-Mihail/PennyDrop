@@ -37,11 +37,23 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //implementation Recycler View dependence
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    //implementation Retrofit's dependence
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+    //Retrofit's converter for deserializing a okhttp3.ResponseBody objects from website to a simple type
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
+    //gson - library for parsing data from Retrofit Rest API
     implementation 'com.google.code.gson:gson:2.8.9'
+
+    //converter-gson - converts data from Retrofit Rest API to kotlin objects
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //implementation for ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     //paging library
     implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
@@ -51,6 +63,8 @@ dependencies {
 
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    //Worker's class implementation
     implementation "androidx.work:work-runtime-ktx:2.7.1"
 //    implementation "androidx.work:work-runtime:2.7.1"
     implementation "androidx.preference:preference-ktx:1.2.0"
