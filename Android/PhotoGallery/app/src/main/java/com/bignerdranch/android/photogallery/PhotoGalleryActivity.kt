@@ -30,6 +30,8 @@ class PhotoGalleryActivity : AppCompatActivity() {
     }
 
     companion object {
+
+        //Intent is using for start the activity from the status bar
         fun newIntent(context: Context): Intent {
             return Intent(context, PhotoGalleryActivity::class.java)
         }

@@ -41,6 +41,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 private const val TAG = "PhotoGalleryFragment"
 private const val POLL_WORK = "POLL_WORK"
 
+//VisibleFragment.class - contains dynamic broadcast receiver
 class PhotoGalleryFragment: VisibleFragment() {
     private lateinit var photoRecyclerView: RecyclerView
     private val photoGalleryViewModel: PhotoGalleryViewModel by lazy {
@@ -159,11 +160,16 @@ class PhotoGalleryFragment: VisibleFragment() {
         }
 
         override fun onClick(view: View) {
+
             //starting browser
+            //Intent.ACTION_VIEW - browser's filter
 //            val intent = Intent(Intent.ACTION_VIEW, galleryItem.photoPageUri)
 //            startActivity(intent)
 
+            //creating intent for starting the PhotoPageActivity - WebView
             val intent = PhotoPageActivity.newIntent(requireContext(), galleryItem.photoPageUri)
+
+            //starting the PhotoPageActivity - WebView
             startActivity(intent)
 
             CustomTabsIntent.Builder().setToolbarColor(ContextCompat.getColor(requireContext(), R.color.black))
@@ -268,11 +274,17 @@ class PhotoGalleryFragment: VisibleFragment() {
             }
         }
 
+        //inflating notification switcher
         val toggleItem = menu.findItem(R.id.menu_item_toggle_polling)
+
+        //returns the notification work status
         val isPolling = QueryPreferences.isPolling(requireContext())
+
         val toggleItemTitle = if (isPolling) {
             R.string.stop_polling
         } else R.string.start_polling
+
+        //changing the notification work status
         toggleItem.setTitle(toggleItemTitle)
     }
 
@@ -286,21 +298,46 @@ class PhotoGalleryFragment: VisibleFragment() {
             R.id.menu_item_clear -> { photoGalleryViewModel.fetchPhotos("")
             true }
             R.id.menu_item_toggle_polling -> {
+
+                //returns the notification work status
                 val isPolling = QueryPreferences.isPolling(requireContext())
                 if (isPolling) {
+
+                    //cancelUniqueWork() - canceling the periodic request
+                    /**
+                     * @param POLL_WORK - periodic request's name
+                     */
                     WorkManager.getInstance(requireContext()).cancelUniqueWork(POLL_WORK)
                     QueryPreferences.setPolling(requireContext(), false)
                 } else {
+
+                    //creating new constraints
+                    //NetworkType.UNMETERED - unlimited internet connection
                     val constraints = Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.UNMETERED).build()
 
+                    //creating the background periodic work request service
                     val periodicRequest = PeriodicWorkRequest.
+                        /**
+                         * @param 15 - min calling interval
+                         */
                     Builder(PollWorker::class.java, 15, TimeUnit.MINUTES)
+
+                            //adding constraints
                         .setConstraints(constraints).build()
 
+                    //scheduling the background periodic work request service
+                    //getInstance() - access to the WorkManager
                     WorkManager.getInstance(requireContext())
+
+                            //enqueueUniquePeriodicWork() - scheduling the request
+                        /**
+                         * @param ExistingPeriodicWorkPolicy.KEEP - if e have an query, wen not replace him
+                         * @param periodicRequest - request
+                         */
                         .enqueueUniquePeriodicWork(POLL_WORK, ExistingPeriodicWorkPolicy.KEEP, periodicRequest)
 
+                    //setting the notification work status
                     QueryPreferences.setPolling(requireContext(), true)
                 }
                 activity?.invalidateOptionsMenu()

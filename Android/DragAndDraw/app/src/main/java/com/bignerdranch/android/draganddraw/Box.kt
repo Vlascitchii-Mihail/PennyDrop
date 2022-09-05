@@ -3,7 +3,10 @@ package com.bignerdranch.android.draganddraw
 import android.graphics.PointF
 import java.lang.Math
 
+//data which defines the rectangle
 class Box(val start: PointF) {
+
+    //last point of the rectangle
     var end: PointF = start
 
     val left: Float get() = Math.min(start.x, end.x)

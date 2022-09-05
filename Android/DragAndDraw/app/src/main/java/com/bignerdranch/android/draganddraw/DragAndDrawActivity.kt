@@ -3,6 +3,7 @@ package com.bignerdranch.android.draganddraw
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+//container
 class DragAndDrawActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

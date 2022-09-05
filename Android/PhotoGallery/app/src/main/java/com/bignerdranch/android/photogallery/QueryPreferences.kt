@@ -6,7 +6,11 @@ import androidx.core.content.edit
 
 //key for the query
 private const val PREF_SEARCH_QUERY = "searchQuery"
+
+//the last photo's ID
 private const val PREF_LAST_RESULT_ID = "lastResultId"
+
+//notification status
 private const val PREF_IS_POLLING = "isPolling"
 
 //interface for saving data in the class SharedPreferences
@@ -33,22 +37,26 @@ object QueryPreferences {
         }
     }
 
+    //receiving the ID of the last photo
     fun getLastResultId(context: Context) : String {
         return PreferenceManager.getDefaultSharedPreferences(context)
             .getString(PREF_LAST_RESULT_ID, "")!!
     }
 
+    //setting the ID of the last photo
     fun setLastResultId(context: Context, lastResultId: String) {
         PreferenceManager.getDefaultSharedPreferences(context).edit {
             putString(PREF_LAST_RESULT_ID, lastResultId)
         }
     }
 
+    //returns the notification work status
     fun isPolling(context: Context): Boolean {
         return PreferenceManager.getDefaultSharedPreferences(context)
             .getBoolean(PREF_IS_POLLING, false)
     }
 
+    //setting the notification work status
     fun setPolling(context: Context, isOn: Boolean) {
         PreferenceManager.getDefaultSharedPreferences(context).edit {
             putBoolean(PREF_IS_POLLING, isOn)

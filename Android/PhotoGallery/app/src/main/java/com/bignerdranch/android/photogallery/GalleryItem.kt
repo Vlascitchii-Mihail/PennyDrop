@@ -8,6 +8,8 @@ import android.net.Uri
 data class GalleryItem (var title: String = "", var id: String = "",
                         @SerializedName("url_s") var url: String = "",
                         @SerializedName("owner") var owner: String = "") {
+
+    //generating a new URL address
     val photoPageUri: Uri get() {
         return Uri.parse("https://www.flickr.com/photos/")
             .buildUpon().appendPath(owner).appendPath(id).build()
