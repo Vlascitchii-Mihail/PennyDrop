@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--navigation menu-->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/pickPlayersFragment"
-        android:title="@string/players"
-        android:icon="@drawable/ic_baseline_face_24"/>
+        android:icon="@drawable/ic_baseline_tag_faces_24"
+        android:title="@string/players"/>
 
     <item
         android:id="@+id/gameFragment"

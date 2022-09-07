@@ -9,6 +9,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!-- android:layout_weight="0.61" - Указывает, сколько дополнительного
+пространства в LinearLayout
+выделено представлению, связанному с этими LayoutParams. Укажите 0,
+если вид не должен растягиваться. В противном случае лишние пиксели будут
+распределяться пропорционально среди всех просмотров, вес которых больше 0.-->
     <FrameLayout
         android:id="@+id/sky"
         android:layout_width="match_parent"
