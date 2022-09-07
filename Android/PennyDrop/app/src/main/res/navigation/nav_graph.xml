@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gameFragment">
+
+    <!--    adding the fragment and his ID in navigation
+    android:name - name of the package an d the class
+    android:label - XML files
+     android:id - ID from navigation.xml-->
+    <fragment
+        android:id="@+id/pickPlayersFragment"
+        android:name="fragments.PickPlayersFragment"
+        android:label="fragment_pick_players"/>
+
+    <!--    adding the fragment and his ID in navigation
+    android:name - name of the package an d the class
+    android:label - XML files
+     android:id - ID from navigation.xml-->
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="fragments.GameFragment"
+        android:label="fragment_game"/>
+
+</navigation>

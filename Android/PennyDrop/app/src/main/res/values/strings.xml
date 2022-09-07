@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PennyDrop</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Pick Players Fragment</string>
+    <string name="pick_players">Pick Players Fragment</string>
+    <string name="game_fragment">Game Fragment</string>
+    <string name="game">Game</string>
+    <string name="players">Players</string>
 </resources>
