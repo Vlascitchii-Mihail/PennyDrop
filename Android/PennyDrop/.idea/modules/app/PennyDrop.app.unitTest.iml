@@ -14,6 +14,7 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/4d9072a195b673a7f998bfde9f5ce0f3/transformed/navigation-ui-ktx-2.5.1-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/f59def633d2e9542a3e122fa3111acd2/transformed/navigation-ui-2.5.1-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/c59a30dbcd802d28a778d1b79b9a8595/transformed/material-1.6.1-api.jar</arg>
