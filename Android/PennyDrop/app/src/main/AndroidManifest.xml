@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PennyDrop"
         tools:targetApi="31">
+
+<!--        activity's settings
+android:exported="true" - activity is available for other apps-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+<!--            intent-filter - actions witch support this app-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
