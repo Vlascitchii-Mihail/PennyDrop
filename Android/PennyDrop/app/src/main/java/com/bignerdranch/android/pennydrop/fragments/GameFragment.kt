@@ -1,4 +1,4 @@
-package fragments
+package com.bignerdranch.android.pennydrop.fragments
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
