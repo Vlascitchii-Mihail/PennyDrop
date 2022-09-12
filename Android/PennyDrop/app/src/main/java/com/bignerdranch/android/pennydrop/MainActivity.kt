@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         // стек, которые будут сохранены и восстановлены вместе с самим NavHostFragment.
         this.navController = navHostFragment.navController
 
-        //Настраивает NavigationBarView для использования с NavController. Это вызовет
+        //setupWithNavController() - Настраивает NavigationBarView для использования с NavController. Это вызовет
         // android.view.MenuItem.onNavDestinationSelected при выборе пункта меню.
         //Выбранный элемент в NavigationView будет автоматически обновляться при изменении пункта назначения.
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(this.navController)

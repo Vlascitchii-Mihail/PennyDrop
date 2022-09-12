@@ -9,12 +9,12 @@
     app:startDestination="@id/gameFragment">
 
     <!--    adding the fragment and his ID in navigation
-    android:name - name of the package an d the class
+    android:name - name of the package and the class
     android:label - XML files
      android:id - ID from navigation.xml-->
     <fragment
         android:id="@+id/pickPlayersFragment"
-        android:name="fragments.PickPlayersFragment"
+        android:name="com.bignerdranch.android.pennydrop.fragments.PickPlayersFragment"
         android:label="fragment_pick_players"/>
 
     <!--    adding the fragment and his ID in navigation
@@ -23,7 +23,7 @@
      android:id - ID from navigation.xml-->
     <fragment
         android:id="@+id/gameFragment"
-        android:name="fragments.GameFragment"
+        android:name="com.bignerdranch.android.pennydrop.fragments.GameFragment"
         android:label="fragment_game"/>
 
 </navigation>

@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+//import androidx.core.view.isVisible
 import com.bignerdranch.android.pennydrop.R
+import com.bignerdranch.android.pennydrop.databinding.FragmentPickPlayersBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,12 +33,24 @@ class PickPlayersFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pick_players, container, false)
+//        val view =  inflater.inflate(R.layout.fragment_pick_players, container, false)
+//
+//        with(view.findViewById<View>(R.id.mainPlayer)) {
+//            this?.findViewById<CheckBox>(R.id.checkbox_player_active)?.let {
+//                it.isVisible = false
+//                it.isChecked = true
+//            }
+//        }
+//
+//        return view
+
+        //inflating the view with the FragmentPickPlayersBinding class
+        val binding = FragmentPickPlayersBinding.inflate(inflater, container, false)
+
+        //root - Возвращает самое внешнее представление в файле макета, связанном с привязкой
+        return binding.root
     }
 
     companion object {
