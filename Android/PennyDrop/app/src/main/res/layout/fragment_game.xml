@@ -33,6 +33,7 @@ speed of LinearLayout's rendering
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
+<!--        adding coins-->
         <include
             android:id="@+id/coinSlot1"
             layout="@layout/layout_coin_slot"

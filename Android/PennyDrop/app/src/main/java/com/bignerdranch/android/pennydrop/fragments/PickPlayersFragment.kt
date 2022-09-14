@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import androidx.fragment.app.activityViewModels
 //import androidx.core.view.isVisible
 import com.bignerdranch.android.pennydrop.R
 import com.bignerdranch.android.pennydrop.databinding.FragmentPickPlayersBinding
+import com.bignerdranch.android.pennydrop.viewmodels.GameViewModel
+import com.bignerdranch.android.pennydrop.viewmodels.PickPlayersViewModel
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +28,15 @@ class PickPlayersFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    //receiving PickPlayersViewModel exemplar from Activity
+    //each fragment connected with this action will get the same ViewModels exemplar
+    //activityViewModels<>() - Возвращает делегат свойства для доступа к ViewModel родительской активности
+    private val pickPlayersViewModel by activityViewModels<PickPlayersViewModel>()
+
+    //receiving GameViewModel exemplar from Activity
+    //activityViewModels<GameViewModel>() - Возвращает делегат свойства для доступа к ViewModel родительской активности
+    private val gameViewModel by activityViewModels<GameViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +60,29 @@ class PickPlayersFragment : Fragment() {
 //        return view
 
         //inflating the view with the FragmentPickPlayersBinding class
-        val binding = FragmentPickPlayersBinding.inflate(inflater, container, false)
+        val binding = FragmentPickPlayersBinding.inflate(inflater, container, false).apply {
+
+            //initialize the variable vm from the fragment_pick_player.xml
+            this.vm = pickPlayersViewModel
+
+            this.buttonPlayGame.setOnClickListener {
+                gameViewModel.startGame(
+
+                    //filter LiveData
+                    pickPlayersViewModel.players.value?.filter{ newPlayer ->
+                        newPlayer.isIncluded.get()
+                    }?.map { newPlayer ->
+
+                        //transform newPlayer's object to Player's object
+                        newPlayer.toPlayer()
+
+                        //if don't have any player
+                    } ?: emptyList()
+                )
+
+                findNavController().navigate(R.id.gameFragment)
+            }
+        }
 
         //root - Возвращает самое внешнее представление в файле макета, связанном с привязкой
         return binding.root

@@ -8,19 +8,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-<!--        import class View-->
         <import type="android.view.View"/>
-
-<!--        add variable-->
+        <import type="com.bignerdranch.android.pennydrop.game.AI"/>
         <variable
-            name="checkboxHidden"
-            type="Boolean" />
-
-<!--        add variable-->
-        <variable
-            name="switchHidden"
-            type="Boolean" />
+            name="player"
+            type="com.bignerdranch.android.pennydrop.types.NewPlayer" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,15 +28,19 @@ conditions for variables-->
         app:layout_constraintBottom_toBottomOf="@id/edit_text_player_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/edit_text_player_name"
-        android:checked="@{checkboxHidden}"
-        android:visibility="@{checkboxHidden ? View.INVISIBLE : View.VISIBLE}"
-        />
+        android:visibility="@{player.canBeRemoved ? View.VISIBLE : View.INVISIBLE}"
+        android:checked="@={player.isIncluded}" />
 
 <!--    android:inputType - type of input data
         textPersonName - text without spellchecking
          android:hint - подсказка-->
     <!--    "@{}" - binding operator
-conditions for variables-->
+conditions for variables
+
+android:text="@={player.playerName} - receiving and sending data to NewPlayer class
+"@= - reverse binding
+
+android:enabled="@{player.isIncluded()}" - enabling or disabling the view-->
     <EditText
         android:id="@+id/edit_text_player_name"
         android:layout_width="0dp"
@@ -54,17 +50,62 @@ conditions for variables-->
         android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/checkbox_player_active"
-        app:layout_constraintEnd_toStartOf="@id/switch_player_type" />
+        app:layout_constraintEnd_toStartOf="@id/switch_player_type"
+        android:text="@={player.playerName}"
+        android:visibility="@{player.isHuman() ? View.VISIBLE : View.INVISIBLE}"
+        android:enabled="@{player.isIncluded()}"/>
 
-    <androidx.appcompat.widget.SwitchCompat
+<!--    android:thumb="@drawable/ai_toggle_bg" - change image on the Switch
+android:thumbTint="@color/ai_toggle_color - change a color of the ball from Switch"
+android:trackTint="@color/ai_toggle_color" - change a color of the track from Switch-->
+<!--    <androidx.appcompat.widget.SwitchCompat-->
+<!--        android:id="@+id/switch_player_type"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/edit_text_player_name"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/edit_text_player_name"-->
+<!--        android:visibility="@{player.canBeToggled ? View.VISIBLE : View.INVISIBLE}"-->
+<!--        android:checked="@={player.isHuman}"-->
+<!--        android:enabled="@{player.isIncluded()}"-->
+<!--        android:thumb="@drawable/ai_toggle_bg"-->
+<!--        app:thumbTint="@color/ai_toggle_color"-->
+<!--        app:trackTint="@color/ai_toggle_color"-->
+<!--        />-->
+
+    <android.widget.Switch
         android:id="@+id/switch_player_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/edit_text_player_name"
         app:layout_constraintBottom_toBottomOf="@id/edit_text_player_name"
-        android:checked="@{switchHidden}"
-        android:visibility="@{switchHidden ? View.INVISIBLE : View.VISIBLE}"/>
+        android:visibility="@{player.canBeToggled ? View.VISIBLE : View.INVISIBLE}"
+        android:checked="@={player.isHuman}"
+        android:enabled="@{player.isIncluded()}"
+        android:thumb="@drawable/ai_toggle_bg"
+        android:thumbTint="@color/ai_toggle_color"
+        android:trackTint="@color/ai_toggle_color"
+        />
+
+    <!--    Spinner - drop-down-list
+
+    android:entries="@{AI.getBasicAI()}" - Reference to an array resource that will
+    populate the Spinner.
+
+    android:selectedItemPosition="@={player.selectedAIPerson}" - ID track of the AI-->
+    <Spinner
+        android:id="@+id/spinner_ai_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@{AI.getBasicAI()}"
+        android:selectedItemPosition="@={player.selectedAIPerson}"
+        android:visibility="@{player.isHuman ? View.INVISIBLE : View.VISIBLE}"
+        app:layout_constraintBottom_toBottomOf="@id/edit_text_player_name"
+        app:layout_constraintEnd_toStartOf="@id/switch_player_type"
+        app:layout_constraintStart_toEndOf="@id/checkbox_player_active"
+        app:layout_constraintTop_toTopOf="@id/edit_text_player_name"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
