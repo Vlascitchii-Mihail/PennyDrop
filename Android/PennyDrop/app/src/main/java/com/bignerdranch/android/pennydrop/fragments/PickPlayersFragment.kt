@@ -80,6 +80,8 @@ class PickPlayersFragment : Fragment() {
                     } ?: emptyList()
                 )
 
+                //go to the GameFragment
+                //navigate() - Navigate to a destination from the current navigation graph.
                 findNavController().navigate(R.id.gameFragment)
             }
         }

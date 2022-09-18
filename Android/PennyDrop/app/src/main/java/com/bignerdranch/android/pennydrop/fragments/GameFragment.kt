@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.bignerdranch.android.pennydrop.R
 import com.bignerdranch.android.pennydrop.databinding.FragmentGameBinding
+import com.bignerdranch.android.pennydrop.viewmodels.GameViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +25,9 @@ class GameFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    //add ViewModel's object
+    private val gameViewModel by activityViewModels<GameViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +45,15 @@ class GameFragment : Fragment() {
         //inflating the view
         val binding = FragmentGameBinding.inflate(inflater, container, false).apply {
 
-            //addi a scrolling opportunity
+            //connecting GameViewModel with fragment_game.xml vm variable
+            this.vm = gameViewModel
+
+            //add a scrolling opportunity
             textCurrentTurnInfo.movementMethod = ScrollingMovementMethod()
+
+//            lifecycleOwner - Sets the LifecycleOwner that should be used for observing changes of LiveData in this binding.
+//            viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's View lifecycle
+            lifecycleOwner = viewLifecycleOwner
         }
         return binding.root
     }
