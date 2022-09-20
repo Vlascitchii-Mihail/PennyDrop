@@ -5,14 +5,13 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.bignerdranch.android.pennydrop.game.AI
 
-//Room creates database for any class with annotation @Entity
+//Room creates table for database with annotation @Entity
 //@Entity класс определяет структкру таблицы
-@Entity(tableName ="players")
-
 /**
  * @since @PrimaryKey (autoGenerate = true) var playerId: Long - let Room calculate the next
  * gameId value by itself
  */
+@Entity(tableName ="players")
 data class Player(
     @PrimaryKey(autoGenerate = true) var playerId: Long= 0,
     val playerName: String="",
@@ -27,13 +26,11 @@ data class Player(
 
     //Ignores the marked element from Room's processing logic,
     // you can add it to a field of an Entity and Room will not persist that field.
-
     @Ignore
     var isRolling : Boolean = false
 
     //Ignores the marked element from Room's processing logic,
     // you can add it to a field of an Entity and Room will not persist that field.
-
     @Ignore
     var gamePlayingNumber: Int = -1
 

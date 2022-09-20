@@ -8,7 +8,6 @@ import com.bignerdranch.android.pennydrop.types.Player
 
 //@Dao - абстрактный кдасс доступа к базе данных
 @Dao
-
 abstract class PennyDropDao {
     /**
      * @param :playerName - send the parameter to the Query

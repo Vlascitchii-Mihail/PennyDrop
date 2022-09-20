@@ -7,13 +7,14 @@ import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
 /**
- * @param entities - [Crime::class] - table of database
+ * @param entities[] - [Crime::class] - table of database or The list of entities included in the database
  * @param version 3 - database version
  */
+//Marks a class as a RoomDatabase.
 @Database(entities = [], version = 1, exportSchema = false)
 
 abstract class PennyDropDatabase: RoomDatabase() {
-    abstract fun pennyDropDao(): PenyDropDao
+    abstract fun pennyDropDao(): PennyDropDao
 
     /**
      * @since @Volatile - Помечает вспомогательное поле JVM аннотированного
@@ -24,11 +25,11 @@ abstract class PennyDropDatabase: RoomDatabase() {
         @Volatile private var instance: PennyDropDatabase? = null
 
         /**
-         * @since hetDatabase() - return database's exemplar
+         * @since getDatabase() - return database's exemplar
          */
-        fun hetDatabase(context: Context, scope: CoroutineScope): PennyDropDatabase =
+        fun getDatabase(context: Context, scope: CoroutineScope): PennyDropDatabase =
 
-            //Выполняет данный функциональный блок, удерживая монитор блокировки данного объекта.
+            //synchronized() - Выполняет данный функциональный блок, удерживая монитор блокировки данного объекта.
             this.instance ?: synchronized(this) {
 
                 //creating a database

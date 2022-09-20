@@ -36,12 +36,14 @@ import com.bignerdranch.android.pennydrop.types.Player
         )
     ]
 )
-
+//merge the tables Player and Game
 data class GameStatus(
     val gameId: Long,
 
-    //Помогает ускорить поиск при использовании GameStatus в качестве соединения
-    @ColumnInfo(index = true) val playerId: Long,
+    //Помогает ускорить поиск при использовании GameStatus в качестве соединения.
+    // Разрешает конкретную настройку столбца, связанного с этим полем.
+    //Например, вы можете указать имя столбца для поля или изменить сходство типа столбца.
+    @ColumnInfo(index = true)val playerId: Long,
     val gamePlayerNumber: Int,
     val isRolling: Boolean = false,
     val pennies: Int = Player.defaultPennyCount
