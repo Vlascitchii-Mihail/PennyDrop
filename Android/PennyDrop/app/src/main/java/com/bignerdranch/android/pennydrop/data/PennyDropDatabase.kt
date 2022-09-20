@@ -4,14 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.bignerdranch.android.pennydrop.game.AI
+import com.bignerdranch.android.pennydrop.types.Player
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 /**
- * @param entities[] - [Crime::class] - table of database or The list of entities included in the database
+ * @param entities[] - [Crime::class] - table of the database or the list of entities included in the database
  * @param version 3 - database version
  */
 //Marks a class as a RoomDatabase.
-@Database(entities = [], version = 1, exportSchema = false)
+@Database(entities = [Game::class, Player::class, GameStatus::class], version = 1, exportSchema = false)
 
 abstract class PennyDropDatabase: RoomDatabase() {
     abstract fun pennyDropDao(): PennyDropDao
@@ -41,7 +45,16 @@ abstract class PennyDropDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     PennyDropDatabase::class.java,
-                "PennyDropDatabase").build()
+                "PennyDropDatabase").addCallback(object: RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        scope.launch {
+                            instance?.pennyDropDao()?.insertPlayers(
+                                AI.basicAI.map(AI::toPlayer)
+                            )
+                        }
+                    }
+                }).build()
 
                 this.instance = instance
 
