@@ -2,6 +2,7 @@ package com.bignerdranch.android.pennydrop.data
 
 import android.text.TextUtils
 import androidx.room.TypeConverter
+import com.bignerdranch.android.pennydrop.game.AI
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -11,8 +12,8 @@ class Converters {
     private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
 
     /**
-     * @since toOffsetDateTime() - converts the endTime: OffsetDateTime?
-     * and startTime: OffsetDateTime? to String from Game.class
+     * @since toOffsetDateTime() - converts String to the endTime: OffsetDateTime?
+     * and startTime: OffsetDateTime? from Game.class
      */
     @TypeConverter
     fun toOffsetDateTime(value: String?) = value?.let {
@@ -22,8 +23,8 @@ class Converters {
     }
 
     /**
-     * @since fromOffsetDateTime() - converts String to the endTime: OffsetDateTime?
-     * and startTime: OffsetDateTime? from Game.class
+     * @since fromOffsetDateTime() - converts the endTime: OffsetDateTime?
+     * and startTime: OffsetDateTime? to String from Game.class
      */
     //format() - Formats this date-time using the specified formatter.
     //This date-time will be passed to the formatter to produce a string.
@@ -49,7 +50,8 @@ class Converters {
     @TypeConverter
     fun fromIntToGameState(gameStateInt: Int?) =
 
-        //values() - Returns an array containing the constants of this enum type, in the order they're declared.
+        //values() - Returns an array containing the constants of this enum type,
+        // in the order they're declared.
         GameState.values().let { gameStateValues ->
 
             //.any() - Returns true if at least one element matches the given predicate.
@@ -79,6 +81,18 @@ class Converters {
         //using separator and using the given prefix and postfix if supplied.
         //If the collection could be huge, you can specify a non-negative value of limit
         numbers?.joinToString(",") ?: ""
+
+    /**
+     * @since toAi() - converts aiId: Long? to AI?
+     */
+    @TypeConverter
+    fun toAi(aiId: Long?) = AI.basicAI.firstOrNull { it.aiId == aiId }
+
+    /**
+     * @since fromAiToId() - converts ai: AI? to aiId: Long?
+     */
+    @TypeConverter
+    fun fromAiToId(ai: AI?) = ai?.aiId
 }
 
 

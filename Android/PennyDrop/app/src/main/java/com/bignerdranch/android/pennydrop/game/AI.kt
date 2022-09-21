@@ -6,7 +6,7 @@ import com.bignerdranch.android.pennydrop.types.coinFlipIsHeads
 import com.bignerdranch.android.pennydrop.types.fullSlots
 
 class AI(val name: String,
-         val aiId: Int = 0,
+         val aiId: Long = 0,
          /**
           * @since rollAgain() - AI's decision to roll or not after first rilling
           */
@@ -17,6 +17,7 @@ class AI(val name: String,
      * @since toPlayer() - recycle AI to Player
      */
     fun toPlayer() = Player(
+        playerId = aiId,
         playerName = name,
         isHuman = false,
         selectedAI = this

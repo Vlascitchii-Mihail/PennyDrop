@@ -6,7 +6,7 @@ import androidx.room.ForeignKey
 import com.bignerdranch.android.pennydrop.types.Player
 
 @Entity(
-    tableName = "game_status",
+    tableName = "game_statuses",
 
     //The list of Primary Key column names.
     //If you would like to define an auto generated primary key, you can use

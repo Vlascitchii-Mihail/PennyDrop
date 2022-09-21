@@ -1,9 +1,7 @@
 package com.bignerdranch.android.pennydrop.data
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.bignerdranch.android.pennydrop.game.AI
 import com.bignerdranch.android.pennydrop.types.Player
@@ -16,6 +14,9 @@ import kotlinx.coroutines.launch
  */
 //Marks a class as a RoomDatabase.
 @Database(entities = [Game::class, Player::class, GameStatus::class], version = 1, exportSchema = false)
+
+//announce that database have a converter
+@TypeConverters(Converters::class)
 
 abstract class PennyDropDatabase: RoomDatabase() {
     abstract fun pennyDropDao(): PennyDropDao
@@ -46,6 +47,8 @@ abstract class PennyDropDatabase: RoomDatabase() {
                     context,
                     PennyDropDatabase::class.java,
                 "PennyDropDatabase").addCallback(object: RoomDatabase.Callback() {
+
+                    //add AI players at creating database
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
                         scope.launch {

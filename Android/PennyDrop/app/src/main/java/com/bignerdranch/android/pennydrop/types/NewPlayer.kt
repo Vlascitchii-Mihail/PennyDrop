@@ -20,10 +20,10 @@ data class NewPlayer(
 
     //transform newPlayer's object to Player's object
     fun toPlayer() = Player(
-        if (this.isHuman.get()) {
+        playerName = if (this.isHuman.get()) {
             this.playerName
         } else (this.selectedAi()?.name ?: "AI"),
-        this.isHuman.get(),
-        this.selectedAi()
+        isHuman = this.isHuman.get(),
+        selectedAI = this.selectedAi()
     )
 }
