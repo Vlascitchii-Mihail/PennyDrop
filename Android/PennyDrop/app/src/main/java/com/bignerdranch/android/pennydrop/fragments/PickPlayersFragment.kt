@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 //import androidx.core.view.isVisible
 import com.bignerdranch.android.pennydrop.R
 import com.bignerdranch.android.pennydrop.databinding.FragmentPickPlayersBinding
 import com.bignerdranch.android.pennydrop.viewmodels.GameViewModel
 import com.bignerdranch.android.pennydrop.viewmodels.PickPlayersViewModel
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,23 +68,30 @@ class PickPlayersFragment : Fragment() {
             this.vm = pickPlayersViewModel
 
             this.buttonPlayGame.setOnClickListener {
-                gameViewModel.startGame(
 
-                    //filter LiveData
-                    pickPlayersViewModel.players.value?.filter{ newPlayer ->
-                        newPlayer.isIncluded.get()
-                    }?.map { newPlayer ->
+                //calling the suspend function startGame using the coroutine block
+                //viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's View lifecycle.
+                viewLifecycleOwner.lifecycleScope.launch {
 
-                        //transform newPlayer's object to Player's object
-                        newPlayer.toPlayer()
+                    //calling the suspend function
+                    gameViewModel.startGame(
 
-                        //if don't have any player
-                    } ?: emptyList()
-                )
+                        //filter LiveData
+                        pickPlayersViewModel.players.value?.filter{ newPlayer ->
+                            newPlayer.isIncluded.get()
+                        }?.map { newPlayer ->
 
-                //go to the GameFragment
-                //navigate() - Navigate to a destination from the current navigation graph.
-                findNavController().navigate(R.id.gameFragment)
+                            //transform newPlayer's object to Player's object
+                            newPlayer.toPlayer()
+
+                            //if don't have any player
+                        } ?: emptyList()
+                    )
+
+                    //go to the GameFragment
+                    //navigate() - Navigate to a destination from the current navigation graph.
+                    findNavController().navigate(R.id.gameFragment)
+                }
             }
         }
 

@@ -33,7 +33,7 @@ abstract class PennyDropDao {
 
     //@Transaction - annotation tells  Room that the function you’re calling
     // references multiple  tables and the data should be retrieved in a
-    // single atomic  operation. we’re getting data from both the games
+    // single atomic  operation. We’re getting data from both the games
     //and players tables
     @Transaction
 
@@ -99,11 +99,11 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
     }
 
     @Update
-    abstract suspend fun updateGameAndStatuses(gameStatuses: List<GameStatus>)
+    abstract suspend fun updateGameStatuses(gameStatuses: List<GameStatus>)
 
     @Transaction
     open suspend fun updateGameAndStatuses(game: Game, statuses: List<GameStatus>) {
         this.updateGame(game)
-        this.updateGameAndStatuses(statuses)
+        this.updateGameStatuses(statuses)
     }
 }

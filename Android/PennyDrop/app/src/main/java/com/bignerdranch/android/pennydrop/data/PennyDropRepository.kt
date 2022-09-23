@@ -2,6 +2,9 @@ package com.bignerdranch.android.pennydrop.data
 
 import com.bignerdranch.android.pennydrop.types.Player
 
+/**
+ * @since PennyDropRepository() - create a new Repository's object
+ */
 class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
 
     fun getCurrentGameWithPlayers() = pennyDropDao.getCurrentGameWithPlayers()

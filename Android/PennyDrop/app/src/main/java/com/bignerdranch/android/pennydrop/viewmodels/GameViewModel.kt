@@ -1,8 +1,11 @@
 package com.bignerdranch.android.pennydrop.viewmodels
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.bignerdranch.android.pennydrop.data.GameStatus
+import com.bignerdranch.android.pennydrop.data.GameWithPlayers
+import com.bignerdranch.android.pennydrop.data.PennyDropDatabase
+import com.bignerdranch.android.pennydrop.data.PennyDropRepository
 import com.bignerdranch.android.pennydrop.game.GameHandler
 import com.bignerdranch.android.pennydrop.game.TurnEnd
 import com.bignerdranch.android.pennydrop.game.TurnResult
@@ -19,46 +22,78 @@ import kotlinx.coroutines.launch
  * @property currentTurnText - game's history
  * @property currentStandingsText - result of the game
  */
-class GameViewModel: ViewModel() {
+//AndroidViewModel(application) - parent class which allows us to refer to the Application
+//to get the context in ViewModel
+class GameViewModel(application: Application): AndroidViewModel(application) {
     private var players: List<Player> = emptyList()
 
-    val slots = MutableLiveData(
-        (1..6).map { slotNum -> Slot(slotNum, slotNum != 6) }
-    )
+    val slots: LiveData<List<Slot>>
 
     //current player in the game
-    val currentPlayer = MutableLiveData<Player?>()
+//    val currentPlayer = MutableLiveData<Player?>()
+    val currentPlayer = LiveData<Player>
+
 
     //opportunity to the current player to make a move
-    val canRoll = MutableLiveData(false)
+    val canRoll: LiveData<Boolean>
 
     //opportunity to the current player to make a pass
-    val canPass = MutableLiveData(false)
+    val canPass: LiveData<Boolean>
 
     //game's history
     val currentTurnText = MutableLiveData("")
 
     //result of the game
-    var currentStandingsText = MutableLiveData("")
+    var currentStandingsText: LiveData<String>
 
-    var clearText = false
+    private var clearText = false
 
-    fun startGame(playersForNewGame: List<Player>) {
+    private val repository: PennyDropRepository
 
-        //getting the players fom PickPlayersViewModel
-        this.players = playersForNewGame
-        this.currentPlayer.value = this.players.firstOrNull().apply {
-            this?.isRolling = true
+    //MediatorLiveData<>() - LiveData subclass which may observe other
+    // LiveData objects and react on OnChanged events from them.
+    val currentGame = MediatorLiveData<GameWithPlayers>()
+
+    val currentGameStatuses: LiveData<List<GameStatus>>
+
+    init {
+
+        //create database's variable to get repository's variable
+        this.repository = PennyDropDatabase.getDatabase(application, viewModelScope).pennyDropDao()
+            .let { dao -> PennyDropRepository.getInstance(dao) }
+
+        this.currentGameStatuses = this.repository.getCurrentGameStatuses()
+
+        this.currentGame.addSource(this.repository.getCurrentGameWithPlayers()) { gameWithPlayers ->
+            updateCurrentGame(gameWithPlayers, this.currentGameStatuses.value)
         }
 
-        this.canRoll.value = true
-        this.canPass.value = false
+        this.currentGame.addSource(this.currentGameStatuses) { gameStatuses ->
+            updateCurrentGame(this.currentGame.value. gameStatuses)
+        }
+    }
 
-        slots.value?.clear()
-        slots.notifyChange()
+//    fun startGame(playersForNewGame: List<Player>) {
+//
+//        //getting the players fom PickPlayersViewModel
+//        this.players = playersForNewGame
+//        this.currentPlayer.value = this.players.firstOrNull().apply {
+//            this?.isRolling = true
+//        }
+//
+//        this.canRoll.value = true
+//        this.canPass.value = false
+//
+//        slots.value?.clear()
+//        slots.notifyChange()
+//
+//        currentTurnText.value = "The game has begun!\n"
+//        currentStandingsText.value = generateCurrentStandings(this.players)
+//    }
 
-        currentTurnText.value = "The game has begun!\n"
-        currentStandingsText.value = generateCurrentStandings(this.players)
+    //send players in database for starting the game
+    suspend fun startGame(playersForNewGame: List<Player>) {
+        repository.startGame(playersForNewGame)
     }
 
     /**

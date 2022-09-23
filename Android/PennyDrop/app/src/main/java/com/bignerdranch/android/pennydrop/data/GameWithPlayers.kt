@@ -5,7 +5,7 @@ import androidx.room.Junction
 import androidx.room.Relation
 import com.bignerdranch.android.pennydrop.types.Player
 
-//reuse GameStatus for playing the different games with yhe same players
+//reuse GameStatus for playing the different games with the same players
 data class GameWithPlayers(
 
     //(включенный)Помечает поле Entity или POJO, чтобы разрешить прямые ссылки на вложенные

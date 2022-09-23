@@ -8,8 +8,8 @@ import java.time.OffsetDateTime
 //@Entity класс определяет структкру таблицы
 @Entity(tableName = "games")
 /**
- * @since @PrimaryKey (autoGenerate = true) var gameId: Long - let Room calculate the next
- * gameId value by itself
+ * @since @PrimaryKey (autoGenerate = true) var gameId: Long - let Room
+ * calculate the next gameId value by itself
  */
 //All the information about the game
 data class Game (

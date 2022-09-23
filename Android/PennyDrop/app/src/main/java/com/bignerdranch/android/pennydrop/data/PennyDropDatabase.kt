@@ -17,8 +17,12 @@ import kotlinx.coroutines.launch
 
 //announce that database have a converter
 @TypeConverters(Converters::class)
-
 abstract class PennyDropDatabase: RoomDatabase() {
+
+    /**
+     * @since pennyDropDao() - return an exemplar with type of
+     * the PennyDropDao class
+     */
     abstract fun pennyDropDao(): PennyDropDao
 
     /**
@@ -27,7 +31,9 @@ abstract class PennyDropDatabase: RoomDatabase() {
      * становятся видимыми для других потоков.
      */
     companion object {
-        @Volatile private var instance: PennyDropDatabase? = null
+
+        @Volatile
+        private var instance: PennyDropDatabase? = null
 
         /**
          * @since getDatabase() - return database's exemplar
