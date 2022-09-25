@@ -25,26 +25,6 @@ import kotlinx.coroutines.launch
 //AndroidViewModel(application) - parent class which allows us to refer to the Application
 //to get the context in ViewModel
 class GameViewModel(application: Application): AndroidViewModel(application) {
-    private var players: List<Player> = emptyList()
-
-    val slots: LiveData<List<Slot>>
-
-    //current player in the game
-//    val currentPlayer = MutableLiveData<Player?>()
-    val currentPlayer = LiveData<Player>
-
-
-    //opportunity to the current player to make a move
-    val canRoll: LiveData<Boolean>
-
-    //opportunity to the current player to make a pass
-    val canPass: LiveData<Boolean>
-
-    //game's history
-    val currentTurnText = MutableLiveData("")
-
-    //result of the game
-    var currentStandingsText: LiveData<String>
 
     private var clearText = false
 
@@ -56,21 +36,64 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
     val currentGameStatuses: LiveData<List<GameStatus>>
 
+    //current player in the game
+//    val currentPlayer = MutableLiveData<Player?>()
+    //Transformations - tolls for change LifeData when it changes
+    //map() - Возвращает LiveData, сопоставленный с входным источником LiveData,
+    // применяя mapFunction к каждому значению, установленному в источнике.
+    val currentPlayer = Transformations.map(this.currentGame) { gameWithPlayers ->
+        gameWithPlayers?.players?.firstOrNull { it.isRolling}
+    }
+
+    //result of the game
+    var currentStandingsText = Transformations.map(this.currentGame) { gameWithPlayers ->
+        gameWithPlayers?.players?.let { players ->
+            this.generateCurrentStandings(players)
+        }
+    }
+
+    private var players: List<Player> = emptyList()
+
+    val slots = Transformations
+
+    //opportunity to the current player to make a move
+    val canRoll: LiveData<Boolean>
+
+    //opportunity to the current player to make a pass
+    val canPass: LiveData<Boolean>
+
+    //game's history
+    val currentTurnText = MutableLiveData("")
+
     init {
 
         //create database's variable to get repository's variable
+        //viewModelScope - CoroutineScope tied to this ViewModel. This scope will be canceled
+        // when ViewModel will be cleared, i.e ViewModel.onCleared is called
         this.repository = PennyDropDatabase.getDatabase(application, viewModelScope).pennyDropDao()
             .let { dao -> PennyDropRepository.getInstance(dao) }
 
         this.currentGameStatuses = this.repository.getCurrentGameStatuses()
 
+        //addSource() - Starts to listen the given source LiveData, onChanged observer
+        // will be called when source value was changed.
+        //Params: source – the LiveData to listen to
+        //onChanged – The observer that will receive the event
         this.currentGame.addSource(this.repository.getCurrentGameWithPlayers()) { gameWithPlayers ->
             updateCurrentGame(gameWithPlayers, this.currentGameStatuses.value)
         }
 
+        //addSource() - Starts to listen the given source LiveData, onChanged observer
+        // will be called when source value was changed.
+        //Params: source – the LiveData to listen to
+        //onChanged – The observer that will receive the event
         this.currentGame.addSource(this.currentGameStatuses) { gameStatuses ->
-            updateCurrentGame(this.currentGame.value. gameStatuses)
+            updateCurrentGame(this.currentGame.value, gameStatuses)
         }
+    }
+
+    private fun updateCurrentGame(gameWithPlayers: GameWithPlayers?, gameStatuses: List<GameStatus>?) {
+        this.currentGame.value = gameWithPlayers?.updateStatuses(gameStatuses)
     }
 
 //    fun startGame(playersForNewGame: List<Player>) {
