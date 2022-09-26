@@ -1,6 +1,7 @@
 package com.bignerdranch.android.pennydrop.types
 
 import androidx.lifecycle.MutableLiveData
+import com.bignerdranch.android.pennydrop.data.Game
 import kotlin.random.Random
 
 /**
@@ -12,7 +13,19 @@ data class Slot(
     val canBeFilled: Boolean = true,
     var isFilled: Boolean = false,
     var lastRolled: Boolean = false
-)
+) {
+    companion object {
+        fun mapFromGame(game: Game?) =
+            (1..6).map { slotNum ->
+                Slot(
+                    number = slotNum,
+                    canBeFilled = slotNum != 6,
+                    isFilled = game?.filledSlots?.contains(slotNum) ?: false,
+                    lastRolled = game?.lastRoll == slotNum
+                )
+            }
+    }
+}
 
 /**
  * @since clear() - clean the fields isFilled and lastRolled of the Slot,

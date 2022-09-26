@@ -34,10 +34,6 @@ data class Player(
     @Ignore
     var gamePlayingNumber: Int = -1
 
-    fun addPennies(count : Int = 1) {
-        pennies += count
-    }
-
     /**
      * @since penniesLeft() - check player's quantity of penny and subtract 1 penny
      */

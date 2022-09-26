@@ -188,7 +188,7 @@ android:drawableTint - Оттенок для составных (слева, с�
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:scrollbars="vertical"
-        android:text="@{vm.currentTurnText}"
+        android:text="@{vm.currentGame.game.currentTurnText}"
         app:layout_constraintBottom_toTopOf="@id/textCurrentStandingsInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

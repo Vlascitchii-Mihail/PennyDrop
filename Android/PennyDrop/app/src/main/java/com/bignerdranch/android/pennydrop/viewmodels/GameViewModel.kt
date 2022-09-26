@@ -2,10 +2,7 @@ package com.bignerdranch.android.pennydrop.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.bignerdranch.android.pennydrop.data.GameStatus
-import com.bignerdranch.android.pennydrop.data.GameWithPlayers
-import com.bignerdranch.android.pennydrop.data.PennyDropDatabase
-import com.bignerdranch.android.pennydrop.data.PennyDropRepository
+import com.bignerdranch.android.pennydrop.data.*
 import com.bignerdranch.android.pennydrop.game.GameHandler
 import com.bignerdranch.android.pennydrop.game.TurnEnd
 import com.bignerdranch.android.pennydrop.game.TurnResult
@@ -14,6 +11,7 @@ import com.bignerdranch.android.pennydrop.types.Slot
 import com.bignerdranch.android.pennydrop.types.clear
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.OffsetDateTime
 
 /**
  * @property currentPlayer - current player in the game
@@ -54,13 +52,19 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
     private var players: List<Player> = emptyList()
 
-    val slots = Transformations
+    val slots = Transformations.map(this.currentGame) { gameWithPlayers ->
+        Slot.mapFromGame(gameWithPlayers?.game)
+    }
 
     //opportunity to the current player to make a move
-    val canRoll: LiveData<Boolean>
+    val canRoll = Transformations.map(this.currentPlayer) { player ->
+        player?.isHuman == true && currentGame.value?.game?.canRoll == true
+    }
 
     //opportunity to the current player to make a pass
-    val canPass: LiveData<Boolean>
+    val canPass = Transformations.map(this.currentPlayer) { player ->
+        player?.isHuman == true && currentGame.value?.game?.canPass == true
+    }
 
     //game's history
     val currentTurnText = MutableLiveData("")
@@ -123,13 +127,14 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * @since roll() - fun is called from fragment_game.xml, calls anther fun roll() from GameHandler
      */
     fun roll() {
-        slots.value?.let { currentSlots ->
+        val game = this.currentGame.value?.game
+        val players = this.currentGame.value?.players
+        val currentPlayer = this.currentPlayer.value
+        val slots = this.slots.value
 
-            //Comparing against true saves us a null check
-            val currentPlayer = players.firstOrNull { it.isRolling }
-            if (currentPlayer != null && canRoll.value == true) {
-                updateFromGameHandler(GameHandler.roll(players, currentPlayer, currentSlots))
-            }
+            //Comparing with true saves us from a null check
+        if (game != null && players !== null && currentPlayer != null && slots != null && game.canRoll) {
+                updateFromGameHandler(GameHandler.roll(players, currentPlayer, slots))
         }
     }
 
@@ -137,51 +142,68 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * @since pass() - fun is coled from fragment_game.xml, calls anther fun pass() from GameHandler
      */
     fun pass() {
-        val currentPlayer = players.firstOrNull { it.isRolling }
-        if (currentPlayer != null && canPass.value == true) {
+        val game = this.currentGame.value?.game
+        val players = this.currentGame.value?.players
+        val currentPlayer = this.currentPlayer.value
+
+        if (game != null && players != null &&  currentPlayer != null && game.canPass) {
             updateFromGameHandler(GameHandler.pass(players, currentPlayer))
         }
     }
 
-    /**
-     * @since notifyChange update LiveData with the same value for sending this data to LiveData listeners
-     */
-    private fun <T> MutableLiveData<List<T>>.notifyChange() {
-        this.value = this.value
-    }
+//    /**
+//     * @since notifyChange update LiveData with the same value for sending this data to LiveData listeners
+//     */
+//    private fun <T> MutableLiveData<List<T>>.notifyChange() {
+//        this.value = this.value
+//    }
 
     /**
      * @since updateFromGameHandler() - update the UI of the fragment_game.xml
      */
     private  fun updateFromGameHandler(result: TurnResult) {
-        if (result.currentPlayer != null) {
-            currentPlayer.value?.addPennies(result.coinChangeCount ?: 0)
-            currentPlayer.value = result.currentPlayer
-            this.players.forEach { player ->
-                player.isRolling = result.currentPlayer == player
+        val game = currentGame.value?.let { currentGameWithPlayers ->
+            currentGameWithPlayers.game.copy(
+                gameState = if (result.isGameOver) GameState.Finished else GameState.Started,
+                lastRoll = result.lastRoll,
+                filledSlots = updateFilledSlots(result, currentGameWithPlayers.game.filledSlots),
+                currentTurnText = generateTurnText(result),
+                canRoll = result.canRoll,
+                canPass = result.canPass,
+                endTime = if (result.isGameOver) OffsetDateTime.now() else null
+            )
+        } ?: return
+
+        val statuses = currentGameStatuses.value?.map { status ->
+            when(status.playerId) {
+                result.previousPlayer?.playerId -> { status.copy(
+                    isRolling = false,
+                    pennies = status.pennies + (result.coinChangeCount ?: 0)
+                )}
+
+                result.currentPlayer?.playerId -> { status.copy(
+                    isRolling = !result.isGameOver,
+                    pennies = status.pennies + if (!result.isGameOver) {
+                        result.coinChangeCount ?: 0
+                    } else 0
+                )}
+
+                else -> status
             }
-        }
+        } ?: emptyList()
 
-        if (result.lastRoll != null) {
-            slots.value?.let { currentSlots ->
-                updateSlots(result, currentSlots, result.lastRoll)
-            }
-        }
-
-        currentTurnText.value = generateTurnText(result)
-        currentStandingsText.value = generateCurrentStandings(this.players)
-
-        canRoll.value = result.canRoll
-        canPass.value = result.canPass
-
-        if (!result.isGameOver && result.currentPlayer?.isHuman == false) {
-            canPass.value = false
-            canRoll.value = false
-
-            //AI's turn to play
-            playAITurn()
+        viewModelScope.launch {
+            repository.updateGameAndStatuses(game, statuses)
+            if (result.currentPlayer?.isHuman == false) playAITurn()
         }
     }
+
+    private fun updateFilledSlots(result: TurnResult, filledSlots: List<Int>) =
+        when {
+            result.clearSlots -> emptyList()
+            result.lastRoll != null && result.lastRoll != 6 -> filledSlots + result.lastRoll
+            else -> filledSlots
+        }
 
     /**
      * @since updateSlots() - update slot in fragment_game.xml
@@ -196,8 +218,6 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
             slot.lastRolled = true
         }
-
-        slots.notifyChange()
     }
 
     /**
@@ -217,34 +237,50 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * and update the game history in the fragment_game.xml
      */
     private fun generateTurnText(result: TurnResult): String {
-        if (clearText) currentTurnText.value = ""
+
+        val currentText = if (clearText)"" else currentGame.value?.game?.currentTurnText ?: ""
         clearText = result.turnEnd != null
 
-        val currentText = currentTurnText.value ?: ""
         val currentPlayerName = result.currentPlayer?.playerName ?: "???"
 
         return when {
 
             //TurnRest - based logic and text
-            result.isGameOver -> //Game's over, let's get a summary
-                """|Game over!
-                    |$currentPlayerName is winner!
-                    |
-                    |${generateCurrentStandings(this.players, "Final Scores:\n")}
-                    |}}
-                """.trimMargin()
-
+            result.isGameOver -> generateGameOverText()
 
             result.turnEnd == TurnEnd.Bust -> "$currentPlayerName busted, got some pennies"
             result.turnEnd == TurnEnd.Pass -> "$currentPlayerName passed"
 
-            result.lastRoll != null -> //Roll test
-                //"""___""" - текст без обработки
-                // | - указатель начала строки
+            result.lastRoll != null ->
                 "$currentText\n$currentPlayerName rolled a ${result.lastRoll}."
 
             else -> ""
         }
+    }
+
+    private fun generateGameOverText() : String {
+        val statuses = this.currentGameStatuses.value
+        val players = this.currentGame.value?.players?.map { player ->
+            player.apply {
+                this.pennies = statuses?.firstOrNull { it.playerId == playerId }
+                    ?.pennies ?: Player.defaultPennyCount
+            }
+        }
+
+        val winningPLayer = players?.firstOrNull { !it.penniesLeft() || it.isRolling }
+            ?.apply { this.pennies = 0 }
+
+        if (players == null || winningPLayer == null) return "N/A"
+
+        //Roll test
+        //"""___""" - текст без обработки
+        // | - указатель начала строки
+        return """|Game over!
+                    |${winningPLayer.playerName} is winner!
+                    |
+                    |${generateCurrentStandings(this.players, "Final Scores:\n")}
+                    |}}
+                """.trimMargin()
     }
 
     /*
@@ -284,21 +320,16 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     /**
      * @since playAITurn() - AI player make a turn (GameViewModel)
      */
-    private fun playAITurn() {
-        viewModelScope.launch {
-            delay(1000)
-            slots.value?.let { currentSlot ->
-                val currentPlayer = players.firstOrNull { it.isRolling }
+    private suspend fun playAITurn() {
+        delay(1000)
+        val game = currentGame.value?.game
+        val players = currentGame.value?.players
+        val currentPlayer = currentPlayer.value
+        val slots = slots.value
 
-                if (currentPlayer != null && !currentPlayer.isHuman) {
-                    GameHandler.playAITurn(
-                        players,
-                        currentPlayer,
-                        currentSlot,
-                        canPass.value == true)?.let { result ->
-                        updateFromGameHandler(result)
-                    }
-                }
+        if (game != null && players != null && currentPlayer != null && slots != null) {
+            GameHandler.playAITurn(players, currentPlayer, slots, game.canPass)?.let { result->
+                updateFromGameHandler(result)
             }
         }
     }

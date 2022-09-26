@@ -37,6 +37,8 @@ data class GameWithPlayers(
 ) {
     fun updateStatuses(gameStatuses: List<GameStatus>?) =
         if (gameStatuses != null) {
+
+            //copy() a new GameWithPlayers exemplar
             this.copy(
                 players = players.map { player ->
                     gameStatuses.firstOrNull { it.playerId == player.playerId }
