@@ -51,6 +51,7 @@ class GameFragment : Fragment() {
             //add a scrolling opportunity
             textCurrentTurnInfo.movementMethod = ScrollingMovementMethod()
 
+            //tells the LiveData in GameViewModel to follow the same lifecycle as the entered life-cycle owner
 //            lifecycleOwner - Sets the LifecycleOwner that should be used for observing changes of LiveData in this binding.
 //            viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's View lifecycle
             lifecycleOwner = viewLifecycleOwner

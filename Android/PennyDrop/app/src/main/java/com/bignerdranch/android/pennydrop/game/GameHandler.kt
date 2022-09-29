@@ -4,7 +4,9 @@ import com.bignerdranch.android.pennydrop.types.Player
 import com.bignerdranch.android.pennydrop.types.Slot
 import kotlin.random.Random
 
-//handle the game logic
+/**
+ * the class which handles the game logic
+ */
 object GameHandler {
 
     /**

@@ -8,13 +8,13 @@ import com.bignerdranch.android.pennydrop.types.fullSlots
 class AI(val name: String,
          val aiId: Long = 0,
          /**
-          * @since rollAgain() - AI's decision to roll or not after first rilling
+          * AI's decision to roll or not after first rolling
           */
          val rollAgain: (slots: List<Slot>) -> Boolean) {
     override fun toString() = name
 
     /**
-     * @since toPlayer() - recycle AI to Player
+     * recycle AI to Player
      */
     fun toPlayer() = Player(
         playerId = aiId,

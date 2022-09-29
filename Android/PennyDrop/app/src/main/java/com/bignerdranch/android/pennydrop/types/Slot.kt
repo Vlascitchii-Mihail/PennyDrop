@@ -5,10 +5,10 @@ import com.bignerdranch.android.pennydrop.data.Game
 import kotlin.random.Random
 
 /**
- * @param number - number of the slot
+ * @param number number of the slot
+ * @param canBeFilled true if slot is empty
  */
 data class Slot(
-
     val number: Int,
     val canBeFilled: Boolean = true,
     var isFilled: Boolean = false,

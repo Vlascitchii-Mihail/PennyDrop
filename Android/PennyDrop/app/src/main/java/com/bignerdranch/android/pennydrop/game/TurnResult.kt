@@ -2,9 +2,10 @@ package com.bignerdranch.android.pennydrop.game
 
 import com.bignerdranch.android.pennydrop.types.Player
 
-//game status
+
 /**
- * @property coinChangeCount - quantity of the filled penny
+ * game status
+ * @param coinChangeCount quantity of the filled penny
  */
 data class TurnResult(
     val lastRoll: Int? =  null,
@@ -19,6 +20,13 @@ data class TurnResult(
     val isGameOver: Boolean = false
 )
 
-//variants of finishing the game
-//Bust - user takes all the penny from dask
-enum class TurnEnd { Pass, Bust, Win}
+/**
+ * variants of finishing the game
+ * @param Bust user takes all the penny from dask
+ */
+enum class TurnEnd { Pass,
+
+    /**
+     * user takes all the penny from dask
+     */
+    Bust, Win}

@@ -14,11 +14,11 @@ import kotlinx.coroutines.launch
 import java.time.OffsetDateTime
 
 /**
- * @property currentPlayer - current player in the game
- * @property canRoll - opportunity to the current player to make a move
- * @property canPass - opportunity to the current player to make a pass
- * @property currentTurnText - game's history
- * @property currentStandingsText - result of the game
+ * @property currentPlayer current player in the game
+ * @property canRoll opportunity to the current player to make a move
+ * @property canPass opportunity to the current player to make a pass
+ * @property currentTurnText game's history
+ * @property currentStandingsText result of the game
  */
 //AndroidViewModel(application) - parent class which allows us to refer to the Application
 //to get the context in ViewModel
@@ -118,7 +118,9 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 //        currentStandingsText.value = generateCurrentStandings(this.players)
 //    }
 
-    //send players in database for starting the game
+    /**
+     * @since startGame() - send players in database for starting the game
+     */
     suspend fun startGame(playersForNewGame: List<Player>) {
         repository.startGame(playersForNewGame)
     }
@@ -248,8 +250,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
             //TurnRest - based logic and text
             result.isGameOver -> generateGameOverText()
 
-            result.turnEnd == TurnEnd.Bust -> "$currentPlayerName busted, got some pennies"
-            result.turnEnd == TurnEnd.Pass -> "$currentPlayerName passed"
+            result.turnEnd == TurnEnd.Bust -> "${result.previousPlayer} busted, got some pennies"
+            result.turnEnd == TurnEnd.Pass -> "${result.previousPlayer} passed"
 
             result.lastRoll != null ->
                 "$currentText\n$currentPlayerName rolled a ${result.lastRoll}."

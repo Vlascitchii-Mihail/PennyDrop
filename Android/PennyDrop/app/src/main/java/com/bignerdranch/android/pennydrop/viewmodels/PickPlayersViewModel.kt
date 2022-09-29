@@ -4,9 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.pennydrop.types.NewPlayer
 
+/**
+ * @property players list of players
+ */
 class PickPlayersViewModel : ViewModel() {
 
-    //list of players
+    //(1 .. 6) - 6 is included
     val players = MutableLiveData<List<NewPlayer>>().apply {
         this.value = (1 .. 6).map {
 

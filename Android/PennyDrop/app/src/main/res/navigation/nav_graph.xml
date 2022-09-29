@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--    fragments' navigation
-        app:startDestination - starting point-->
+        app:startDestination - start point-->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,7 +20,7 @@
     <!--    adding the fragment and his ID in navigation
     android:name - name of the package an d the class
     android:label - XML files
-     android:id - ID from navigation.xml-->
+     android:id - ID from menu navigation.xml-->
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.bignerdranch.android.pennydrop.fragments.GameFragment"

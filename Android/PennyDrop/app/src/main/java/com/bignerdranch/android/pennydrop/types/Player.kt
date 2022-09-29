@@ -8,8 +8,9 @@ import com.bignerdranch.android.pennydrop.game.AI
 //Room creates table for database with annotation @Entity
 //@Entity класс определяет структкру таблицы
 /**
- * @since @PrimaryKey (autoGenerate = true) var playerId: Long - let Room calculate the next
+ * PrimaryKey (autoGenerate = true) var playerId: Long - let Room calculate the next
  * gameId value by itself
+ * @param selectedAI chosen AI
  */
 @Entity(tableName ="players")
 data class Player(
@@ -35,7 +36,7 @@ data class Player(
     var gamePlayingNumber: Int = -1
 
     /**
-     * @since penniesLeft() - check player's quantity of penny and subtract 1 penny
+     * check player's quantity of penny and subtract 1 penny
      */
     fun penniesLeft(subtractPenny: Boolean = false) =
         (pennies - (if (subtractPenny) 1 else 0)) > 0

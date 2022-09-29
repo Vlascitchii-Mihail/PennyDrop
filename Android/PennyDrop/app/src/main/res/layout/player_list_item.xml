@@ -55,8 +55,8 @@ android:enabled="@{player.isIncluded()}" - enabling or disabling the view-->
         android:visibility="@{player.isHuman() ? View.VISIBLE : View.INVISIBLE}"
         android:enabled="@{player.isIncluded()}"/>
 
-<!--    android:thumb="@drawable/ai_toggle_bg" - change image on the Switch
-android:thumbTint="@color/ai_toggle_color - change a color of the ball from Switch"
+<!--    android:thumb="@drawable/ai_toggle_bg" - change image on the Switch (Selector)
+android:thumbTint="@color/ai_toggle_color - change a color of the ball from Switch (Selector)
 android:trackTint="@color/ai_toggle_color" - change a color of the track from Switch-->
 
     <android.widget.Switch

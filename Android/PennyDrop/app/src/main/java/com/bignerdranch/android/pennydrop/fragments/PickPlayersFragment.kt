@@ -79,9 +79,10 @@ class PickPlayersFragment : Fragment() {
                         //filter LiveData
                         pickPlayersViewModel.players.value?.filter{ newPlayer ->
                             newPlayer.isIncluded.get()
+
+                            //transform newPlayer's object to Player's object and return List<Player>
                         }?.map { newPlayer ->
 
-                            //transform newPlayer's object to Player's object
                             newPlayer.toPlayer()
 
                             //if don't have any player

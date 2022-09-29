@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        app:tint - change the color to the ImageView-->
+<!--        app:tint - change the color to the ImageView
+            app:isHidden -  our new attribute from fun bindIsHidden()-->
         <ImageView
             android:id="@+id/coinImageCoinSlot"
             android:layout_width="wrap_content"

@@ -142,7 +142,8 @@ speed of LinearLayout's rendering
         app:layout_constraintTop_toBottomOf="@id/textCoinsLeft">
 
 <!--android:layout_weight - относительное соотношение размеров для каждого комронента
-android:drawableTint - Оттенок для составных (слева, сверху и т. д.) рисунков.-->
+android:drawableTint - Оттенок для составных (слева, сверху и т. д.) рисунков.
+android:onClick - Name of the method in this View's context to invoke when the view is clicked.-->
         <Button
             android:layout_width="0dp"
             android:layout_weight="3"
@@ -154,6 +155,7 @@ android:drawableTint - Оттенок для составных (слева, с�
             android:enabled="@{vm.canRoll}"
             android:onClick="@{() -> vm.roll()}"
             android:drawableTint="@android:color/white"
+            android:textColor="@android:color/white"
             />
 
         <TextView
