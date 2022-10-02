@@ -21,26 +21,35 @@ import com.bignerdranch.android.pennydrop.types.Player
          * @param entity - the parent Entity to reference.
          * @param parentColumns - The list of column names in the PARENT Entity.
          * Number of columns must match the number of columns specified in childColumns().
-         * @param childColumns - The list of column names in the CURRENT Entity.
+         * Количество столбцов должно соответствовать количеству столбцов, указанному в childColumns().
+         * @param childColumns - The list of column names in the CURRENT Entity(GameStatus).
          * Number of columns must match the number of columns specified in parentColumns().
          */
         ForeignKey(
+
+            //The parent Entity to reference.
             entity = Game::class,
             parentColumns = ["gameId"],
             childColumns = ["gameId"]
         ),
         ForeignKey(
+
+            //The parent Entity to reference.
             entity = Player::class,
             parentColumns = ["playerId"],
             childColumns = ["playerId"]
         )
     ]
 )
-//merge the tables Player and Game
+
+/**
+ * merge the tables Player and Game
+ * responsible for holding the user's current(or final) state in the game
+ */
 data class GameStatus(
     val gameId: Long,
 
-    //Помогает ускорить поиск при использовании GameStatus в качестве соединения.
+    //Помогает ускорить поиск при использовании GameStatus в качестве соединения./
     // Разрешает конкретную настройку столбца, связанного с этим полем.
     //Например, вы можете указать имя столбца для поля или изменить сходство типа столбца.
     @ColumnInfo(index = true)val playerId: Long,

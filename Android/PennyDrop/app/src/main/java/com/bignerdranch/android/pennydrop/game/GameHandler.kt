@@ -10,7 +10,7 @@ import kotlin.random.Random
 object GameHandler {
 
     /**
-     * @since roll() - return the result of rolling the die
+     * return the result of rolling the die
      */
     fun roll(players: List<Player>, currentPlayer: Player, slots: List<Slot>)  =
         rollDie().let { lastRoll ->
@@ -20,7 +20,7 @@ object GameHandler {
 
                 if (slot.isFilled) {
 
-                    //Player busts, play continues next player
+                    //Player busts - takes all the pennies
                     //Игрок забирает все монкеты на слотах, игра продолжается следующим игроком
                     TurnResult(
                         lastRoll,
@@ -40,6 +40,7 @@ object GameHandler {
 
                     //check quantity of the pennies
                     if (!currentPlayer.penniesLeft(true)) {
+
                         //Player wins
                         TurnResult(
                             lastRoll,
@@ -69,9 +70,9 @@ object GameHandler {
         }
 
     /**
-     * @since pass() - skip a turn if player made at least one
+     * skip a turn if player made at least one
      */
-    fun pass(players: List<Player>, currentPlayer: Player): TurnResult = TurnResult(
+    fun pass(players: List<Player>, currentPlayer: Player) = TurnResult(
             previousPlayer = currentPlayer,
             currentPlayer = nextPlayer(players, currentPlayer),
             playerChanged = true,
@@ -86,7 +87,7 @@ object GameHandler {
     private fun rollDie(sides: Int = 6) = Random.nextInt(1, sides + 1)
 
     /**
-     * @param nextPlayer - grab the next player
+     * grab the next player
      */
     private fun nextPlayer(players: List<Player>, currentPlayer: Player): Player? {
         val currentIndex = players.indexOf(currentPlayer)
@@ -95,7 +96,7 @@ object GameHandler {
     }
 
     /**
-     * @since playAITurn() - AI player make a turn (GameHolder)
+     * AI player make a turn (GameHolder)
      */
     fun playAITurn(
         players: List<Player>,

@@ -22,7 +22,7 @@ data class TurnResult(
 
 /**
  * variants of finishing the game
- * @param Bust user takes all the penny from dask
+ * @property Bust user takes all the penny from dask
  */
 enum class TurnEnd { Pass,
 

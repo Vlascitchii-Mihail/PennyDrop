@@ -70,7 +70,8 @@ class PickPlayersFragment : Fragment() {
             this.buttonPlayGame.setOnClickListener {
 
                 //calling the suspend function startGame using the coroutine block
-                //viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's View lifecycle.
+                //viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's (PickPlayersFragment) View lifecycle.
+                //lifecycleScope - Scope connected with viewLifecycleOwner's Lifecycle
                 viewLifecycleOwner.lifecycleScope.launch {
 
                     //calling the suspend function

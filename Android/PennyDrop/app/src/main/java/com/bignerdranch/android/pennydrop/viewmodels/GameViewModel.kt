@@ -20,7 +20,7 @@ import java.time.OffsetDateTime
  * @property currentTurnText game's history
  * @property currentStandingsText result of the game
  */
-//AndroidViewModel(application) - parent class which allows us to refer to the Application
+//AndroidViewModel(application) - parent class which allows us to refer to the Application's object
 //to get the context in ViewModel
 class GameViewModel(application: Application): AndroidViewModel(application) {
 
@@ -119,14 +119,14 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 //    }
 
     /**
-     * @since startGame() - send players in database for starting the game
+     * send players in database for starting the game
      */
     suspend fun startGame(playersForNewGame: List<Player>) {
         repository.startGame(playersForNewGame)
     }
 
     /**
-     * @since roll() - fun is called from fragment_game.xml, calls anther fun roll() from GameHandler
+     * fun calls from fragment_game.xml, calls anther fun roll() from GameHandler
      */
     fun roll() {
         val game = this.currentGame.value?.game
@@ -141,7 +141,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     }
 
     /**
-     * @since pass() - fun is coled from fragment_game.xml, calls anther fun pass() from GameHandler
+     * fun cols from fragment_game.xml, calls anther fun pass() from GameHandler
      */
     fun pass() {
         val game = this.currentGame.value?.game
@@ -161,7 +161,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 //    }
 
     /**
-     * @since updateFromGameHandler() - update the UI of the fragment_game.xml
+     * update the UI of the fragment_game.xml
      */
     private  fun updateFromGameHandler(result: TurnResult) {
         val game = currentGame.value?.let { currentGameWithPlayers ->
@@ -194,6 +194,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
             }
         } ?: emptyList()
 
+        //CoroutineScope tied to this ViewModel.
         viewModelScope.launch {
             repository.updateGameAndStatuses(game, statuses)
             if (result.currentPlayer?.isHuman == false) playAITurn()
@@ -223,8 +224,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     }
 
     /**
-     * @since generateCurrentStandings() - converts information about Players to String
-     * and update the game state in the fragment_game.xml
+     * converts information about Players to String and update the game state in the fragment_game.xml
      */
     private fun generateCurrentStandings(players: List<Player>,
                                          headerText: String = "Current Standings:") =
@@ -235,7 +235,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         }
 
     /**
-     * @since generateTurnText() - converts information about Players to String
+     * converts information about Players to String
      * and update the game history in the fragment_game.xml
      */
     private fun generateTurnText(result: TurnResult): String {
@@ -320,7 +320,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      */
 
     /**
-     * @since playAITurn() - AI player make a turn (GameViewModel)
+     * AI player make a turn (GameViewModel)
      */
     private suspend fun playAITurn() {
         delay(1000)

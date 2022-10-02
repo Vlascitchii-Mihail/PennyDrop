@@ -12,7 +12,7 @@ class Converters {
     private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
 
     /**
-     * @since toOffsetDateTime() - converts String to the endTime: OffsetDateTime?
+     * converts String to the endTime: OffsetDateTime?
      * and startTime: OffsetDateTime? from Game.class
      */
     @TypeConverter
@@ -23,7 +23,7 @@ class Converters {
     }
 
     /**
-     * @since fromOffsetDateTime() - converts the endTime: OffsetDateTime?
+     * converts the endTime: OffsetDateTime?
      * and startTime: OffsetDateTime? to String from Game.class
      */
     //format() - Formats this date-time using the specified formatter.
@@ -32,20 +32,18 @@ class Converters {
     fun fromOffsetDateTime(date: OffsetDateTime?) = date?.format(formatter)
 
     /**
-     * @since fromGameStateToInt() - converts gameState: GameState from Game.class
-     * to Int
+     * converts gameState: GameState from Game.class to Int
      */
     @TypeConverter
     fun fromGameStateToInt(gameState: GameState?) =
 
-        //@since ordinal - Возвращает порядковый номер этой константы
+        //ordinal - Возвращает порядковый номер этой константы
         // перечисления (ее положение в объявлении перечисления, где
         // исходной константе присваивается порядковый номер нуля).
         (gameState ?: GameState.Unknown).ordinal
 
     /**
-     * @since fromIntToGameState() - converts Int to gameState: GameState from
-     * Game.class
+     * converts Int to gameState: GameState from Game.class
      */
     @TypeConverter
     fun fromIntToGameState(gameStateInt: Int?) =
@@ -61,8 +59,7 @@ class Converters {
         }
 
     /**
-     * @since fromGameStateToInt() - converts String to filledSlots: List<Int>
-     * from Game.class
+     * converts String to filledSlots: List<Int> from Game.class
      */
     @TypeConverter
     fun toIntList(value: String?) = value?.split(",")?.let {
@@ -71,8 +68,7 @@ class Converters {
     } ?: emptyList()
 
     /**
-     * @since fromIntToGameState() - filledSlots: List<Int> from Game.class
-     * to String
+     * converts filledSlots: List<Int> from Game.class to String
      */
     @TypeConverter
     fun fromListOfIntToString(numbers: List<Int>?) =
@@ -83,13 +79,13 @@ class Converters {
         numbers?.joinToString(",") ?: ""
 
     /**
-     * @since toAi() - converts aiId: Long? to AI?
+     * converts aiId: Long? to AI?
      */
     @TypeConverter
     fun toAi(aiId: Long?) = AI.basicAI.firstOrNull { it.aiId == aiId }
 
     /**
-     * @since fromAiToId() - converts ai: AI? to aiId: Long?
+     * converts ai: AI? to aiId: Long?
      */
     @TypeConverter
     fun fromAiToId(ai: AI?) = ai?.aiId

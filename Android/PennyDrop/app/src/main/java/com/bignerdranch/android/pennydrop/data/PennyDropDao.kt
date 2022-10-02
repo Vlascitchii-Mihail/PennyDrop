@@ -14,7 +14,7 @@ import java.time.OffsetDateTime
 @Dao
 abstract class PennyDropDao {
     /**
-     * @param :playerName - send the parameter to the Query
+     * @param playerName send the parameter to the Query
      */
     @Query("SELECT * FROM players WHERE playerName = :playerName")
     abstract fun getPlayer(playerName: String): Player?
@@ -32,13 +32,13 @@ abstract class PennyDropDao {
     abstract suspend fun updateGame(game: Game)
 
     //@Transaction - annotation tells  Room that the function you’re calling
-    // references multiple  tables and the data should be retrieved in a
-    // single atomic  operation. We’re getting data from both the games
-    //and players tables
+    // references multiple tables and the data should be retrieved in a
+    // single atomic  operation. We’re getting data from both the Games
+    //and the Players tables
     @Transaction
 
     //While the query only mentions the games table, we’re pulling in
-    // data from both tables due to the @Relation annotation and the
+    // data from both tables because of the @Relation annotation and the
     // @Junction on the GameWithPlayers class.
     /**
      * @param DESC LIMIT - quantity of results
@@ -54,16 +54,21 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
     abstract fun getCurrentGameStatuses(): LiveData<List<GameStatus>>
 
     //Room automatically add @Transaction annotation to UPDATE QUERY
-    //:endDate :gameState - reference to variable in function closeOpenGames()
+    //:endDate :gameState - reference to variable in SQLite query
+    //it works because of the Converter's functions
     @Query("""UPDATE games SET endTime = :endDate, gameState = :gameState 
         WHERE endTime IS NULL
     """)
     abstract suspend fun closeOpenGames(endDate: OffsetDateTime = OffsetDateTime.now(),
     gameState: GameState = GameState.Cancelled)
 
+    //we can write List<GameStatus> in database because of GameStatus is entity in database
     @Insert
     abstract suspend fun insertGameStatuses(gameStatuses: List<GameStatus>)
 
+    /**
+     * start the game
+     */
     @Transaction
     open suspend fun startGame(players: List<Player>): Long {
         this.closeOpenGames()

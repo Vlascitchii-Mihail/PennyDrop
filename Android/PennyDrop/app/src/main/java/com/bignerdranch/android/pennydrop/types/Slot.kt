@@ -28,7 +28,7 @@ data class Slot(
 }
 
 /**
- * @since clear() - clean the fields isFilled and lastRolled of the Slot,
+ * clean the fields isFilled and lastRolled of the Slot,
  * doesn't send to the LiveData listeners any notifications
  */
 fun List<Slot>.clear() = this.forEach { slot ->
@@ -37,13 +37,13 @@ fun List<Slot>.clear() = this.forEach { slot ->
 }
 
 /**
- * @since __.fullSlots() - show quantity of full slots
+ *  show quantity of full slots
  */
 fun List<Slot>.fullSlots(): Int =
     this.count {it.canBeFilled && it.isFilled}
 
 /**
- * @since coinFlipIsHeads() - returns random Boolean
+ * @return random Boolean
  */
 fun coinFlipIsHeads() = Random.nextBoolean()
 
