@@ -28,7 +28,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: PennyDropRepository
 
-    //MediatorLiveData<>() - LiveData subclass which may observe other
+    //MediatorLiveData<>() - LiveData subclass which can observe other
     // LiveData objects and react on OnChanged events from them.
     val currentGame = MediatorLiveData<GameWithPlayers>()
 
@@ -36,7 +36,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
     //current player in the game
 //    val currentPlayer = MutableLiveData<Player?>()
-    //Transformations - tolls for change LifeData when it changes
+    //Transformations - tools for change LifeData when it changes
     //map() - Возвращает LiveData, сопоставленный с входным источником LiveData,
     // применяя mapFunction к каждому значению, установленному в источнике.
     val currentPlayer = Transformations.map(this.currentGame) { gameWithPlayers ->
@@ -56,12 +56,16 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         Slot.mapFromGame(gameWithPlayers?.game)
     }
 
-    //opportunity to the current player to make a move
+    /**
+     * listen to the currentPlayer using Transformations.map()
+     */
     val canRoll = Transformations.map(this.currentPlayer) { player ->
         player?.isHuman == true && currentGame.value?.game?.canRoll == true
     }
 
-    //opportunity to the current player to make a pass
+    /**
+     * listen to the currentPlayer using Transformations.map()
+     */
     val canPass = Transformations.map(this.currentPlayer) { player ->
         player?.isHuman == true && currentGame.value?.game?.canPass == true
     }
@@ -126,7 +130,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     }
 
     /**
-     * fun calls from fragment_game.xml, calls anther fun roll() from GameHandler
+     * fun is colling from fragment_game.xml, this.roll() calls another fun roll() from GameHandler
+     * and return result in fragment_game.xml
      */
     fun roll() {
         val game = this.currentGame.value?.game
@@ -141,7 +146,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     }
 
     /**
-     * fun cols from fragment_game.xml, calls anther fun pass() from GameHandler
+     * fun is colling from fragment_game.xml, this.roll() calls another fun pass() from GameHandler
+     * and return result in fragment_game.xml
      */
     fun pass() {
         val game = this.currentGame.value?.game
