@@ -40,7 +40,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     //map() - Возвращает LiveData, сопоставленный с входным источником LiveData,
     // применяя mapFunction к каждому значению, установленному в источнике.
     val currentPlayer = Transformations.map(this.currentGame) { gameWithPlayers ->
-        gameWithPlayers?.players?.firstOrNull { it.isRolling}
+        gameWithPlayers?.players?.firstOrNull { it.isRolling }
     }
 
     //result of the game
@@ -191,7 +191,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
                 result.currentPlayer?.playerId -> { status.copy(
                     isRolling = !result.isGameOver,
-                    pennies = status.pennies + if (!result.isGameOver) {
+                    pennies = status.pennies + if (!result.playerChanged) {
                         result.coinChangeCount ?: 0
                     } else 0
                 )}
@@ -246,8 +246,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      */
     private fun generateTurnText(result: TurnResult): String {
 
-        val currentText = if (clearText)"" else currentGame.value?.game?.currentTurnText ?: ""
-        clearText = result.turnEnd != null
+        val currentText = currentGame.value?.game?.currentTurnText ?: ""
+//        clearText = result.turnEnd != null
 
         val currentPlayerName = result.currentPlayer?.playerName ?: "???"
 
@@ -256,8 +256,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
             //TurnRest - based logic and text
             result.isGameOver -> generateGameOverText()
 
-            result.turnEnd == TurnEnd.Bust -> "${result.previousPlayer} busted, got some pennies"
-            result.turnEnd == TurnEnd.Pass -> "${result.previousPlayer} passed"
+            result.turnEnd == TurnEnd.Bust -> "$currentText\n${result.previousPlayer?.playerName} busted, got some pennies\n"
+            result.turnEnd == TurnEnd.Pass -> "$currentText\n${result.previousPlayer?.playerName} passed\n"
 
             result.lastRoll != null ->
                 "$currentText\n$currentPlayerName rolled a ${result.lastRoll}."
@@ -265,6 +265,40 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
             else -> ""
         }
     }
+
+    /*
+private fun generateTurnText(result: TurnResult): String {
+//        if (clearText) currentTurnText.value = ""
+//        clearText = result.turnEnd != null
+
+//        val currentText = currentTurnText.value ?: ""
+    val currentPlayerName = result.currentPlayer?.playerName ?: "???"
+
+    val currentText =  when {
+
+        //TurnRest - based logic and text
+        result.isGameOver -> //Game's over, let's get a summary
+            """|Game over!
+                |$currentPlayerName is winner!
+                |
+                |${generateCurrentStandings(this.players, "Final Scores:\n")}
+                |}}
+            """.trimMargin()
+
+
+        result.turnEnd == TurnEnd.Bust -> "\n${result.previousPlayer?.playerName} busted, got some pennies\n"
+        result.turnEnd == TurnEnd.Pass -> "\n${result.previousPlayer?.playerName} passed\n"
+
+        result.lastRoll != null -> //Roll test
+            //"""___""" - текст без обработки
+            // | - указатель начала строки
+            "\n$currentPlayerName rolled a ${result.lastRoll}."
+
+        else -> ""
+    }
+    return currentText
+}
+ */
 
     private fun generateGameOverText() : String {
         val statuses = this.currentGameStatuses.value
@@ -286,44 +320,10 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
         return """|Game over!
                     |${winningPLayer.playerName} is winner!
                     |
-                    |${generateCurrentStandings(this.players, "Final Scores:\n")}
-                    |}}
+                    |${generateCurrentStandings(players, "Final Scores:\n")}
                 """.trimMargin()
     }
 
-    /*
-    private fun generateTurnText(result: TurnResult): String {
-//        if (clearText) currentTurnText.value = ""
-//        clearText = result.turnEnd != null
-
-//        val currentText = currentTurnText.value ?: ""
-        val currentPlayerName = result.currentPlayer?.playerName ?: "???"
-
-        val currentText =  when {
-
-            //TurnRest - based logic and text
-            result.isGameOver -> //Game's over, let's get a summary
-                """|Game over!
-                    |$currentPlayerName is winner!
-                    |
-                    |${generateCurrentStandings(this.players, "Final Scores:\n")}
-                    |}}
-                """.trimMargin()
-
-
-            result.turnEnd == TurnEnd.Bust -> "\n${result.previousPlayer?.playerName} busted, got some pennies\n"
-            result.turnEnd == TurnEnd.Pass -> "\n${result.previousPlayer?.playerName} passed\n"
-
-            result.lastRoll != null -> //Roll test
-                //"""___""" - текст без обработки
-                // | - указатель начала строки
-                "\n$currentPlayerName rolled a ${result.lastRoll}."
-
-            else -> ""
-        }
-        return currentText
-    }
-     */
 
     /**
      * AI player make a turn (GameViewModel)
