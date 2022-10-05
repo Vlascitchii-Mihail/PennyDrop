@@ -6,12 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/pickPlayersFragment">
+    app:startDestination="@id/rankingsFragment">
 
     <!--    adding the fragment and his ID in navigation
     android:name - name of the package and the class
     android:label - XML files
-     android:id - ID from navigation.xml-->
+     android:id - ID from the menu navigation.xml-->
     <fragment
         android:id="@+id/pickPlayersFragment"
         android:name="com.bignerdranch.android.pennydrop.fragments.PickPlayersFragment"
@@ -20,10 +20,15 @@
     <!--    adding the fragment and his ID in navigation
     android:name - name of the package an d the class
     android:label - XML files
-     android:id - ID from menu navigation.xml-->
+     android:id - ID from the menu navigation.xml-->
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.bignerdranch.android.pennydrop.fragments.GameFragment"
         android:label="fragment_game"/>
+
+    <fragment
+        android:id="@+id/rankingsFragment"
+        android:name="com.bignerdranch.android.pennydrop.fragments.RankingsFragment"
+        android:label="fragment_rankings"/>
 
 </navigation>

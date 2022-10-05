@@ -12,4 +12,10 @@
         android:id="@+id/gameFragment"
         android:icon="@drawable/dice_6"
         android:title="@string/game"/>
+
+    <item
+        android:id="@+id/rankingsFragment"
+        android:icon="@drawable/list_numbered_24"
+        android:title="@string/rankings_list"/>
+
 </menu>
