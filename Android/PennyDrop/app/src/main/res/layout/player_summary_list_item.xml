@@ -2,6 +2,7 @@
 
 <!--<layout> data <layout/> - dataBinding file. Shows to dataBinding tools that
     they need to recycle the file
+
     generating the binding class - PlayerListItemBinding-->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,9 +19,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+<!--    android:layout_marginStart - Specifies extra space on the start side of this view.
+
+android:adjustViewBounds - Set this to true if you want the ImageView to
+adjust (корректировад) its
+bounds to preserve (сохранить) the aspect ratio (соотношение сторон) of its drawable.-->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/playerTypeImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/player_type_image"
+        />
 
     <TextView
         android:layout_width="wrap_content"

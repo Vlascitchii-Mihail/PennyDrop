@@ -3,6 +3,7 @@ package com.bignerdranch.android.pennydrop.binding
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.Converters.convertColorToColorStateList
 import com.bignerdranch.android.pennydrop.R
 
 
@@ -32,10 +33,15 @@ fun bindPlayerSummaryAvatarSrc(imageView: ImageView, isHuman: Boolean) {
 @BindingAdapter("playerSummaryAvatarTint")
 fun bindPlayerSummaryAvatarTint(imageView: ImageView, isHuman: Boolean) {
 
-    //Returns a color associated with a particular resource ID and styled for the current theme.
-    imageView.context.getColor(
-        if (isHuman) android.R.color.holo_blue_bright
-    else android.R.color.holo_green_light
+//    convertColorToColorStateList() - Converts int color into a ColorStateList
+    //ColorStateList - Позволяет сопоставлять наборы состояний просмотра с цветами.
+    imageView.imageTintList = convertColorToColorStateList(
+
+        //ColorStateList - Позволяет сопоставлять наборы состояний просмотра с цветами.
+        imageView.context.getColor(
+            if (isHuman) android.R.color.holo_blue_bright
+        else android.R.color.holo_green_light
+        )
     )
 }
 
