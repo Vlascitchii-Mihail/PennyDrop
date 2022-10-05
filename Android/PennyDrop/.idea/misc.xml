@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/ai_toggle_bg.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/android_24.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/dice_6.xml" value="0.2865" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.2865" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/ic_baseline_tag_faces_24.xml" value="0.2865" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/layer_list_switch.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/switch_track.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/thumb.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/drawable/track.xml" value="0.287" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/activity_main.xml" value="0.2803442028985507" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/fragment_game.xml" value="0.375" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/fragment_pick_players.xml" value="0.2803442028985507" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/layout_coin_slot.xml" value="0.44224037339556593" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/player_list_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/layout/playr_list_item.xml" value="0.375" />
+        <entry key="..\:/MyPrograms/Android/PennyDrop/app/src/main/res/menu/navigation.xml" value="0.37916666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
