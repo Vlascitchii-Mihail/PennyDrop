@@ -21,9 +21,11 @@ fun bindIsHidden(view: View, isInvisible: Boolean) {
  */
 @BindingAdapter("playerSummaryAvatarSrc")
 fun bindPlayerSummaryAvatarSrc(imageView: ImageView, isHuman: Boolean) {
+
+    //setImageResource() - Sets a drawable as the content of this ImageView.
     imageView.setImageResource(
         if (isHuman) R.drawable.ic_baseline_tag_faces_24
-    else R.drawable.android_24
+        else R.drawable.android_24
     )
 }
 
@@ -33,11 +35,13 @@ fun bindPlayerSummaryAvatarSrc(imageView: ImageView, isHuman: Boolean) {
 @BindingAdapter("playerSummaryAvatarTint")
 fun bindPlayerSummaryAvatarTint(imageView: ImageView, isHuman: Boolean) {
 
+    //imageTintList - set thr tini to the image
 //    convertColorToColorStateList() - Converts int color into a ColorStateList
     //ColorStateList - Позволяет сопоставлять наборы состояний просмотра с цветами.
+            //equivalent to ai_toggle_color.xml
     imageView.imageTintList = convertColorToColorStateList(
 
-        //ColorStateList - Позволяет сопоставлять наборы состояний просмотра с цветами.
+        //getColor() - Returns a color associated with a particular resource ID and styled for the current theme.
         imageView.context.getColor(
             if (isHuman) android.R.color.holo_blue_bright
         else android.R.color.holo_green_light

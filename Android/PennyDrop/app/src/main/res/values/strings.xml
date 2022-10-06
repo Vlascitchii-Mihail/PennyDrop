@@ -15,4 +15,5 @@
     <string name="na">Unknown</string>
     <string name="rankings_list">Rankings</string>
     <string name="player_type_image">type of the player</string>
+    <string name="games_played">games played</string>
 </resources>

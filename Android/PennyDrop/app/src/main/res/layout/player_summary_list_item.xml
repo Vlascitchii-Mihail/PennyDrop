@@ -21,33 +21,76 @@
 
 <!--    android:layout_marginStart - Specifies extra space on the start side of this view.
 
-android:adjustViewBounds - Set this to true if you want the ImageView to
-adjust (корректировад) its
-bounds to preserve (сохранить) the aspect ratio (соотношение сторон) of its drawable.-->
+android:adjustViewBounds - Allow to the OS to change icon on the size of the area.
+Set this to true if you want the ImageView to adjust (корректировад) its bounds to
+preserve (сохранять) the aspect ratio (соотношение сторон) of its drawable.
+
+android:scaleType="fitCenter" - tells to the OS to change size of the icon. Controls
+how the image should be resized or moved to match (соответствовать) the size of this ImageView. -->
     <ImageView
         android:id="@+id/playerTypeImage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/player_type_image"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:playerSummaryAvatarSrc="@{playerSummary.isHuman}"
+        app:playerSummaryAvatarTint="@{playerSummary.isHuman}" />
+
+    <TextView
+        android:id="@+id/playerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@{playerSummary.name}"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/playerGamesPlayed"
+        app:layout_constraintStart_toEndOf="@id/playerTypeImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Michael" />
+
+    <TextView
+        android:id="@+id/playerGamesPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='@{playerSummary.gamesPlayed + " " + @string/games_played}'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/playerName"
+        app:layout_constraintTop_toBottomOf="@id/playerName"
+        tools:text="6 games played"
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/playerGamesWon"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@{playerSummary.winsString}"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textWins"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/textWins"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@{@plurals/wins(playerSummary.wins)}"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="wins"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

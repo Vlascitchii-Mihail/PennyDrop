@@ -1,7 +1,7 @@
 package com.bignerdranch.android.pennydrop.types
 
 /**
- * Ranking holder
+ * Ranking holder for ViewHolder
  */
 
 class PlayerSummary(
@@ -9,6 +9,7 @@ class PlayerSummary(
     val name: String,
     val gamesPlayed: Int = 0,
     val wins: Int = 0,
+    val winsString: String = wins.toString(),
     val isHuman: Boolean = true
 ) {
 }
