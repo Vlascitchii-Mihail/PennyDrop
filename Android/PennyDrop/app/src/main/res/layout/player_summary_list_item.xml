@@ -40,7 +40,8 @@ how the image should be resized or moved to match (соответствоват�
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:playerSummaryAvatarSrc="@{playerSummary.isHuman}"
-        app:playerSummaryAvatarTint="@{playerSummary.isHuman}" />
+        app:playerSummaryAvatarTint="@{playerSummary.isHuman}"
+        tools:src="@drawable/android_24"/>
 
     <TextView
         android:id="@+id/playerName"
@@ -65,6 +66,7 @@ how the image should be resized or moved to match (соответствоват�
         tools:text="6 games played"
         />
 
+<!--    Defines the alignment (выравнивание) of the text-->
     <TextView
         android:id="@+id/playerGamesWon"
         android:layout_width="48dp"

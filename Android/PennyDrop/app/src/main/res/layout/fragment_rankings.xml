@@ -3,7 +3,7 @@
 <!--    android:name - A unique name for the given item. This must use a Java-style
 naming convention to ensure the name is unique, for example "com.mycompany.MyName".
 
-app:layoutManager - Имя класса менеджера компоновки, который будет использоваться.-->
+app:layoutManager - Имя класса менеджера компоновки, компановка RecyclerView.-->
 <androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"

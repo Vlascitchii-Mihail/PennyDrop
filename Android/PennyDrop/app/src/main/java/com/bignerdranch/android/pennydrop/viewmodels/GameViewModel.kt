@@ -21,7 +21,7 @@ import java.time.OffsetDateTime
  * @property currentStandingsText result of the game
  */
 //AndroidViewModel(application) - parent class which allows us to refer to the Application's object
-//to get the context in ViewModel
+//to get the context in ViewModel, ViewModel с учетом контекста приложения.
 class GameViewModel(application: Application): AndroidViewModel(application) {
 
     private var clearText = false

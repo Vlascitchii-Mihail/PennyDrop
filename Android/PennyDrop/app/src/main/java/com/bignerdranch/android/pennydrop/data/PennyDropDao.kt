@@ -111,4 +111,14 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
         this.updateGame(game)
         this.updateGameStatuses(statuses)
     }
+
+    @Transaction
+    @Query("""
+        SELECT * FROM game_statuses WHERE gameId IN (
+        SELECT gameId FROM games WHERE gameState = :finishedGameState
+        )
+    """)
+    abstract fun getCompletedGameStatusesWithPlayers(
+        finishedGameState: GameState = GameState.Finished
+    ): LiveData<List<GameStatusWithPlayer>>
 }
