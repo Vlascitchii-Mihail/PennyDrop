@@ -17,13 +17,29 @@ class RankingsViewModel(application: Application) : AndroidViewModel(application
     val playerSummaries: LiveData<List<PlayerSummary>>
 
     init {
+
+        //get rhe repository's object
         this.repository = PennyDropDatabase.getDatabase(application, viewModelScope)
             .pennyDropDao().let { dao ->
                 PennyDropRepository.getInstance(dao)
             }
 
+        //convert List<GameStatusWithPlayer> to List<PlayerSummary>
         playerSummaries = Transformations.map(this.repository.getCompletedGameStatusesWithPlayers()) { statusesWithPlayers ->
 
+            //groupBy() - Groups elements of the original collection by the key returned by the given keySelector function
+            // applied to each element and returns a map where each group key is associated with a list of corresponding elements
+            statusesWithPlayers.groupBy { it.player }
+                .map { (player, statuses) ->
+                PlayerSummary(
+                    player.playerId,
+                    player.playerName,
+                    statuses.count(),
+                    statuses.count { it.gameStatus.pennies == 0},
+                    player.isHuman)
+
+                    // -  -> Сортировка по убыванию. Returns the negative of this value
+                }.sortedWith(compareBy({ -it.wins }, { -it.gamesPlayed}))
         }
     }
 }

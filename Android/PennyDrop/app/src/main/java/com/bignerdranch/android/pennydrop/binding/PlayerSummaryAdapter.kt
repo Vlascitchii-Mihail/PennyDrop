@@ -37,12 +37,13 @@ class PlayerSummaryAdapter : ListAdapter<PlayerSummary, PlayerSummaryAdapter.Pla
     //bind the PlayerSummaryViewHolder
     override fun onBindViewHolder(viewHolder: PlayerSummaryViewHolder, position: Int) {
 
-        //getItem(position) - receive the PlayerSummary's object from ListAdapter, depends where we are in the list
+        //getItem(position) - receive the right PlayerSummary's object from ListAdapter, depends where we are in the list
         viewHolder.bind(getItem(position))
     }
 
     /**
      * binds the PlayerSummary objects to the binding object in the player_summary_list_item.xml
+     * @param binding: PlayerSummaryListItemBinding - exemplar of the player_summary_list_item.xml binding
      */
     inner class PlayerSummaryViewHolder(
         private val binding: PlayerSummaryListItemBinding
@@ -61,8 +62,10 @@ class PlayerSummaryAdapter : ListAdapter<PlayerSummary, PlayerSummaryAdapter.Pla
          }
     }
 
-    //DiffUtil is a utility class that calculates the difference between two lists and
-    // outputs a list of update operations that converts the first list into the second one.
+    /**
+    DiffUtil is a utility class that calculates the difference between two lists and
+    outputs a list of update operations that converts the first list into the second one.
+    */
     private class PlayerSummaryDiffCallback : DiffUtil.ItemCallback<PlayerSummary>() {
 
         //Called to check whether two objects represent the same item.

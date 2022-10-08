@@ -1,5 +1,6 @@
 package com.bignerdranch.android.pennydrop.data
 
+import androidx.lifecycle.LiveData
 import com.bignerdranch.android.pennydrop.types.Player
 
 /**
@@ -15,6 +16,9 @@ class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
 
     suspend fun updateGameAndStatuses(game: Game, statuses: List<GameStatus>) =
         pennyDropDao.updateGameAndStatuses(game, statuses)
+
+    fun getCompletedGameStatusesWithPlayers(): LiveData<List<GameStatusWithPlayer>> =
+        pennyDropDao.getCompletedGameStatusesWithPlayers()
 
     /**
      * @property instance refers to the repository

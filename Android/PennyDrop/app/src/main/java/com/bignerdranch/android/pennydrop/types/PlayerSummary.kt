@@ -9,7 +9,7 @@ class PlayerSummary(
     val name: String,
     val gamesPlayed: Int = 0,
     val wins: Int = 0,
+    val isHuman: Boolean = true,
     val winsString: String = wins.toString(),
-    val isHuman: Boolean = true
 ) {
 }
