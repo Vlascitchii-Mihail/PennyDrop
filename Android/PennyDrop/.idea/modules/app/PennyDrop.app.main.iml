@@ -19,8 +19,10 @@
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/789778c19fc57ef6810666e4f23a5fdd/transformed/databinding-adapters-7.2.2-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-common/7.2.2/cb53bd625b7a99cf218f46634d07d1886441288/databinding-common-7.2.2.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/3cf4676d04e1cce1998a2612fa09aebe/transformed/databinding-ktx-7.2.2-api.jar</arg>
+                <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/722f823a8f546ac50516d3ff20c95541/transformed/preference-ktx-1.2.0-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/c241199b4cea2453460dd988a15c0a59/transformed/navigation-fragment-ktx-2.5.1-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/caf928f02b4ec5c69baa1e3ba36466b2/transformed/navigation-fragment-2.5.1-api.jar</arg>
+                <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/047bddcb6c7c586855b07f7de163a66b/transformed/preference-1.2.0-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/e74db8c44ce46f42a41731fd13fb7b69/transformed/fragment-ktx-1.5.1-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/4d9072a195b673a7f998bfde9f5ce0f3/transformed/navigation-ui-ktx-2.5.1-api.jar</arg>
                 <arg>$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/ff32fc43e98971ca78ccda2f4523eca5/transformed/navigation-runtime-ktx-2.5.1-api.jar</arg>
@@ -258,5 +260,7 @@
     <orderEntry type="library" name="Gradle: androidx.room:room-runtime:2.4.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.sqlite:sqlite-framework:2.2.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.sqlite:sqlite:2.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.preference:preference-ktx:1.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.preference:preference:1.2.0@aar" level="project" />
   </component>
 </module>

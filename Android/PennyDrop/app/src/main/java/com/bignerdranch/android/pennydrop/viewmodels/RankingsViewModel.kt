@@ -38,7 +38,7 @@ class RankingsViewModel(application: Application) : AndroidViewModel(application
                     statuses.count { it.gameStatus.pennies == 0},
                     player.isHuman)
 
-                    // -  -> Сортировка по убыванию. Returns the negative of this value
+                    // -  -> Сортировка по убыванию.
                 }.sortedWith(compareBy({ -it.wins }, { -it.gamesPlayed}))
         }
     }

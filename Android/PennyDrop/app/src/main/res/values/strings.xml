@@ -16,4 +16,9 @@
     <string name="rankings_list">Rankings</string>
     <string name="player_type_image">type of the player</string>
     <string name="games_played">games played</string>
+    <string name="settings">Settings</string>
+    <string name="starting_penny_count">Initial value</string>
+    <string name="starting_penny_count_new_game">Setting the initial value of the penny\'s quantity</string>
+    <string name="fast_ai_summary">Change the speed of the AI\'s turn</string>
+    <string name="fast_ai">AI without delay</string>
 </resources>

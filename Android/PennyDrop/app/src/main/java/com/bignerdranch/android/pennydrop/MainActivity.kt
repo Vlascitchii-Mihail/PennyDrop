@@ -2,8 +2,11 @@ package com.bignerdranch.android.pennydrop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -32,4 +35,26 @@ class MainActivity : AppCompatActivity() {
         //Выбранный элемент в NavigationView будет автоматически обновляться при изменении пункта назначения.
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(this.navController)
     }
+
+    /**
+     * create optionMenu in the app bar
+     */
+    override fun onCreateOptionsMenu(menu: Menu?) : Boolean {
+        super.onCreateOptionsMenu(menu)
+
+        //inflate ihe option menu
+        menuInflater.inflate(R.menu.options, menu)
+        return true
+    }
+
+    /**
+     * menu item listener
+     */
+    override fun onOptionsItemSelected(item: MenuItem) : Boolean =
+        if (this::navController.isInitialized) {
+
+            //navigate to the item
+            item.onNavDestinationSelected(this.navController) ||
+                    super.onOptionsItemSelected(item)
+        } else false
 }

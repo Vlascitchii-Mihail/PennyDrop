@@ -2,6 +2,7 @@ package com.bignerdranch.android.pennydrop.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
+import androidx.preference.PreferenceManager
 import com.bignerdranch.android.pennydrop.data.*
 import com.bignerdranch.android.pennydrop.game.GameHandler
 import com.bignerdranch.android.pennydrop.game.TurnEnd
@@ -72,6 +73,10 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
 
     //game's history
     val currentTurnText = MutableLiveData("")
+
+    //getDefaultSharedPreferences() - Gets a SharedPreferences instance that points to
+    // the default file that is used by the preference framework in the given context.
+    private val prefs = PreferenceManager.getDefaultSharedPreferences(application)
 
     init {
 
@@ -329,7 +334,9 @@ private fun generateTurnText(result: TurnResult): String {
      * AI player make a turn (GameViewModel)
      */
     private suspend fun playAITurn() {
-        delay(1000)
+
+        //false - default value if "fastAI" is null
+        delay(if (prefs.getBoolean("fastAI", false))100 else 1000)
         val game = currentGame.value?.game
         val players = currentGame.value?.players
         val currentPlayer = currentPlayer.value

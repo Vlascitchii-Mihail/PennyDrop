@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Game Settings">
+
+<!--        android:summary - description
+
+android:key -  The key to store the Preference value-->
+        <SeekBarPreference
+            android:defaultValue="10"
+            android:key="pennyCount"
+            android:max="20"
+            android:summary="@string/starting_penny_count_new_game"
+            android:title="@string/starting_penny_count"
+            app:min="1"
+            app:showSeekBarValue="true"/>
+
+
+        <SwitchPreferenceCompat
+            android:key="fastAI"
+            android:summary="@string/fast_ai_summary"
+            android:title="@string/fast_ai"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Theme Settings">
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About the App">
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

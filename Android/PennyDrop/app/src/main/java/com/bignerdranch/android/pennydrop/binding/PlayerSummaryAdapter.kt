@@ -19,7 +19,7 @@ class PlayerSummaryAdapter : ListAdapter<PlayerSummary, PlayerSummaryAdapter.Pla
 ) {
 
     //represents a new ViewHolder's object
-    override fun onCreateViewHolder(parent: ViewGroup, viewTipe: Int) : PlayerSummaryViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : PlayerSummaryViewHolder =
 
         //create a new ViewHolder's object
         PlayerSummaryViewHolder(
@@ -29,7 +29,7 @@ class PlayerSummaryAdapter : ListAdapter<PlayerSummary, PlayerSummaryAdapter.Pla
 
                 //LayoutInflater - Создает экземпляр XML-файла макета в соответствующих объектах View.
                 //from(parent.context) - Obtains the LayoutInflater from the given context.
-                LayoutInflater.from(parent.context), R.layout.player_list_item, parent, false
+                LayoutInflater.from(parent.context), R.layout.player_summary_list_item, parent, false
             )
         )
 

@@ -40,7 +40,15 @@ class RankingsFragment : Fragment() {
             }
         }
 
+        //LiveData.observe - listener's registration
+//         viewLifecycleOwner - Get a LifecycleOwner that represents the Fragment's View lifecycle.
+//         fragment's view lifecycle. Снимает слушателя после уничтожения фрагмента
+
+//         Observer - reaction to a new data (lambda) Adds the given observer to the observers list within
+//         the lifespan (срока жизни) of the given owner. The events are dispatched on the main thread.
         viewModel.playerSummaries.observe(viewLifecycleOwner) { summaries ->
+
+            //submitList() - Submits (Отправляет) a new list to be diffed (для сравнения), and displayed.
             playerSummaryAdapter.submitList(summaries)
         }
 

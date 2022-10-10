@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Programs/AndroidSDK/icons/material/materialicons/format_list_numbered/baseline_format_list_numbered_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Programs/AndroidSDK/icons/material/materialicons/settings/baseline_settings_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_format_list_numbered_24" />
+                            <entry key="outputName" value="settings_24" />
                             <entry key="sourceFile" value="D:\MyPrograms\Android\PennyDrop" />
                           </map>
                         </option>
