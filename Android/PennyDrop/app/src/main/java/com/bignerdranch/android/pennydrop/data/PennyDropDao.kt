@@ -70,7 +70,7 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
      * start the game
      */
     @Transaction
-    open suspend fun startGame(players: List<Player>): Long {
+    open suspend fun startGame(players: List<Player>, pennyCount: Int? = null): Long {
         this.closeOpenGames()
 
         val gameId = this.insertGame(
@@ -95,7 +95,8 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
                     gameId,
                     playerId,
                     index,
-                    index == 0
+                    index == 0,
+                    pennyCount ?: Player.defaultPennyCount
                 )
             }
         )

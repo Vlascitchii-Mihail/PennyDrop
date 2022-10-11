@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -17,6 +18,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //getDefaultSharedPreferences() - Gets a SharedPreferences instance that points to
+        // the default file that is used by the preference framework in the given context.
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
+        //receiving the theme ID
+        val themeId = when(prefs.getString("theme", "AppTheme")) {
+            "Kotlin" -> R.style.Kotlin
+            "Crew" -> R.style.Crew
+            "FTD" -> R.style.FTD
+            "GPG" -> R.style.GPG
+            "Hazel" -> R.style.Hazel
+            else -> R.style.Theme_PennyDrop
+        }
+
+        //set new theme
+        setTheme(themeId)
 
         //connects activity_main.xml with MainActivity.kt
         setContentView(R.layout.activity_main)

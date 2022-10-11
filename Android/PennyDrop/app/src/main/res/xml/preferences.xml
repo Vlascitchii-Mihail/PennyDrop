@@ -29,6 +29,19 @@ android:key -  The key to store the Preference value-->
     <PreferenceCategory
         android:title="Theme Settings">
 
+<!--        app:useSimpleSummaryProvider change the
+summary whenever we change the value of the preference
+
+android:entries="@array/themes" android:entryValues="@array/theme_vlaues" - filling the
+DropDownPreference with names of themes-->
+        <DropDownPreference
+            android:defaultValue="Theme.PennyDrop"
+            android:entries="@array/themes"
+            android:entryValues="@array/theme_values"
+            android:key="theme"
+            android:title="@string/app_theme"
+            app:useSimpleSummaryProvider="true"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory

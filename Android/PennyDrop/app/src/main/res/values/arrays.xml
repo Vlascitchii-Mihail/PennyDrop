@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    label for the DropDown
+    <string-array name="themes">
+        <item>Default</item>
+        <item>Kotlin</item>
+        <item>Crew</item>
+        <item>FTD</item>
+        <item>GPG</item>
+        <item>HMF</item>
+    </string-array>
+
+    actual values of themes
+    <string-array name="theme_values">
+        <item>AppTheme</item>
+        <item>Kotlin</item>
+        <item>Crew</item>
+        <item>FTD</item>
+        <item>GPG</item>
+        <item>Hazel</item>
+    </string-array>
+
+</resources>

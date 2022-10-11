@@ -9,6 +9,7 @@ buildscript {
         room_version = '2.3.0-beta01'
         recycler_vie_version = '1.2.1'
         poreference_version = '1.2.0'
+        material_version= '1.6.1'
     }
 }
 

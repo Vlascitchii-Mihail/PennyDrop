@@ -131,7 +131,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * send players in database for starting the game
      */
     suspend fun startGame(playersForNewGame: List<Player>) {
-        repository.startGame(playersForNewGame)
+        repository.startGame(playersForNewGame, prefs?.getInt("pennyCount", Player.defaultPennyCount))
     }
 
     /**
@@ -335,7 +335,11 @@ private fun generateTurnText(result: TurnResult): String {
      */
     private suspend fun playAITurn() {
 
-        //false - default value if "fastAI" is null
+        /**
+         * getBoolean() - check the state of the SwitchPreferenceCompat
+         * @param "fastAI" - SwitchPreferenceCompat key
+         * @param false - default value if "fastAI" is null
+         */
         delay(if (prefs.getBoolean("fastAI", false))100 else 1000)
         val game = currentGame.value?.game
         val players = currentGame.value?.players
