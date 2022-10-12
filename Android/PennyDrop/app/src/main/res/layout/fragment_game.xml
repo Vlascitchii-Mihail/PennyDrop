@@ -143,7 +143,12 @@ speed of LinearLayout's rendering
 
 <!--android:layout_weight - относительное соотношение размеров для каждого комронента
 android:drawableTint - Оттенок для составных (слева, сверху и т. д.) рисунков.
-android:onClick - Name of the method in this View's context to invoke when the view is clicked.-->
+android:onClick - Name of the method in this View's context to invoke when the view is clicked.
+
+android:drawableTint="?android:attr/textColorPrimaryInverse" - Primary
+inverse text color, useful for inverted backgrounds
+
+android:background="@{vm.canRoll ? @color/colorPrimary2 : @color/plainGray}"-->
         <Button
             android:layout_width="0dp"
             android:layout_weight="3"
@@ -151,11 +156,11 @@ android:onClick - Name of the method in this View's context to invoke when the v
             android:drawableEnd="@drawable/dice_6"
             android:padding="10dp"
             android:text="@string/roll"
-            android:background="@{vm.canRoll ? @color/colorPrimary2 : @color/plainGray}"
+            android:background="@color/roll_button_color"
             android:enabled="@{vm.canRoll}"
             android:onClick="@{() -> vm.roll()}"
-            android:drawableTint="@android:color/white"
-            android:textColor="@android:color/white"
+            android:drawableTint="?android:attr/textColorPrimaryInverse"
+            android:textColor="?android:attr/textColorPrimaryInverse"
             />
 
         <TextView
@@ -166,7 +171,12 @@ android:onClick - Name of the method in this View's context to invoke when the v
             android:text="@string/or"
             android:textSize="24sp"/>
 
-<!--android:drawableTint - Оттенок для составных (слева, сверху и т. д.) рисунков.-->
+<!--android:drawableTint - Оттенок для составных (слева, сверху и т. д.) рисунков.
+
+android:drawableTint="?android:attr/textColorPrimaryInverse" - Primary
+inverse text color, useful for inverted backgrounds
+
+android:background="@{vm.canPass ? @color/colorPrimary2 : @color/plainGray}"-->
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -174,11 +184,11 @@ android:onClick - Name of the method in this View's context to invoke when the v
             android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
             android:padding="10dp"
             android:text="@string/pass"
-            android:background="@{vm.canPass ? @color/colorPrimary2 : @color/plainGray}"
-            android:drawableTint="@android:color/white"
+            android:background="@color/pass_button_color"
+            android:drawableTint="?android:attr/textColorPrimaryInverse"
             android:enabled="@{vm.canPass}"
             android:onClick="@{() -> vm.pass()}"
-            android:textColor="@android:color/white"
+            android:textColor="?android:attr/textColorPrimaryInverse"
             />
 
     </LinearLayout>

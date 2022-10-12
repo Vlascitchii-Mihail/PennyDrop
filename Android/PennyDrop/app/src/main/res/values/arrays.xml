@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    label for the DropDown
+
+<!--    label for the DropDownPreference-->
     <string-array name="themes">
         <item>Default</item>
         <item>Kotlin</item>
@@ -10,7 +11,7 @@
         <item>HMF</item>
     </string-array>
 
-    actual values of themes
+<!--    actual values of themes-->
     <string-array name="theme_values">
         <item>AppTheme</item>
         <item>Kotlin</item>
@@ -19,5 +20,19 @@
         <item>GPG</item>
         <item>Hazel</item>
     </string-array>
+
+
+    <string-array name="theme_modes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System Default</item>
+    </string-array>
+
+    <string-array name="theme_mode_values">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System</item>
+    </string-array>
+
 
 </resources>

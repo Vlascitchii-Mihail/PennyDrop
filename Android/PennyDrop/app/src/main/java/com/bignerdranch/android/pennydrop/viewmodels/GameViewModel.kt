@@ -131,6 +131,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * send players in database for starting the game
      */
     suspend fun startGame(playersForNewGame: List<Player>) {
+
+        //prefs?.getInt() - send the default value of penny chosen from settings
         repository.startGame(playersForNewGame, prefs?.getInt("pennyCount", Player.defaultPennyCount))
     }
 

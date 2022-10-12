@@ -68,6 +68,7 @@ ORDER BY startTime DESC LIMIT 1) ORDER BY gamePlayerNumber
 
     /**
      * start the game
+     * @param pennyCount - default penny value from setting
      */
     @Transaction
     open suspend fun startGame(players: List<Player>, pennyCount: Int? = null): Long {

@@ -2,7 +2,6 @@
   <library name="Gradle: androidx.test.ext:junit:1.1.3@aar">
     <CLASSES>
       <root url="jar://$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/1ba1879a0a92a0000ea6ce0c6a424467/transformed/junit-1.1.3/jars/classes.jar!/" />
-      <root url="file://$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/1ba1879a0a92a0000ea6ce0c6a424467/transformed/junit-1.1.3/res" />
       <root url="file://$APPLICATION_HOME_DIR$/.gradle/caches/transforms-3/1ba1879a0a92a0000ea6ce0c6a424467/transformed/junit-1.1.3/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

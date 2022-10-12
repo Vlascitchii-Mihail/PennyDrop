@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
 import androidx.navigation.ui.onNavDestinationSelected
@@ -35,6 +36,17 @@ class MainActivity : AppCompatActivity() {
 
         //set new theme
         setTheme(themeId)
+
+        //change tne mode on App Startup using settings
+        val nightMode = when(prefs.getString("themeMode", "")) {
+            "Light" -> AppCompatDelegate.MODE_NIGHT_NO
+            "Dark" -> AppCompatDelegate.MODE_NIGHT_YES
+            else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+        }
+
+        //Sets the default night mode.
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+
 
         //connects activity_main.xml with MainActivity.kt
         setContentView(R.layout.activity_main)

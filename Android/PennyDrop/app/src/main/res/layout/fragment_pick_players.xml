@@ -73,7 +73,8 @@ in player_list_item.xml-->
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_baseline_play_arrow_24"
-        app:tint="@android:color/white"
+        app:backgroundTint="?android:attr/colorAccent"
+        app:tint="?android:attr/textColorPrimaryInverse"
         android:contentDescription="@string/playButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

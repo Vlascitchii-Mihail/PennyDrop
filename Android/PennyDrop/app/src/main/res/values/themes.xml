@@ -22,38 +22,63 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+<!--    creating a new themes-->
     <style name = "Kotlin" parent="Theme.PennyDrop">
+
         панель названия приложения, Buttons
         <item name="colorPrimary">@color/kotlinBlue</item>
+
+        панель состояния
+        <item name="colorPrimaryVariant">@color/kotlinPink</item>
         <item name="colorPrimaryDark">@color/kotlinPurple</item>
 
         текст, EditText
         <item name="colorAccent">@color/kotlinOrange</item>
     </style>
 
+
     <style name="Crew" parent="Theme.PennyDrop">
+
+        панель названия приложения, Buttons
         <item name="colorPrimary">@color/crewBlue</item>
         <item name="colorPrimaryDark">@color/crewLightBlue</item>
+
+        текст, EditText
         <item name="colorAccent">@color/crewGold</item>
         <item name="colorSurface">@color/crewBlue</item>
     </style>
 
+
     <style name="FTD" parent="Theme.PennyDrop">
+
+        панель названия приложения, Buttons
         <item name="colorPrimary">@color/ftdGreen</item>
         <item name="colorPrimaryDark">@color/ftdGreen</item>
+
+        текст, EditText
         <item name="colorAccent">@color/ftdBlue</item>
     </style>
 
+
     <style name="GPG" parent="Theme.PennyDrop">
+
+        панель названия приложения, Buttons
         <item name="colorPrimary">@color/packGreen</item>
         <item name="colorPrimaryDark">@color/packGreen</item>
+
+        текст, EditText
         <item name="colorAccent">@color/packGold</item>
         <item name="colorSurface">@color/packGreenDark</item>
     </style>
 
+
     <style name="Hazel" parent="Theme.PennyDrop">
+        панель названия приложения, Buttons
         <item name="colorPrimary">@color/hazelBlue</item>
         <item name="colorPrimaryDark">@color/hazelDarkBlue</item>
+
+        текст, EditText
         <item name="colorAccent">@color/hazelPink</item>
     </style>
 

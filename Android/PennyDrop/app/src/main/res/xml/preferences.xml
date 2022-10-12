@@ -8,7 +8,7 @@
 
 <!--        android:summary - description
 
-android:key -  The key to store the Preference value-->
+android:key -  The key to find the Preference value from other files-->
         <SeekBarPreference
             android:defaultValue="10"
             android:key="pennyCount"
@@ -29,7 +29,10 @@ android:key -  The key to store the Preference value-->
     <PreferenceCategory
         android:title="Theme Settings">
 
-<!--        app:useSimpleSummaryProvider change the
+<!--DropDownPreference - A ListPreference that presents the options in a drop
+down menu rather than a dialog.
+
+ app:useSimpleSummaryProvider change the
 summary whenever we change the value of the preference
 
 android:entries="@array/themes" android:entryValues="@array/theme_vlaues" - filling the
@@ -40,6 +43,14 @@ DropDownPreference with names of themes-->
             android:entryValues="@array/theme_values"
             android:key="theme"
             android:title="@string/app_theme"
+            app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+            android:defaultValue="System"
+            android:entries="@array/theme_modes"
+            android:entryValues="@array/theme_mode_values"
+            android:key="themeMode"
+            android:title="@string/theme_mode"
             app:useSimpleSummaryProvider="true"/>
 
     </PreferenceCategory>

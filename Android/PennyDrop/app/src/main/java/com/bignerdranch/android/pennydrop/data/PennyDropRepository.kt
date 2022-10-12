@@ -12,6 +12,9 @@ class PennyDropRepository(private val pennyDropDao: PennyDropDao) {
 
     fun getCurrentGameStatuses() = pennyDropDao.getCurrentGameStatuses()
 
+    /**
+     * @param pennyCount - default penny value
+     */
     suspend fun startGame(players: List<Player>, pennyCount: Int? = null) =
         pennyDropDao.startGame(players, pennyCount)
 
