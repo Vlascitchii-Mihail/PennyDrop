@@ -10,6 +10,7 @@ import com.bignerdranch.android.pennydrop.R
 /**
  * create new attribute isHidden in the each View
  * автономная функция уровня пакетар
+ * if view isn't active put invisible state
  */
 @BindingAdapter("isHidden")
 fun bindIsHidden(view: View, isInvisible: Boolean) {
@@ -49,6 +50,9 @@ fun bindPlayerSummaryAvatarTint(imageView: ImageView, isHuman: Boolean) {
     )
 }
 
+/**
+ * change state of the view to activated or not activated
+ */
 @BindingAdapter("slotLastRolled")
 fun bindSlotLastRolled(view: View, lastRolled: Boolean) {
     view.isActivated = lastRolled

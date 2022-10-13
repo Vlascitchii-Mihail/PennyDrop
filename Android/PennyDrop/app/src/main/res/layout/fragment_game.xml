@@ -148,7 +148,11 @@ android:onClick - Name of the method in this View's context to invoke when the v
 android:drawableTint="?android:attr/textColorPrimaryInverse" - Primary
 inverse text color, useful for inverted backgrounds
 
-android:background="@{vm.canRoll ? @color/colorPrimary2 : @color/plainGray}"-->
+android:background="@{vm.canRoll ? @color/colorPrimary2 : @color/plainGray}"
+
+android:drawableTint="?android:attr/textColorPrimaryInverse"
+android:textColor="?android:attr/textColorPrimaryInverse"  - change the color to reverse color
+        if we change color mode-->
         <Button
             android:layout_width="0dp"
             android:layout_weight="3"
@@ -176,7 +180,11 @@ android:background="@{vm.canRoll ? @color/colorPrimary2 : @color/plainGray}"-->
 android:drawableTint="?android:attr/textColorPrimaryInverse" - Primary
 inverse text color, useful for inverted backgrounds
 
-android:background="@{vm.canPass ? @color/colorPrimary2 : @color/plainGray}"-->
+android:background="@{vm.canPass ? @color/colorPrimary2 : @color/plainGray}"
+
+android:drawableTint="?android:attr/textColorPrimaryInverse"
+android:textColor="?android:attr/textColorPrimaryInverse"  - change the color to reverse color
+        if we change color mode-->
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -185,9 +193,9 @@ android:background="@{vm.canPass ? @color/colorPrimary2 : @color/plainGray}"-->
             android:padding="10dp"
             android:text="@string/pass"
             android:background="@color/pass_button_color"
-            android:drawableTint="?android:attr/textColorPrimaryInverse"
             android:enabled="@{vm.canPass}"
             android:onClick="@{() -> vm.pass()}"
+            android:drawableTint="?android:attr/textColorPrimaryInverse"
             android:textColor="?android:attr/textColorPrimaryInverse"
             />
 

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/pickPlayersFragment">
+    app:startDestination="@id/aboutFragment">
 
     <!--    adding the fragment and his ID in navigation
     android:name - name of the package and the class
@@ -36,5 +36,10 @@
         android:id="@+id/settingsFragment"
         android:name="com.bignerdranch.android.pennydrop.fragments.SettingsFragment"
         android:label="@string/settings"/>
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.bignerdranch.android.pennydrop.fragments.AboutFragment"
+        android:label="About Penny Drop"/>
 
 </navigation>

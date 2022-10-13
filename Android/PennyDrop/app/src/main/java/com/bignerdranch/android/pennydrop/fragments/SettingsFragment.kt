@@ -2,6 +2,7 @@ package com.bignerdranch.android.pennydrop.fragments
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.fragment.findNavController
 import androidx.preference.DropDownPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -32,6 +33,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 true
             }
 
+
+
         //Finds a Preference with the given key. Returns null if
         // no Preference could be found with the given key.
         val themeModePreference = findPreference<ListPreference?>("themeMode")
@@ -41,9 +44,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
         //AppCompatDelegate - This class represents a delegate which you can use to extend AppCompat's support to any Activity
         themeModePreference?.setDefaultValue(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
-        //recreate the activity when we change the theme in the DropDownPreference
+
         //OnPreferenceChangeListener {} - Sets the callback to be invoked when this
-        // preference is changed by the user (but before the internal state has been updated).
+        // preference is changed by the user.
         themeModePreference?.onPreferenceChangeListener =
 
             //newValue - user's theme choice from ListPreference in settings.xml
@@ -54,8 +57,23 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                 }
 
-                //Sets the default night mode.
+                //Sets the default night mode immediately.
                 AppCompatDelegate.setDefaultNightMode(nightMode)
+                true
+            }
+
+
+
+        //Finds a Preference with the given key. Returns null if
+        // no Preference could be found with the given key.
+        val creditsPreferences = findPreference<Preference?>("credits")
+
+        //click listener
+        creditsPreferences?.onPreferenceClickListener =
+
+            //change the fragment
+            Preference.OnPreferenceClickListener { _ ->
+                this.findNavController().navigate(R.id.aboutFragment)
                 true
             }
     }

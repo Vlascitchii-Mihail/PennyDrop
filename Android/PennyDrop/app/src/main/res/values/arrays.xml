@@ -21,13 +21,14 @@
         <item>Hazel</item>
     </string-array>
 
-
+    <!--    label for the ListPreference-->
     <string-array name="theme_modes">
         <item>Light</item>
         <item>Dark</item>
         <item>System Default</item>
     </string-array>
 
+    <!--    actual values of mode-->
     <string-array name="theme_mode_values">
         <item>Light</item>
         <item>Dark</item>

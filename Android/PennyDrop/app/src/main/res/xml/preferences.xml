@@ -45,6 +45,7 @@ DropDownPreference with names of themes-->
             android:title="@string/app_theme"
             app:useSimpleSummaryProvider="true"/>
 
+<!--        A Preference that displays a list of entries as a dialog.-->
         <ListPreference
             android:defaultValue="System"
             android:entries="@array/theme_modes"
@@ -57,6 +58,11 @@ DropDownPreference with names of themes-->
 
     <PreferenceCategory
         android:title="About the App">
+
+        <Preference
+            android:key="credits"
+            android:summary="@string/about_app_summary"
+            android:title="@string/about_penny_drop"/>
 
     </PreferenceCategory>
 

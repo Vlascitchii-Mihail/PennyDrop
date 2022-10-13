@@ -63,19 +63,25 @@ in player_list_item.xml-->
 
         </LinearLayout>
 
-<!--    app:tint - color of the android:src="@drawable/ic_baseline_play_arrow_24"-->
+<!--    app:tint - color of the android:src="@drawable/ic_baseline_play_arrow_24"
+
+android:drawableTint="?android:attr/textColorPrimaryInverse"
+android:textColor="?android:attr/textColorPrimaryInverse"  - change the color to reverse color
+        if we change color mode-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonPlayGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:contentDescription="@string/playButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/playButton"
         android:src="@drawable/ic_baseline_play_arrow_24"
         app:backgroundTint="?android:attr/colorAccent"
-        app:tint="?android:attr/textColorPrimaryInverse"
-        android:contentDescription="@string/playButton" />
+        app:contentDescription="@string/playButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="?android:attr/textColorPrimaryInverse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

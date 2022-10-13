@@ -7,7 +7,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         //getDefaultSharedPreferences() - Gets a SharedPreferences instance that points to
         // the default file that is used by the preference framework in the given context.
@@ -34,8 +37,11 @@ class MainActivity : AppCompatActivity() {
             else -> R.style.Theme_PennyDrop
         }
 
-        //set new theme
+        //set new theme at app start
+        //using before  setContentView(R.layout.activity_main)
         setTheme(themeId)
+
+
 
         //change tne mode on App Startup using settings
         val nightMode = when(prefs.getString("themeMode", "")) {
@@ -46,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         //Sets the default night mode.
         AppCompatDelegate.setDefaultNightMode(nightMode)
+
 
 
         //connects activity_main.xml with MainActivity.kt
@@ -64,6 +71,18 @@ class MainActivity : AppCompatActivity() {
         // android.view.MenuItem.onNavDestinationSelected при выборе пункта меню.
         //Выбранный элемент в NavigationView будет автоматически обновляться при изменении пункта назначения.
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(this.navController)
+
+
+
+        //AppBarConfiguration() - create a new AppBar
+        //send all the classes (from bottom_nav menu) to constructor, which shouldn't display
+                // their label from nav_graph.xml on the appBar with a back arrow
+        //also we can write tne names of thr classes instead of sending bottom_nav menu
+        val appBarConfiguration =
+            AppBarConfiguration(findViewById<BottomNavigationView>(R.id.bottom_nav).menu)
+
+        //setup the AppBar
+        setupActionBarWithNavController(this.navController, appBarConfiguration)
     }
 
     /**
@@ -87,4 +106,11 @@ class MainActivity : AppCompatActivity() {
             item.onNavDestinationSelected(this.navController) ||
                     super.onOptionsItemSelected(item)
         } else false
+
+
+
+    //navigate Up(back) using the arrow left on the action bar using navController
+    override fun onSupportNavigateUp(): Boolean =
+        (this::navController.isInitialized &&
+                this.navController.navigateUp() || super.onSupportNavigateUp())
 }
