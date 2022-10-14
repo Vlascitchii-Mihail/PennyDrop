@@ -25,4 +25,13 @@
     <string name="theme_mode">Theme customization</string>
     <string name="about_app_summary">Describe the app and the links to the resources</string>
     <string name="about_penny_drop">Penny Drop Description</string>
+    <string name="pick_players_view">Pick Players</string>
+    <string name="fragment_game_view">Game</string>
+    <string name="rankings_fragment">Ranking</string>
+    <string name="about_penny_drop_view">About Penny Drop</string>
+
+    <string name="penny_drop_created_by">The <i>Penny Drop</i> app was created by Michael Fazio for the Pragmatic Bookshelf title
+    <a href="https://pragrog.com/titles/mfjetpack">"Kotlin and Android Development featuring Jetpack"</a></string>
+
+    <string name="penny_drop_icons">The coin and six-sided die icons are from the Material Design Icons collected</string>
 </resources>

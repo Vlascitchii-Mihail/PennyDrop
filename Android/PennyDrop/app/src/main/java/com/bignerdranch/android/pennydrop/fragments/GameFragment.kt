@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import com.bignerdranch.android.pennydrop.R
+import com.bignerdranch.android.pennydrop.data.GameState
 import com.bignerdranch.android.pennydrop.databinding.FragmentGameBinding
 import com.bignerdranch.android.pennydrop.viewmodels.GameViewModel
 
@@ -57,6 +59,29 @@ class GameFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
         return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        //listen the game state
+        gameViewModel.currentGame.observe(viewLifecycleOwner) { gameState->
+            if (gameState.game.gameState == GameState.Finished)
+                val dialog = activity?.let { AlertDialog.Builder(it).setTitle("New Game?")
+                        .setIcon(R.drawable.dice_6).setMessage("Same players or new players")
+                        .setPositiveButton("Same Players") { _, _ ->
+                            gameViewModel.startWithSamePlayers()
+                        }.setNegativeButton("New Players") { _, _ ->
+                            goToPickPlayers()
+                        }.setNeutralButton("Cancel") { _, _ ->
+
+                            //here dialog is closing
+                        }.create()
+                }
+
+            //display the dialog
+            dialog?.show()
+        }
     }
 
     companion object {

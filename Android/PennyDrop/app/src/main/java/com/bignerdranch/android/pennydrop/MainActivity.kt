@@ -74,15 +74,18 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        //AppBarConfiguration() - create a new AppBar
+        //AppBarConfiguration() - configure the AppBar
         //send all the classes (from bottom_nav menu) to constructor, which shouldn't display
-                // their label from nav_graph.xml on the appBar with a back arrow
-        //also we can write tne names of thr classes instead of sending bottom_nav menu
+                // their label (from nav_graph.xml) on the appBar with a back arrow
+        //also we can write tne names of the classes instead of sending bottom_nav menu
         val appBarConfiguration =
             AppBarConfiguration(findViewById<BottomNavigationView>(R.id.bottom_nav).menu)
 
-        //setup the AppBar
+        //Sets up the ActionBar returned by AppCompatActivity.getSupportActionBar for use with a NavController.
+        //By calling this method, the title in the action bar will automatically be updated when the
+        // destination changes (assuming there is a valid label)
         setupActionBarWithNavController(this.navController, appBarConfiguration)
+
     }
 
     /**
