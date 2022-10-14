@@ -78,6 +78,8 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
     // the default file that is used by the preference framework in the given context.
     private val prefs = PreferenceManager.getDefaultSharedPreferences(application)
 
+    private lateinit var playersForAnotherGame: List<Player>
+
     init {
 
         //create database's variable to get repository's variable
@@ -131,6 +133,7 @@ class GameViewModel(application: Application): AndroidViewModel(application) {
      * send players in database for starting the game
      */
     suspend fun startGame(playersForNewGame: List<Player>) {
+        playersForAnotherGame = playersForNewGame
 
         //prefs?.getInt() - send the default value of penny chosen from settings
         repository.startGame(playersForNewGame, prefs?.getInt("pennyCount", Player.defaultPennyCount))
@@ -353,5 +356,9 @@ private fun generateTurnText(result: TurnResult): String {
                 updateFromGameHandler(result)
             }
         }
+    }
+
+    suspend fun startWithSamePlayers() {
+        startGame(playersForAnotherGame)
     }
 }

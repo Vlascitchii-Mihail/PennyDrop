@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.pennydrop.R
 import com.bignerdranch.android.pennydrop.data.GameState
 import com.bignerdranch.android.pennydrop.databinding.FragmentGameBinding
 import com.bignerdranch.android.pennydrop.viewmodels.GameViewModel
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,24 +67,36 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+//        var dialog: AlertDialog?
         //listen the game state
         gameViewModel.currentGame.observe(viewLifecycleOwner) { gameState->
-            if (gameState.game.gameState == GameState.Finished)
                 val dialog = activity?.let { AlertDialog.Builder(it).setTitle("New Game?")
-                        .setIcon(R.drawable.dice_6).setMessage("Same players or new players")
-                        .setPositiveButton("Same Players") { _, _ ->
-                            gameViewModel.startWithSamePlayers()
-                        }.setNegativeButton("New Players") { _, _ ->
-                            goToPickPlayers()
-                        }.setNeutralButton("Cancel") { _, _ ->
+                    .setIcon(R.drawable.dice_6).setMessage("Same players or new players")
+                    .setPositiveButton("Same Players") { _, _ ->
 
-                            //here dialog is closing
-                        }.create()
+                        //launch the game again
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            gameViewModel.startWithSamePlayers()
+                        }
+                    }.setNegativeButton("New Players") { _, _ ->
+                        goToPickPlayers()
+                    }.setNeutralButton("Cancel") { _, _ ->
+
+                        //here dialog is closing
+                    }.create()
                 }
 
-            //display the dialog
-            dialog?.show()
+            if (gameState.game.gameState == GameState.Finished) {
+
+                //display the dialog
+                dialog?.show()
+            } else dialog?.dismiss()
         }
+
+    }
+
+    private fun goToPickPlayers() {
+        this.findNavController().navigate(R.id.pickPlayersFragment)
     }
 
     companion object {
