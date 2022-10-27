@@ -59,7 +59,7 @@ android:enabled="@{player.isIncluded()}" - enabling or disabling the view-->
 android:thumbTint="@color/ai_toggle_color - change a color of the ball from Switch (Selector)
 android:trackTint="@color/ai_toggle_color" - change a color of the track from Switch-->
 
-    <android.widget.Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_player_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,8 +70,8 @@ android:trackTint="@color/ai_toggle_color" - change a color of the track from Sw
         android:checked="@={player.isHuman}"
         android:enabled="@{player.isIncluded()}"
         android:thumb="@drawable/ai_toggle_bg"
-        android:thumbTint="@color/ai_toggle_color"
-        android:trackTint="@color/ai_toggle_color"
+        app:thumbTint="@color/ai_toggle_color"
+        app:trackTint="@color/ai_toggle_color"
         />
 
     <!--    Spinner - drop-down-list
