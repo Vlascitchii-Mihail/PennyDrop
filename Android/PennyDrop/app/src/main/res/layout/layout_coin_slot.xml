@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<!--    create variable slot-->
+    <data>
+        <variable
+            name="slot"
+            type="com.bignerdranch.android.pennydrop.types.Slot" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutCoinSlot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<!--        app:tint - change the color to the ImageView
+            app:isHidden -  our new attribute from fun bindIsHidden()
+
+             android:tint=
+                "@{slot.lastRolled ? @android:color/holo_blue_bright : @android:color/black}"
+            -->
+        <ImageView
+            android:id="@+id/coinImageCoinSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/coin_icon"
+            android:minWidth="36dp"
+            android:minHeight="36dp"
+            android:src="@drawable/mdi_coin_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:isHidden="@{!slot.canBeFilled || !slot.isFilled}"
+            app:slotLastRolled="@{slot.lastRolled}"
+            android:tint="@color/coin_slot_color"
+            tools:ignore="UseAppTint" />
+
+<!--        android:background=-->
+<!--        "@{slot.lastRolled ? @android:color/holo_blue_bright : @android:color/black}"-->
+        <View
+            android:id="@+id/buttonViewCoinSlot"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/coin_slot_color"
+            app:slotLastRolled="@{slot.lastRolled}"
+            app:layout_constraintStart_toStartOf="@id/coinImageCoinSlot"
+            app:layout_constraintEnd_toEndOf="@id/coinImageCoinSlot"
+            app:layout_constraintTop_toBottomOf="@id/coinImageCoinSlot" />
+
+<!--        android:textColor=-->
+<!--        "@{slot.lastRolled ? @android:color/holo_blue_bright : @android:color/black}"/>-->
+        <TextView
+            android:id="@+id/slotNumberCoinSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{slot.number + ""}'
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@id/coinImageCoinSlot"
+            app:layout_constraintEnd_toEndOf="@id/coinImageCoinSlot"
+            app:layout_constraintTop_toBottomOf="@id/buttonViewCoinSlot"
+            tools:text="3"
+            android:textColor="@color/coin_slot_color"
+            app:slotLastRolled="@{slot.lastRolled}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>
